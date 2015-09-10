@@ -40,6 +40,14 @@ AFHJJJFIJJJJIJJJJJHFDDDDDB0530&0)00&)0&05007BDD#################################
 
 In this sequence the number signs indicate low quality reads at the end (right side) of the sequence.
 
+## Quality Control
+Before we do anything with individual sequences, it is a good idea to survey the overall quality of the data.  We can do this with many free tools; for this class we will use a program called [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/).  To run this program please type this:
+`#path_to_FastQC/fastqc datafile`
+where `datafile` is the example dataset.
+This should give you some feedback about the analysis as it runs and generate a file called `datafile.zip`.  Please download this to your computer and uncompress it.
+
+
+
 ## De-Multiplexing
 Most RRGS methods rely on the Illumina sequencing platform.  These machines generate data using something called a "flowcell" that is divided up into eight "lanes".  Small scale projects typically would run multiple samples (from different species or different individuals within a species) on one lane.  Because the sequence methodology requires the ligation (attachment) of a linker (a bit of DNA) to each side of bits of DNA that will be sequenced, it is straightforward to combine multiple samples (multiplex) from different individuals in a single lane. This is done by adding a unique identifier sequence (a barcode) to the linker that is used on each sample.  Note that this barcode is different from "DNA barcoding", the latter of which generally refers to the use of a small variable genomic region (such as the COI gene for animals) for species and population identification.
 
