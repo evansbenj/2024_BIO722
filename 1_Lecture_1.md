@@ -41,14 +41,14 @@ AFHJJJFIJJJJIJJJJJHFDDDDDB0530&0)00&)0&05007BDD#################################
 In this sequence the number signs indicate low quality reads at the end (right side) of the sequence.  
 
 ## Example data
-The data we will be working witb are single end 100 bp reads from one Illumina lane. The data are from 9 individuals that were barcoded and multiplexed on this lane (see below). The path to the data is:
+The data we will be working witb are single end 100 bp reads from one Illumina lane. The data are from 9 individuals that were barcoded and multiplexed on this lane (see below for more explanation). The path to the data is:
 
 `XXX\forward.fastq`
 
 ## Quality Control
 Before we do anything with individual sequences, it is a good idea to survey the overall quality of the data.  We can do this with many free tools; for this class we will use a program called [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/).  To run this program please type this:
 `#path_to_FastQC/fastqc datafile`
-where `datafile` is the example dataset.
+where `datafile` is the example dataset listed above (or whereever your data are).
 This should give you some feedback about the analysis as it runs and generate a file called `datafile.zip`.  Please download this to your computer, uncompress it, and open the `.html` file in a browser.  Ben will go over some of the quality control plots that were generated.
 
 ## De-Multiplexing
@@ -58,38 +58,34 @@ A first step in our analysis pipeline is to organize data from each of our sampl
 
 `cd ~`
 
-When samples are run on an Illumina machine, DNA is broken up into many small fragments and a small bit of DNA called an adaptor is then added on each of the fragments. This adaptor allows the sequencing process to occur, essentially by making possible high-throughput put polymerase chain reaction (ask Ben about this if you are unfamiliar). To make possible the multiplexing of samples on one Illumina lane, each sample is linked to a unique adaptor that contains a "barcode" sequence that allows us to sort out which samples each sequence came from.  For our dataset, we have nine individuals from one species (the Tonkean macaque). Each of the samples received the following barcodes (the sample name is followed by the barcode):
+When samples are run on an Illumina machine, DNA is broken up into many small fragments and a small bit of DNA called an adaptor is then added on each of the fragments. This adaptor allows the sequencing process to occur, essentially by making possible high-throughput put polymerase chain reaction (ask Ben about this if you are unfamiliar). To make possible the multiplexing of samples on one Illumina lane, each sample is linked to a unique adaptor that contains a "barcode" sequence that allows us to sort out which samples each sequence came from.  For our dataset, we have nine individuals from one species (the Tonkean macaque). Each of the samples received the following barcodes (the barcode and sample name are separated by a tab):
 ```
-PF515 CCTCTTATCA
-PM561 TATCGTTAGT
-PM565 TAGTGCGGTC
-PM566 GGCCGGTAAC
-PM567 AGGAACCTCG
-PM582 TTATCCGTAG
-PM584 CGCTATACGG
-PM592 CACGCAACGA
-PM602 ATCCGTCTAC
+CCTCTTATCA	PF515
+TATCGTTAGT	PM561
+TAGTGCGGTC	PM565
+GGCCGGTAAC	PM566
+AGGAACCTCG	PM567
+TTATCCGTAG	PM582
+CGCTATACGG	PM584
+CACGCAACGA	PM592
+ATCCGTCTAC	PM602
 ```
-We will use this information in a moment to de-multiplex our data.  Lets use emacs to make a text file that contains this information.  Please type `emacs monkey.pools` to generate a file called `monkey.pools`.  Now copy and paste the information above to your emacs window.  Then type `Ctrl-X` and `Ctrl-S` to save it and then `Ctrl-X` and `Ctrl-C` to close the program.
+We will use this information in a moment to de-multiplex our data.  Lets use emacs to make a text file that contains this information.  Please use your favourite text editor to generate a file with this information called `monkey.barcodes`.
 
 
 ## Quality control and trimming
 
-A first step in analysis of Illumina data is to identify adaptor and barcode sequences in our data, sort sequneces by the barcode, and then trim off the adaptor and barcode sequences.  We can also get rid of sequences that have ambiguous barcodes due to sequencing errors.
+A first step in analysis of Illumina data is to identify adaptor and barcode sequences in our data, sort sequneces by the barcode, and remove the adaptor and barcode sequences from the data.  We can also get rid of sequences that have ambiguous barcodes due to sequencing errors. We additionally can get rid of sequences with low quality scores and trim them all so they have the same length (this last step would not normally be done for RNAseq data but it is a reasonable thing to do for RADseq data).
 
 Illumina generates sequences that have errors in base calls.  Errors typically become more common towards the end of the sequence read, and sometimes (but not always) an "N" is inserted in positions where the base pair is difficult to call.  But sometimes it makes an incorrect call as well. 
 
-We will use software called `RADpools` to de-multiplex and trim our data.  This software is available [here](https://github.com/johnomics/RADtools/blob/master/RADpools).
+We will use software package called `Stacks` to de-multiplex and trim our data.  This is actually a suite of programs and we will be using the application called `process_radtags` within `Stacks`.  `Stacks` has a very nice online manual [here](http://catchenlab.life.illinois.edu/stacks/manual/#clean). FYI, other software that does trimmong of RADseq data is available [here](https://github.com/johnomics/RADtools/blob/master/RADpools).
 
-To use `RADpools` we need to load some perl modules first.  Please type this:
+Brian has installed most of the software we need in a directory called `/usr/local/bin`.  The command to execute this program on our data is:
 
-`module load app/radtools`
+`/usr/local/bin/process_radtags -p <inputfile> -b <barcode_file> -o ./samples/ -e sbfI -r -c -q`
 
-The command to execute this program on our data is:
-
-`/apps/RADtools/1.2.4/RADpools -i /home/datasets/2015_Ben_Evans/data/forward_subset.fastq -d ./monkey -s -f -o -t 75 -q 10`
-
-The first part (`/apps/RADpools`) directs the computer to run the program RADpools, which is in the director called `apps`.  The `-i` flag specifies where the data are.  The `-d` flag specifies where the barcode file is that we made eariler (here you don't write the full name of the file, which you remember is `monkey.pools` – the program assumes the suffix is `.pools`).  The `-s` flag tells RADpools that the data have Sanger quality scores.  The `-f` flag tells RADpools to interpret the barcodes using the "fuzzy" option, which allows for errors and asigns barcodes with errors to the nearest pool. The `-o` flag directs RADpools to output the trimmed data in fastq format.  The `-t` flag tells RADpools to trim all of the sequences to a length of 75 base pairs.  The `q` flag tells RADpools to throw out any sequences that have any bases with a quality score below 10.  When the program is done sorting the data, it should generate a directory called `monkey` in your current directory. (The name is just whatever the suffix is of your `.pools` file.)  All of this information is available, of course, in the manual that comes with the program. 
+As detailed in the online manual, the first part (`/usr/local/bin/process_radtags`) directs the computer to run the program process_radtags, which is in the director called `/usr/local/bin/`.  The `-p` flag specifies where the data are and <inputfile> provides the path and filename of the data.  The `-b` flag specifies where the barcode file is that we made eariler and <barcode_file> provides the path and name for this file.  The `-o` flag tells `process_radtags` to put the demultiplexed data in a folder called `./samples`.  The `-e` flag tells `process_radtags` that the restriction enzyme called sbfI was used to generate the data. The `-r`, `-c`, and `-q` flags directs `process_radtags` to respectively rescue barcodes and RADtags when possible, clean the data and remove reads with any uncalled bases, and discard reads with low quality scores.  All of this information is available, of course, in the manual that comes with the program. 
 
 ## Practice problem 1: How many reads do we have for each individual?
 
