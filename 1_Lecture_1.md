@@ -38,7 +38,12 @@ TGCAGGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGGAAATTTTTGGGCACAAAGAACCACAGAAA
 AFHJJJFIJJJJIJJJJJHFDDDDDB0530&0)00&)0&05007BDD############################################
 ```
 
-In this sequence the number signs indicate low quality reads at the end (right side) of the sequence.
+In this sequence the number signs indicate low quality reads at the end (right side) of the sequence.  
+
+## Example data
+The data we will be working witb are single end 100 bp reads from one Illumina lane. The data are from 9 individuals that were barcoded and multiplexed on this lane (see below). The path to the data is:
+
+`XXX\forward.fastq`
 
 ## Quality Control
 Before we do anything with individual sequences, it is a good idea to survey the overall quality of the data.  We can do this with many free tools; for this class we will use a program called [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/).  To run this program please type this:
