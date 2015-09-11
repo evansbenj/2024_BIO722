@@ -98,5 +98,9 @@ As an exercise, please use the [`grep`](http://unixhelp.ed.ac.uk/CGI/man-cgi?gre
 
 How would your `grep` command differ for a `fasta` file compared to a `fastq` file?
 
+## Practice problem 2: How did trimming affect the quality assay?
+
+Please use FastQC to evaluate read quality of your trimmed sequences.  How do the trimmed reads differ from the untrimmed reads?
+
 ## OK, now we are ready to move on to mapping reads to a reference genome.  Please click [here](https://github.com/evansbenj/Reduced-Representation-Workshop/blob/master/4_Mapping_reads_to_a_reference_genome.md).
 
