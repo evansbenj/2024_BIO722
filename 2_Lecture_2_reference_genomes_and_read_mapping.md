@@ -12,7 +12,7 @@ FYI, essentially all completely sequenced genomes are not in fact completely seq
 - And even then, we can expect sequence and assembly errors in our reference genome that make it different from the real genome sequence.  
 - On top of that, there is population level variation to contend with, including SNPs and insertion deletion events.  This makes our samples different from any reference genome as well.
 
-As an example, let's look at some information on the "completely" sequenced genomes of [some frogs](http://www.xenbase.org/other/static/ftpDatafiles.jsp).
+As an example, let's look at some information on the "completely" sequenced genomes of [some frogs](http://www.xenbase.org/other/static/ftpDatafiles.jsp).  Of interest is the N50 value of a genome assembly, which is defined [here](https://en.wikipedia.org/wiki/N50_statistic).
 
 ## Preparing your reference genome
 
