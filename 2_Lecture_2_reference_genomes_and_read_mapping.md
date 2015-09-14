@@ -104,4 +104,4 @@ Now it is your turn.  Using the manual for [samtools](http://www.htslib.org/doc/
 
 
 
-## OK, if this all went smoothly we are now ready to make some genotype calls.  Please click [here](https://github.com/evansbenj/Reduced-Representation-Workshop/blob/master/5_Automating_alignment_with_a_bash_script.md) to go to the next page.
+## OK, if this all went smoothly we are now ready to make some genotype calls.  Please click [here](https://github.com/evansbenj/BIO720/blob/master/2_Lecture_2_reference_genomes_and_read_mapping.md) to go to the next page.
