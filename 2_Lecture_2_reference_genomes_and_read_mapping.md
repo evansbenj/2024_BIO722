@@ -52,23 +52,17 @@ Before we map our data to this reference genome, we need to generate some files 
 
 ## Mapping the data to the reference genome
 
-Now we can align the data from each individual to the reference genome using [`bwa`] (http://sourceforge.net/projects/bio-bwa/files).  I've put the data in this directory:
+Now we can align the data from each individual to the reference genome using [`bwa`] (http://sourceforge.net/projects/bio-bwa/files). Because this takes a while to do with the fill dataset, I have generated a datasubset that we can work with in class. You can find this here:  
 
-`/1/scratch/monkey_data`
+`/1/scratch/monkey_data/tonk_PM602_subset.fastq`
 
-First let's go back to the directory that has our de-multiplexed data in it like this:
+Let's map this data subset from one individual to the reference genome using `bwa` as follows:
 
-`cd ~/monkey`
+`/apps/bwa/0.7.12/bwa aln reference_genome data.fastq > data.sai`
 
-You can see the demultiplexed fastq files by typing the `ls` command.
+For example, for this individual (PM602) we could type this
 
-Now let's map data from one individual to the reference genome using `bwa` as follows:
-
-`/apps/bwa/0.7.12/bwa aln reference_genome individual_1.fastq > individual_1.sai`
-
-For example, for the first individual (PF515) we could type this
-
-`/apps/bwa/0.7.12/bwa aln /home/datasets/2015_Ben_Evans/rhesus_chromosomes/chrXXX.fa PF515.fastq > PF515.sai`
+`bwa aln /home/ben/2015_BIO720/rhesus_chromosomes/chrXXX.fa /1/scratch/monkey_data/tonk_PM602_subset.fastq > /1/scratch/monkey_data/tonk_PM602_subset.sai`
 
 (but with the `chrXXX.fa` changed to match the chromosome you are working on.)
 
@@ -76,33 +70,33 @@ As you can see in the [`bwa` manual] (http://bio-bwa.sourceforge.net/bwa.shtml),
 
 This command generates an intermediate file with the `.sai` suffix (which stands for `suffix array index`). Now we need to generate a `.sam` formatted file from our `.sai` files.  A `.sam` file is a tab delimited text file that contains the alignment data.  The format for this command is:
 
-`/apps/bwa/0.7.12/bwa samse reference_genome.fa individual_1.sai individual_1.fastq > individual_1.sam`
+`bwa samse reference_genome.fa data.sai data.fastq > data.sam`
 
 We also need to add a header to each `.sam` file, so we can type this command:
 
-`/apps/bwa/0.7.12/bwa samse -r "@RG\tID:FLOWCELL1.LANE6\tSM:Individual_1\tPL:illumina" reference.fa Individual_1.sai Individual_1.fastq > Individual_1.sam`
+`bwa samse -r "@RG\tID:FLOWCELL1.LANE6\tSM:PM602\tPL:illumina" reference.fa data.sai data.fastq > data.sam`
 
 Now we can generate a `.bam` file.  A `.bam` formatted file is a binary version of the `.sam` file.
 
-`/apps/samtools/0.1.19/samtools view -bt reference_genome -o Individual_1.bam Individual_1.sam`
+`samtools view -bt reference_genome -o data.bam data.sam`
 
 Sort the `.bam` file:
 
-`/apps/samtools/0.1.19/samtools sort Individual_1.bam Individual_1_sorted`
+`samtools sort data.bam data_sorted`
 
 Make a `.bai` file:
 
-`/apps/samtools/0.1.19/samtools index Individual_1_sorted.bam`
+`samtools index data_sorted.bam`
 
 ## Problem 3: Assessing coverage
 
 Samtools can provide information on the number of reads for each position of the reference sequence for which there are data.  You can see this information by typing this:
 
-`/apps/samtools/0.1.19/samtools depth XXX_sorted.bam`
+`samtools depth XXX_sorted.bam`
 
 Where `XXX` is the sample ID number.  If you want to know the average depth across all sites, you could type this:
 
-`/apps/samtools/0.1.19/samtools depth XXX_sorted.bam | awk '{sum+=$3} END { print "Average = ",sum/NR}'`
+`samtools depth XXX_sorted.bam | awk '{sum+=$3} END { print "Average = ",sum/NR}'`
 
 Here the vertical bar `|` is a "pipe" that sends the information from the command before it to the command after it.  So the data you generated from `samtools` will be parsed with the unix `awk` command.  This will add the values of the third column `$3` to a variable called `sum` and then at the end (`END`) print out the word `Average` followed by the quotient `sum/NR` where `NR` is a built in variable that keeps track of the number of records.  A good description of `awk` is [here](http://www.folkstalk.com/2011/12/good-examples-of-awk-command-in-unix.html).
 
