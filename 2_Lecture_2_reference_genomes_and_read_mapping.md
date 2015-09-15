@@ -18,11 +18,11 @@ As an example, let's look at some information on the "completely" sequenced geno
 
 Reference genomes for many sequences are available at multiple publicly available databases.  We can download the complete genome sequence for the rhesus macaque from the [USC genome browser](http://hgdownload.cse.ucsc.edu/downloads.html#rhesus).  I did this earlier because it takes a while.  The whole genome comes as a fasta-formatted file, and I split it up into individual fasta files corresponding with each of the chromosomes.  These are located in this directory:
 
-`/home/datasets/2015_Ben_Evans/rhesus_chromosomes/`
+`/1/scratch/rhesus_chromosomes/`
 
 Please go to this directory using this command:
 
-`cd /home/datasets/2015_Ben_Evans/rhesus_chromosomes/`
+`cd /1/scratch/rhesus_chromosomes/`
 
 Now check out what is in this directory by typing this:
 
@@ -30,19 +30,19 @@ Now check out what is in this directory by typing this:
 
 Before we map our data to this reference genome, we need to generate some files that will be used in the mapping process.  This can be done in three steps:
 
-1. `/apps/bwa/0.7.12/bwa index -a bwtsw /home/datasets/2015_Ben_Evans/rhesus_chromosomes/chrXXX.fa`
+1. `bwa index -a bwtsw /home/datasets/2015_Ben_Evans/rhesus_chromosomes/chrXXX.fa`
 
   The `/apps/bwa/0.7.12/bwa` command tells the computer to execute the bwa program.  The `index` command tells `bwa` to generate index files from the rhesus genome file that is indicated by the `/home/datasets/2015_Ben_Evans/rhesus_chromosomes/chrXXX.fa`. The `-a bwtsw` flag specifies the indexing algorithm for `bwa` to use.  You will need to change the `chrXXX.fa` to match whatever chromosome Ben tells you to work on.  For example, if you are working on chromosome 9, you should type this:
 
-  `/apps/bwa/0.7.12/bwa index -a bwtsw /home/datasets/2015_Ben_Evans/rhesus_chromosomes/chr9.fa`  
+  `bwa index -a bwtsw /home/datasets/2015_Ben_Evans/rhesus_chromosomes/chr9.fa`  
   
   This step will take a few minutes.
 
 2. We now need to to generate another file using `samtools`.  Please type this:
 
-  `/apps/samtools/0.1.19/samtools faidx /home/datasets/2015_Ben_Evans/rhesus_chromosomes/chrXXX.fa`
+  `samtools faidx /home/datasets/2015_Ben_Evans/rhesus_chromosomes/chrXXX.fa`
 
-  Here, the `/apps/samtools/0.1.19/samtools` command tells the computer to execute the `samtools` program.  The `faidx` option tells samtools to generate a file called `chrXXX.fai` in which each line has information for one the contigs within the reference genome, including the contig name, size, location and other information.  Our reference genome has a contig for each chromosome.
+  Here, the `samtools` command tells the computer to execute the `samtools` program.  The `faidx` option tells samtools to generate a file called `chrXXX.fai` in which each line has information for one the contigs within the reference genome, including the contig name, size, location and other information.  Our reference genome has a contig for each chromosome.
 
 3.  The third thing we need to do is to generate a `.dict` file with a program called [`picard`](http://broadinstitute.github.io/picard/).  Please type this command:
 
@@ -52,7 +52,11 @@ Before we map our data to this reference genome, we need to generate some files 
 
 ## Mapping the data to the reference genome
 
-Now we can align the data from each individual to the reference genome using [`bwa`] (http://sourceforge.net/projects/bio-bwa/files).  First let's go back to the directory that has our de-multiplexed data in it like this:
+Now we can align the data from each individual to the reference genome using [`bwa`] (http://sourceforge.net/projects/bio-bwa/files).  I've put the data in this directory:
+
+`/1/scratch/monkey_data`
+
+First let's go back to the directory that has our de-multiplexed data in it like this:
 
 `cd ~/monkey`
 
