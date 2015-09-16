@@ -102,6 +102,8 @@ Here the vertical bar `|` is a "pipe" that sends the information from the comman
 
 Now it is your turn.  Using the manual for [samtools](http://www.htslib.org/doc/samtools-0.1.19.html) please quantify how many reads mapped to your chromosome for each individual and how many failed to map.  Do you know why so many failed to map?
 
+## Practice Problem
 
+Please write a bash script that will provide the coverage statistic for all bam files in a folder that have the suffic "_sorted.bam".
 
 ## OK, if this all went smoothly we are now ready to make some genotype calls.  Please click [here](https://github.com/evansbenj/BIO720/blob/master/2_Lecture_2_reference_genomes_and_read_mapping.md) to go to the next page.
