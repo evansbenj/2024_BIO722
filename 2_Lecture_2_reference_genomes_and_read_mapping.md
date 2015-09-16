@@ -104,6 +104,6 @@ Now it is your turn.  Using the manual for [samtools](http://www.htslib.org/doc/
 
 ## Practice Problem
 
-Please write a bash script that will provide the coverage statistic for all bam files in a folder that have the suffic "_sorted.bam".
+Please write a bash script that will provide the coverage statistic for all bam files in a folder that have the suffix "_sorted.bam".  You can (and should) use the internet for tips.
 
 ## OK, if this all went smoothly we are now ready to make some genotype calls.  Please click [here](https://github.com/evansbenj/BIO720/blob/master/2_Lecture_2_reference_genomes_and_read_mapping.md) to go to the next page.
