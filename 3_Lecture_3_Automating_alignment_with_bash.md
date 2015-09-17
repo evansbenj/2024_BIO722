@@ -1,6 +1,6 @@
 # Automating alignments to a reference genome with a bash script
 
-(Or you can go back to [mapping reads to a reference genome](https://github.com/evansbenj/Reduced-Representation-Workshop/blob/master/4_Mapping_reads_to_a_reference_genome.md)).
+(Or you can go back to [mapping reads to a reference genome](https://github.com/evansbenj/BIO720/blob/master/2_Lecture_2_reference_genomes_and_read_mapping.md)).
 
 Now that you have seen how to align data from one individual to a reference genome, we can automate the alignment of all individuals to the reference genome using a bash script.  This is much better than going through all that stuff independently for each individual.  We can accomplish this by defining an `array` that contains the names of all of the individuals in the analysis, and then looping through this array and executing each of the commands for each individual.
 
