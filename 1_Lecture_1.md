@@ -156,5 +156,12 @@ How would your `grep` command differ for a `fasta` file compared to a `fastq` fi
 
 Please use FastQC to evaluate read quality of your trimmed sequences.  How do the trimmed reads differ from the untrimmed reads?
 
+## Practice problem 3: Now do this with the full dataset
+
+After class, please use `process_radtags` to demultiplex the full dataset located here:
+
+`/1/scratch/monkey_data/forward.fastq`
+
+
 ## OK, now we are ready to move on to mapping reads to a reference genome.  Please click [here](https://github.com/evansbenj/BIO720/blob/master/2_Lecture_2_reference_genomes_and_read_mapping.md).
 
