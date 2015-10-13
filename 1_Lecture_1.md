@@ -68,11 +68,11 @@ where `output_directory` is the directory to which you want to write the output 
 
 Here is an example of a commandline I ran:
 
-`/usr/local/fastqc/fastqc -o /home/evanslab forward_subset.fastq`
+`/usr/local/fastqc/fastqc -o /home/evanslab /1/scratch/BIO720_Bens_section/subset_data/forward_subset.fastq`
 
 (You would have to change the `evanslab` part to match your home directory because you don't have write permissions to my directory). This command is equivalent to this: 
 
-`fastqc -o ~ forward_subset.fastq`
+`fastqc -o ~ /1/scratch/BIO720_Bens_section/subset_data/forward_subset.fastq`
 
 The latter command works because the program `fastqc` is already in your $PATH variable (thanks to Brian) and because the `~` is a shortcut for your home directory.
 
