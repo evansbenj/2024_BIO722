@@ -97,7 +97,7 @@ CGCTATACGG	PM584
 CACGCAACGA	PM592
 ATCCGTCTAC	PM602
 ```
-We will use this information in a moment to de-multiplex our data.  Lets use emacs to make a text file that contains this information.  Please use your favourite text editor to generate a file with this information called `monkey.barcodes`.
+We will use this information in a moment to de-multiplex our data.  Lets use emacs to make a text file that contains this information.  Please use your favourite text editor to generate a file with this information called `monkey.barcodes`.  Please note that if you copy and paste this information into your Unix window (and you should) you probably will have to manually change spaces to tabs.
 
 
 ## Quality control and trimming
