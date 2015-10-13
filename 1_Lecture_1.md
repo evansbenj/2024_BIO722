@@ -138,7 +138,7 @@ The other flags tell `process_radtags` to remove adapter sequences that are spec
 
 Here is an example of the commandline I used to de-multiplex the subset of the data:
 
-`/usr/local/bin/process_radtags -f /1/scratch/BIO720_Bens_section/subset_data/forward_subset.fastq -b monkey.b -o ./samples/ -e sbfI -t 75 -r -c -q --adapter_1 GATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG --adapter_2 AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT --adapter_mm 2 --filter_illumina`
+`/usr/local/bin/process_radtags -f /1/scratch/BIO720_Bens_section/subset_data/forward_subset.fastq -b monkey.barcodes -o ./samples/ -e sbfI -t 75 -r -c -q --adapter_1 GATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG --adapter_2 AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT --adapter_mm 2 --filter_illumina`
 
 If you enter the `samples` directory, you should see your de-multiplexed files, each named by the barcode. If you want to, you can rename these to have the sample name instead using the `mv` command.  For example:
 
