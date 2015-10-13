@@ -85,7 +85,21 @@ A first step in our analysis pipeline is to organize data from each of our sampl
 
 `cd ~`
 
-When samples are run on an Illumina machine, DNA is broken up into many small fragments and a small bit of DNA called an adaptor is then added on each of the fragments. This adaptor allows the sequencing process to occur, essentially by making possible high-throughput put polymerase chain reaction (ask Ben about this if you are unfamiliar). To make possible the multiplexing of samples on one Illumina lane, each sample is linked to a unique adaptor that contains a "barcode" sequence that allows us to sort out which samples each sequence came from.  For our dataset, we have nine individuals from one species (the Tonkean macaque). Each of the samples received the following barcodes (the barcode and sample name are separated by a tab):
+When samples are run on an Illumina machine, DNA is broken up into many small fragments and a small bit of DNA called an adaptor is then added on each of the fragments. This adaptor allows the sequencing process to occur, essentially by making possible high-throughput put polymerase chain reaction (ask Ben about this if you are unfamiliar). To make possible the multiplexing of samples on one Illumina lane, each sample is linked to a unique adaptor that contains a "barcode" sequence that allows us to sort out which samples each sequence came from.  For our dataset, we have nine individuals from one species (the Tonkean macaque). Each of the samples received the following barcodes:
+
+```
+CCTCTTATCA
+TATCGTTAGT
+TAGTGCGGTC
+GGCCGGTAAC
+AGGAACCTCG
+TTATCCGTAG
+CGCTATACGG
+CACGCAACGA
+ATCCGTCTAC
+```
+
+These barcode correspond with the following sample names:
 ```
 CCTCTTATCA	PF515
 TATCGTTAGT	PM561
@@ -97,8 +111,7 @@ CGCTATACGG	PM584
 CACGCAACGA	PM592
 ATCCGTCTAC	PM602
 ```
-We will use this information in a moment to de-multiplex our data.  Lets use emacs to make a text file that contains this information.  Please use your favourite text editor to generate a file with this information called `monkey.barcodes`.  Please note that if you copy and paste this information into your Unix window (and you should) you probably will have to manually change spaces to tabs.
-
+We will use this information in a moment to de-multiplex our data. Please use your favourite text editor to generate a file in your home directory (`cd ~`) called `monkey.barcodes` and paste in only the barcode sequences (without the sample names). 
 
 ## Quality control and trimming
 
@@ -116,16 +129,26 @@ The command to execute this program on our data is:
 
 `/usr/local/bin/process_radtags -f <inputfile> -b <barcode_file> -o ./samples/ -e sbfI -t 75 -r -c -q --adapter_1 GATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG --adapter_2 AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT --adapter_mm 2 --filter_illumina`
 
-As detailed in the online manual, the first part (`/usr/local/bin/process_radtags`) directs the computer to run the program process_radtags, which is in the director called `/usr/local/bin/`.  The `-f` flag specifies where the data are and <inputfile> provides the path and filename of the data.  The `-b` flag specifies where the barcode file is that we made eariler and <barcode_file> provides the path and name for this file.  The `-o` flag tells `process_radtags` to put the demultiplexed data in a folder called `./samples`, which we should make in advance using the unix `mkdir` command.  The `-e` flag tells `process_radtags` that the restriction enzyme called sbfI was used to generate the data. The `-t` flag tells `process_radtags` to trim all sequences to be 75 base pairs long. The `-r`, `-c`, and `-q` flags directs `process_radtags` to respectively
+As detailed in the online manual, the first part (`/usr/local/bin/process_radtags`) directs the computer to run the program process_radtags, which is in the director called `/usr/local/bin/`.  The `-f` flag specifies where the data are and <inputfile> provides the path and filename of the data. The `-b` flag specifies where the barcode file is that we made eariler and <barcode_file> provides the path and name for this file.  The `-o` flag tells `process_radtags` to put the demultiplexed data in a folder called `./samples`, which we should make in advance using the unix `mkdir` command.  The `-e` flag tells `process_radtags` that the restriction enzyme called sbfI was used to generate the data. The `-t` flag tells `process_radtags` to trim all sequences to be 75 base pairs long. The `-r`, `-c`, and `-q` flags directs `process_radtags` to respectively
 - rescue barcodes and RADtags when possible allowing upto a default value of 2 mismatches (this number can be changed too if you want)
 - clean the data and remove reads with any uncalled bases, and 
 - discard reads with low quality scores.  
 
-THe other flags tell `process_radtags` to remove adapter sequences that are specified and to remove bad reads recognized by the Illumina sequencing software.  Other details, such as the type of quality scores are set at default values. All of this information is available, of course, in the manual that comes with the program. 
+The other flags tell `process_radtags` to remove adapter sequences that are specified and to remove bad reads recognized by the Illumina sequencing software.  Other details, such as the type of quality scores are set at default values. All of this information is available, of course, in the manual that comes with the program. 
+
+Here is an example of the commandline I used to de-multiplex the subset of the data:
+
+`/usr/local/bin/process_radtags -f /1/scratch/BIO720_Bens_section/subset_data/forward_subset.fastq -b monkey.b -o ./samples/ -e sbfI -t 75 -r -c -q --adapter_1 GATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG --adapter_2 AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT --adapter_mm 2 --filter_illumina`
+
+If you enter the `samples` directory, you should see your de-multiplexed files, each named by the barcode. If you want to, you can rename these to have the sample name instead using the `mv` command.  For example:
+
+`mv sample_CCTCTTATCA.fq PF515.fq`
+
+You should also see a log file that gives some statistics about the output from `process_radtags`
 
 ## Practice problem 1: How many reads do we have for each individual?
 
-As an exercise, please use the [`grep`](http://unixhelp.ed.ac.uk/CGI/man-cgi?grep) command to count how many reads we have for each individual.  A hint is that using `grep`, you can count the number of times an identifier character for each sequence appears in each file for each individual.  Another hint is that you can get the manual for any `Unix` command by typing `man command`.  Which individual has the most reads?  Which has the least reads?  Can you think of a reason that some samples have lots of reads while others have less?
+As an exercise, please use the [`grep`](http://unixhelp.ed.ac.uk/CGI/man-cgi?grep) command to count how many reads we have for each individual.  A hint is that using `grep`, you can count the number of times an identifier character for each sequence appears in each file for each individual.  Another hint is that you can get the manual for any `Unix` command by typing `man command`.  Which individual has the most reads?  Which has the least reads?  Can you think of a reason that some samples have lots of reads while others have less?  You should be able to confirm your read count with the number in the log file from `process_radtags`.
 
 How would your `grep` command differ for a `fasta` file compared to a `fastq` file?
 
