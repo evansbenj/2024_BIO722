@@ -61,10 +61,13 @@ FYI, as with most things, I did not figure this out myself, I found it on the in
 
 ## Quality Control
 Before we do anything with individual sequences, it is a good idea to survey the overall quality of the data.  We can do this with many free tools; for this class we will use a program called [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/).  To run this program please type this:
+
 `/usr/local/fastqc/fastqc -o output_directory datafile`
+
 where `output_directory` is the directory to which you want to write the output and `datafile` is the example dataset listed above (or whereever your data are). This should give you some feedback about the analysis as it runs and generate a file called `datafile.zip` in the output directory.  
 
 Here is an example of a commandline I ran:
+
 `/usr/local/fastqc/fastqc -o /home/evansb forward_subset.fastq`
 
 (You would have to change the `evanslab` part to match your home directory because you don't have write permissions to my directory). This command is equivalent to this: 
