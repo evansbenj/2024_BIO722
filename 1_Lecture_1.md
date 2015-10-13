@@ -65,9 +65,13 @@ Before we do anything with individual sequences, it is a good idea to survey the
 where `output_directory` is the directory to which you want to write the output and `datafile` is the example dataset listed above (or whereever your data are). This should give you some feedback about the analysis as it runs and generate a file called `datafile.zip` in the output directory.  
 
 Here is an example of a commandline I ran:
-`/usr/local/fastqc/fastqc -o /home/evanslab/ forward_subset.fastq`
+`/usr/local/fastqc/fastqc -o /home/evansb forward_subset.fastq`
 
-(You would have to change the `evanslab` part to match your home directory because you don't have write permissions to my directory).
+(You would have to change the `evanslab` part to match your home directory because you don't have write permissions to my directory). This command is equivalent to this: 
+
+`fastqc -o ~ forward_subset.fastq`
+
+The latter command works because the program `fastqc` is already in your $PATH variable (thanks to Brian) and because the `~` is a shortcut for your home directory.
 
 Please download this `.zip` file to your computer, uncompress it, and open the `.html` file in a browser.  You should see the quality control plots that were generated that Brian went over in an earlier class.
 
