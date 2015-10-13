@@ -52,7 +52,7 @@ Before we map our data to this reference genome, we need to generate some files 
 
 ## Mapping the data to the reference genome
 
-Now we can align the data from each individual to the reference genome using [`bwa`] (http://sourceforge.net/projects/bio-bwa/files). Because this takes a while to do with the fill dataset, I have generated a datasubset that we can work with in class. You can find this here:  
+Now we can align the data from each individual to the reference genome using [`bwa`] (http://sourceforge.net/projects/bio-bwa/files). Because this takes a while to do with the fill dataset, I made a datasubset file that we can work with in class. You can find this here:  
 
 `/1/scratch/monkey_data/tonk_PM602_subset.fastq`
 
