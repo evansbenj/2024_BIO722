@@ -57,7 +57,7 @@ In case you are interested, I made this using the unix `cat` and `awk` commands 
 
 Here the `cat` command pipes the file called 'forward.fastq` to the `awk command. Then the `awk` command searches the number of records `NR` (i.e. the line numbers) from 0-500,000 and prints them to a file called `forward_subset.fastq`.  
 
-FYI, as with most things, I did not figure this out myself, I found it on the internet somewhere.
+**FYI, as with most things, I did not figure this out myself, I found it on the internet somewhere.**
 
 ## Quality Control
 Before we do anything with individual sequences, it is a good idea to survey the overall quality of the data.  We can do this with many free tools; for this class we will use a program called [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/).  To run this program please type this:
