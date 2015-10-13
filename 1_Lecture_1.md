@@ -49,7 +49,7 @@ Please use the `ls` command to find out how large this file is.
 
 As you (hopefully) can see, this is a LARGE file.  Because the tasks we will perform take a while with this much data, I made a smaller dataset to work with here:
 
-`/1/scratch/BIO720_Bens_section/subset_data/forward_subset.fastq'
+`/1/scratch/BIO720_Bens_section/subset_data/forward_subset.fastq`
 
 In case you are interested, I made this using the unix `cat` and `awk` commands as follows:
 
