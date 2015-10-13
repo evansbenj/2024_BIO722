@@ -68,7 +68,7 @@ where `output_directory` is the directory to which you want to write the output 
 
 Here is an example of a commandline I ran:
 
-`/usr/local/fastqc/fastqc -o /home/evansb forward_subset.fastq`
+`/usr/local/fastqc/fastqc -o /home/evanslab forward_subset.fastq`
 
 (You would have to change the `evanslab` part to match your home directory because you don't have write permissions to my directory). This command is equivalent to this: 
 
