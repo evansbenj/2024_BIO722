@@ -108,7 +108,11 @@ Illumina generates sequences that have errors in base calls.  Errors typically b
 
 We will use software package called `Stacks` to de-multiplex and trim our data.  This is actually a suite of programs and we will be using the application called `process_radtags` within `Stacks`.  `Stacks` has a very nice online manual [here](http://catchenlab.life.illinois.edu/stacks/manual). FYI, other software that does trimming of RADseq data is available [here](https://github.com/johnomics/RADtools/blob/master/RADpools).
 
-Brian has installed most of the software we need in a directory called `/usr/local/bin`.  The command to execute this program on our data is:
+Brian has installed most of the software we need in a directory called `/usr/local/bin`. Before we de-multiplex our data subset, we need to make a directory for the de-multiplexed data to be stored in. From your home directory (`cd ~`), please type this:
+
+`mkdir samples`
+
+The command to execute this program on our data is:
 
 `/usr/local/bin/process_radtags -f <inputfile> -b <barcode_file> -o ./samples/ -e sbfI -t 75 -r -c -q --adapter_1 GATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG --adapter_2 AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT --adapter_mm 2 --filter_illumina`
 
