@@ -41,9 +41,17 @@ AFHJJJFIJJJJIJJJJJHFDDDDDB0530&0)00&)0&05007BDD#################################
 In this sequence the number signs indicate low quality reads at the end (right side) of the sequence.  
 
 ## Example data
-The data we will be working witb are single end 100 bp reads from one Illumina lane. The data are from 9 individuals that were barcoded and multiplexed on this lane (see below for more explanation). The path to the data is:
+The data we will be working witb are single end 100 bp reads from one Illumina lane. The data are from 9 individuals that were barcoded and multiplexed on this lane (see below for more explanation). The path to the complete dataset is:
 
 `/1/scratch/monkey_data/forward.fastq`
+
+Please use the `ls` command to find out how large this file is.
+
+As you (hopefully) can see, this is a LARGE file.  Because the tasks we will perform take a while with this much data, I made a smaller dataset to work with here:
+
+`/1/scratch/BIO720_Bens_section/subset_data/forward_subset.fastq'
+
+In case you are interested, I made this using the 
 
 ## Quality Control
 Before we do anything with individual sequences, it is a good idea to survey the overall quality of the data.  We can do this with many free tools; for this class we will use a program called [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/).  To run this program please type this:
