@@ -43,7 +43,7 @@ In this sequence the number signs indicate low quality reads at the end (right s
 ## Example data
 The data we will be working witb are single end 100 bp reads from one Illumina lane. The data are from 9 individuals that were barcoded and multiplexed on this lane (see below for more explanation). The path to the complete dataset is:
 
-`/1/scratch/monkey_data/forward.fastq`
+`/1/scratch/BIO720_Bens_section/complete_data/forward.fastq`
 
 Please use the `ls` command to find out how large this file is.
 
