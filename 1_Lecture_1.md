@@ -106,7 +106,7 @@ A first step in analysis of Illumina data is to identify adaptor and barcode seq
 
 Illumina generates sequences that have errors in base calls.  Errors typically become more common towards the end of the sequence read, and sometimes (but not always) an "N" is inserted in positions where the base pair is difficult to call.  But sometimes it makes an incorrect call as well. 
 
-We will use software package called `Stacks` to de-multiplex and trim our data.  This is actually a suite of programs and we will be using the application called `process_radtags` within `Stacks`.  `Stacks` has a very nice online manual [here](http://catchenlab.life.illinois.edu/stacks/manual/#clean). FYI, other software that does trimmong of RADseq data is available [here](https://github.com/johnomics/RADtools/blob/master/RADpools).
+We will use software package called `Stacks` to de-multiplex and trim our data.  This is actually a suite of programs and we will be using the application called `process_radtags` within `Stacks`.  `Stacks` has a very nice online manual [here](http://catchenlab.life.illinois.edu/stacks/manual/#clean). FYI, other software that does trimming of RADseq data is available [here](https://github.com/johnomics/RADtools/blob/master/RADpools).
 
 Brian has installed most of the software we need in a directory called `/usr/local/bin`.  The command to execute this program on our data is:
 
