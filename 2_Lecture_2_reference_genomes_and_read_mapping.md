@@ -84,7 +84,7 @@ Now let's map this data subset from one individual to the reference genome using
 
 `bwa aln reference_genome data.fastq > data.sai`
 
-For example, for this individual (PM602) we could type this
+For example, for this individual (PF515) you could type this
 
 `bwa aln ~/my_monkey_chromosome/chrXXX.fa ~/my_monkey_data/tonk_PF515_subset.fastq > ~/my_monkey_data/tonk_PF515_subset.sai`
 
