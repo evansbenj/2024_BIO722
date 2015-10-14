@@ -86,7 +86,7 @@ Now let's map this data subset from one individual to the reference genome using
 
 For example, for this individual (PM602) we could type this
 
-`bwa aln ~/my_monkey_chromosome/chrXXX.fa ~/my_monkey_data/tonk_PM602_subset.fastq > ~/my_monkey_data/tonk_PM602_subset.sai`
+`bwa aln ~/my_monkey_chromosome/chrXXX.fa ~/my_monkey_data/tonk_PF515_subset.fastq > ~/my_monkey_data/tonk_PF515_subset.sai`
 
 (but with the `chrXXX.fa` changed to match the chromosome you are working on.)
 
