@@ -32,13 +32,19 @@ and then copy your chromosome to that directory like this:
 
 `cp /1/scratch/BIO720_Bens_section/rhesus_chromosomes/chrXXX.fa ~/my_monkey_chromosome/.` 
 
+Here and henceforth, you will need to change the `chrXXX.fa` part to match whatever chromosome Ben assigned to you.  For example, if you are working on chromosome 9, you should type this:
+
+`cp /1/scratch/BIO720_Bens_section/rhesus_chromosomes/chr9.fa ~/my_monkey_chromosome/.` 
+
+You can check whether you succeeded and also see how big this datafile is like this:
+
+`ls -l ~/my_monkey_chromosome/chrXXX.fa` 
+
 Before we map our data to this reference genome, we need to generate some files that will be used in the mapping process.  This can be done in three steps:
 
 1. `bwa index -a bwtsw ~/my_monkey_chromosome/chrXXX.fa`
 
-  The `/apps/bwa/0.7.12/bwa` command tells the computer to execute the bwa program.  The `index` command tells `bwa` to generate index files from the rhesus genome file that is indicated by the `/home/datasets/2015_Ben_Evans/rhesus_chromosomes/chrXXX.fa`. The `-a bwtsw` flag specifies the indexing algorithm for `bwa` to use.  You will need to change the `chrXXX.fa` to match whatever chromosome Ben tells you to work on.  For example, if you are working on chromosome 9, you should type this:
-
-  `bwa index -a bwtsw ~/my_monkey_chromosome/chr9.fa`  
+  The `/apps/bwa/0.7.12/bwa` command tells the computer to execute the bwa program.  The `index` command tells `bwa` to generate index files from the rhesus genome file that is indicated by the `/home/datasets/2015_Ben_Evans/rhesus_chromosomes/chrXXX.fa`. The `-a bwtsw` flag specifies the indexing algorithm for `bwa` to use.  
   
   (But delete the two XXs - I added them in to prevent people from just copying and pasting things)
   
