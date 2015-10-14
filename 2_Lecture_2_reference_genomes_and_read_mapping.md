@@ -56,9 +56,13 @@ Before we map our data to this reference genome, we need to generate some files 
 
   Here, the `samtools` command tells the computer to execute the `samtools` program.  The `faidx` option tells samtools to generate a file called `chrXXX.fai` in which each line has information for one the contigs within the reference genome, including the contig name, size, location and other information.  Our reference genome has a contig for each chromosome.
 
-3.  The third thing we need to do is to generate a `.dict` file with a program called [`picard`](http://broadinstitute.github.io/picard/).  Please type this command:
+3.  The third thing we need to do is to generate a `.dict` file with a program called [`picard`](http://broadinstitute.github.io/picard/).  To do this, first enter the `my_monkey_chromosome` directory like this:
 
-  `java  -Xmx5G -jar /usr/local/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=~/my_monkey_chromosome/chrXXX.fa OUTPUT=~/my_monkey_chromosome/chrXXX.dict`
+`cd ~/my_monkey_chromosome`
+
+Once you are in, please type this command:
+
+  `java -jar /usr/local/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=chrXXX.fa OUTPUT=chrXXX.dict`
 
   As before, you will need to change the `chrXXX` in this command to match the chromosome you are working with.  This should generate a file called `~/my_monkey_chromosome/chrXXX.dict`
 
