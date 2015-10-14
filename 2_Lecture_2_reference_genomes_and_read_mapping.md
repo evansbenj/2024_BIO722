@@ -18,37 +18,35 @@ As an example, let's look at some information on the "completely" sequenced geno
 
 Reference genomes for many sequences are available at multiple publicly available databases.  We can download the complete genome sequence for the rhesus macaque from the [USC genome browser](http://hgdownload.cse.ucsc.edu/downloads.html#rhesus).  I did this earlier because it takes a while.  The whole genome comes as a fasta-formatted file, and I split it up into individual fasta files corresponding with each of the chromosomes.  These are located in this directory:
 
-`/1/scratch/rhesus_chromosomes/`
-
-Please go to this directory using this command:
-
-`cd /1/scratch/rhesus_chromosomes/`
+`/1/scratch/BIO720_Bens_section/rhesus_chromosomes/`
 
 Now check out what is in this directory by typing this:
 
-`ls`
+`ls /1/scratch/BIO720_Bens_section/rhesus_chromosomes/`
 
 Before we map our data to this reference genome, we need to generate some files that will be used in the mapping process.  This can be done in three steps:
 
-1. `bwa index -a bwtsw /home/datasets/2015_Ben_Evans/rhesus_chromosomes/chrXXX.fa`
+1. `bwa index -a bwtsw /1/scratch/BIO720_Bens_section/rhesus_chromosomes/chrXXX.fa`
 
   The `/apps/bwa/0.7.12/bwa` command tells the computer to execute the bwa program.  The `index` command tells `bwa` to generate index files from the rhesus genome file that is indicated by the `/home/datasets/2015_Ben_Evans/rhesus_chromosomes/chrXXX.fa`. The `-a bwtsw` flag specifies the indexing algorithm for `bwa` to use.  You will need to change the `chrXXX.fa` to match whatever chromosome Ben tells you to work on.  For example, if you are working on chromosome 9, you should type this:
 
-  `bwa index -a bwtsw /home/datasets/2015_Ben_Evans/rhesus_chromosomes/chr9.fa`  
+  `bwa index -a bwtsw /1/scratch/BIO720_Bens_section/rhesus_chromosomes/chr9XX.fa`  
+  
+  (But delete the two XXs - I added them in to prevent people from just copying and pasting things)
   
   This step will take a few minutes.
 
 2. We now need to to generate another file using `samtools`.  Please type this:
 
-  `samtools faidx /home/datasets/2015_Ben_Evans/rhesus_chromosomes/chrXXX.fa`
+  `samtools faidx /1/scratch/BIO720_Bens_section/rhesus_chromosomes/chrXXX.fa`
 
   Here, the `samtools` command tells the computer to execute the `samtools` program.  The `faidx` option tells samtools to generate a file called `chrXXX.fai` in which each line has information for one the contigs within the reference genome, including the contig name, size, location and other information.  Our reference genome has a contig for each chromosome.
 
 3.  The third thing we need to do is to generate a `.dict` file with a program called [`picard`](http://broadinstitute.github.io/picard/).  Please type this command:
 
-  `java -jar /apps/picard-tools/1.131/picard.jar CreateSequenceDictionary REFERENCE=/home/datasets/2015_Ben_Evans/rhesus_chromosomes/chrXXX.fa OUTPUT=/home/datasets/2015_Ben_Evans/rhesus_chromosomes/chrXXX.dict`
+  `java -jar /apps/picard-tools/1.131/picard.jar CreateSequenceDictionary REFERENCE=/1/scratch/BIO720_Bens_section/rhesus_chromosomes/chrXXX.fa OUTPUT=/1/scratch/BIO720_Bens_section/rhesus_chromosomes/chrXXX.dict`
 
-  As before, you will need to change the `chrXXX` in this command to match the chromosome you are working with.  This should generate a file called `/home/datasets/2015_Ben_Evans/rhesus_chromosomes/chrXXX.dict`
+  As before, you will need to change the `chrXXX` in this command to match the chromosome you are working with.  This should generate a file called `/1/scratch/BIO720_Bens_section/rhesus_chromosomes/chrXXX.dict`
 
 ## Mapping the data to the reference genome
 
