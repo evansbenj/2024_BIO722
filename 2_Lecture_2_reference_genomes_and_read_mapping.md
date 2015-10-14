@@ -70,7 +70,7 @@ Once you are in, please type this command:
 
 Now we can align the data from each individual to the reference genome using [`bwa`] (http://sourceforge.net/projects/bio-bwa/files). Because this takes a while to do with the fill dataset, I made a datasubset file that we can work with in class. You can find this here:  
 
-`/1/scratch/monkey_data/tonk_PM602_subset.fastq`
+`/1/scratch/BIO720_Bens_section/subset_data/tonk_PF515_subset.fastq`
 
 Please copy this to a new directory that you can make like this:
 
