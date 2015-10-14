@@ -78,11 +78,11 @@ Please copy this to a new directory that you can make like this:
 
 and then copy it to this directory like this:
 
-`cp /1/scratch/monkey_data/tonk_PM602_subset.fastq ~/my_monkey_data`
+`cp /1/scratch/BIO720_Bens_section/subset_data/tonk_PF515_subset.fastq ~/my_monkey_data`
 
 Now let's map this data subset from one individual to the reference genome using `bwa` as follows:
 
-`/apps/bwa/0.7.12/bwa aln reference_genome data.fastq > data.sai`
+`bwa aln reference_genome data.fastq > data.sai`
 
 For example, for this individual (PM602) we could type this
 
