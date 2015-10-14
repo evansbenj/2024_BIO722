@@ -58,7 +58,7 @@ Before we map our data to this reference genome, we need to generate some files 
 
 3.  The third thing we need to do is to generate a `.dict` file with a program called [`picard`](http://broadinstitute.github.io/picard/).  Please type this command:
 
-  `java -jar /apps/picard-tools/1.131/picard.jar CreateSequenceDictionary REFERENCE=~/my_monkey_chromosome/chrXXX.fa OUTPUT=~/my_monkey_chromosome/chrXXX.dict`
+  `java -jar /usr/local/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=~/my_monkey_chromosome/chrXXX.fa OUTPUT=~/my_monkey_chromosome/chrXXX.dict`
 
   As before, you will need to change the `chrXXX` in this command to match the chromosome you are working with.  This should generate a file called `~/my_monkey_chromosome/chrXXX.dict`
 
