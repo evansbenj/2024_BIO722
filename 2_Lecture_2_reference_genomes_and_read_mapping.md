@@ -72,13 +72,21 @@ Now we can align the data from each individual to the reference genome using [`b
 
 `/1/scratch/monkey_data/tonk_PM602_subset.fastq`
 
-Let's map this data subset from one individual to the reference genome using `bwa` as follows:
+Please copy this to a new directory that you can make like this:
+
+`mkdir ~/my_monkey_data`
+
+and then copy it to this directory like this:
+
+`cp /1/scratch/monkey_data/tonk_PM602_subset.fastq ~/my_monkey_data`
+
+Now let's map this data subset from one individual to the reference genome using `bwa` as follows:
 
 `/apps/bwa/0.7.12/bwa aln reference_genome data.fastq > data.sai`
 
 For example, for this individual (PM602) we could type this
 
-`bwa aln /home/ben/2015_BIO720/rhesus_chromosomes/chrXXX.fa /1/scratch/monkey_data/tonk_PM602_subset.fastq > /1/scratch/monkey_data/tonk_PM602_subset.sai`
+`bwa aln ~/my_monkey_chromosome/chrXXX.fa ~/my_monkey_data/tonk_PM602_subset.fastq > ~/my_monkey_data/tonk_PM602_subset.sai`
 
 (but with the `chrXXX.fa` changed to match the chromosome you are working on.)
 
