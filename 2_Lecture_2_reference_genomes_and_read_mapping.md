@@ -124,12 +124,12 @@ Where `XXX` is the sample ID number.  If you want to know the average depth acro
 
 Here the vertical bar `|` is a "pipe" that sends the information from the command before it to the command after it.  So the data you generated from `samtools` will be parsed with the unix `awk` command.  This will add the values of the third column `$3` to a variable called `sum` and then at the end (`END`) print out the word `Average` followed by the quotient `sum/NR` where `NR` is a built in variable that keeps track of the number of records.  A good description of `awk` is [here](http://www.folkstalk.com/2011/12/good-examples-of-awk-command-in-unix.html).
 
-## Practice Problem 5: Mapping the complete dataset
+## Practice Problem 5: De-multiplexing the complete dataset and mapping the data to your reference chromosome for one individual
 
 Now it is your turn. Using the same pipeline we have just gone through, please do the following:
 * demultiplex the complete dataset
 * rename the resulting fastq files to match the sample names instead of the barcode sequences
-* map the complete data from one individual to your reference chromosome.
+* map the complete data from one individual (e.g. PF515) to your reference chromosome.
 
 Now, using the manual for [samtools](http://www.htslib.org/doc/samtools-0.1.19.html) please figure out which samtools flag you can use to quantify how many reads mapped to your chromosome for your mapped data and how many failed to map.  Do you know why so many failed to map?
 
