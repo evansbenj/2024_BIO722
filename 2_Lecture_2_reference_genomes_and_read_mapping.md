@@ -98,7 +98,9 @@ This command generates an intermediate file with the `.sai` suffix (which stands
 
 We also need to add a header to each `.sam` file, so we can type this command:
 
-`bwa samse -r "@RG\tID:FLOWCELL1.LANE6\tSM:PM602\tPL:illumina" reference.fa data.sai data.fastq > data.sam`
+`bwa samse -r "@RG\tID:FLOWCELL1.LANE6\tSM:XXX\tPL:illumina" reference.fa data.sai data.fastq > data.sam`
+
+Bute here you need to change the "XXX" to match the sample you are working with (for example change XXX to PF515 if you are working with sample PF515).
 
 Now we can generate a `.bam` file.  A `.bam` formatted file is a binary version of the `.sam` file.
 
@@ -108,7 +110,7 @@ Sort the `.bam` file:
 
 `samtools sort data.bam data_sorted`
 
-Make a `.bai` file:
+Make an index for the bam file, which is a `.bai` file:
 
 `samtools index data_sorted.bam`
 
