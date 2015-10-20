@@ -140,9 +140,11 @@ Here is an example of the commandline I used to de-multiplex the subset of the d
 
 `/usr/local/bin/process_radtags -f /1/scratch/BIO720_Bens_section/subset_data/forward_subset.fastq -b monkey.barcodes -o ./samples/ -e sbfI -t 75 -r -c -q --adapter_1 GATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG --adapter_2 AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT --adapter_mm 2 --filter_illumina`
 
-If you enter the `samples` directory, you should see your de-multiplexed files, each named by the barcode. If you want to, you can rename these to have the sample name instead using the `mv` command.  For example:
+If you enter the `samples` directory, you should see your de-multiplexed files, each named by the barcode. Please rename each of these nine files to have the sample name instead of the barcode using the `mv` command.  For example:
 
 `mv sample_CCTCTTATCA.fq PF515.fq`
+
+and then similarly for the other 8 files (`mv sample_TATCGTTAGT.fq PM561.fq`, etc.)
 
 You should also see a log file that gives some statistics about the output from `process_radtags`
 
