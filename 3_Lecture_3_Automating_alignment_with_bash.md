@@ -60,6 +60,8 @@ And now we should be able to execute the file.  Type this:
 
 `./alignment_commando`
 
+Here we needed to preceed the name of our `bash` script by `./` to tell the computer where to find our script (i.e. in the current working directory).
+
 Now please check whether this worked by checking out the file size of the files in your `~/my_monkey_data` directory like this:
 
 `ls -l ~/my_monkey_data`
