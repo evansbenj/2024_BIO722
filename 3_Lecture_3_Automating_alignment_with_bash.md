@@ -19,7 +19,7 @@ Below is an example `bash` script that should run all of our analyses for each i
 
 path_to_bwa=""
 path_to_samtools=""
-path_to_data="."
+path_to_data="/home/YYY/my_monkey_data"
 path_to_chromosome="/home/YYY/my_monkey_chromosome/"
 chromosome="chrXXX.fa"
 
