@@ -44,7 +44,7 @@ Before we map our data to this reference genome, we need to generate some files 
 
 1. `bwa index -a bwtsw ~/my_monkey_chromosome/chrXXX.fa`
 
-  The `/apps/bwa/0.7.12/bwa` command tells the computer to execute the bwa program.  The `index` command tells `bwa` to generate index files from the rhesus genome file that is indicated by the `/home/datasets/2015_Ben_Evans/rhesus_chromosomes/chrXXX.fa`. The `-a bwtsw` flag specifies the indexing algorithm for `bwa` to use.  
+  The `/apps/bwa/0.7.12/bwa` command tells the computer to execute the bwa program.  The `index` command tells `bwa` to generate index files from the rhesus genome file that is indicated by the `~/my_monkey_chromosome/chrXXX.fa`. The `-a bwtsw` flag specifies the indexing algorithm for `bwa` to use.  
   
   (But delete the two XXs - I added them in to prevent people from just copying and pasting things)
   
