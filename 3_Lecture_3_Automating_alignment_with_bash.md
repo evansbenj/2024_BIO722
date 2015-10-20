@@ -35,8 +35,8 @@ for each_individual in $individuals
 do
 
 echo ${each_individual}
-    bwa aln $path_to_chromosome/$chromosome $path_to_data/${each_individual}.fastq > $path_to_data/${each_individual}.sai
-    bwa samse -r "@RG\tID:FLOWCELL1.LANE6\tSM:${each_individual}.fastq\tPL:illumina" $path_to_chromosome/$chromosome $path_to_data/${each_individual}.sai $path_to_data/${each_individual}.fastq > $path_to_data/${each_individual}.sam
+    bwa aln $path_to_chromosome/$chromosome $path_to_data/${each_individual}_subset.fastq > $path_to_data/${each_individual}.sai
+    bwa samse -r "@RG\tID:FLOWCELL1.LANE6\tSM:${each_individual}_subset.fastq\tPL:illumina" $path_to_chromosome/$chromosome $path_to_data/${each_individual}.sai $path_to_data/${each_individual}_subset.fastq > $path_to_data/${each_individual}.sam
     samtools view -bt $path_to_chromosome/$chromosome -o $path_to_data/${each_individual}.bam $path_to_data/${each_individual}.sam
     samtools sort $path_to_data/${each_individual}.bam $path_to_data/${each_individual}_sorted
     samtools index $path_to_data/${each_individual}_sorted.bam
