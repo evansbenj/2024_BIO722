@@ -10,6 +10,12 @@ Before we automate this, please copy all of the subset fastq files to your `~/my
 
 Here the `cp` command means copy, the `/1/scratch/BIO720_Bens_section/subset_data/` is the path to the subset data that I generated for you, and the `P*subset*` refers to any file in that directory that begins with the letter `P` and has the word `subset` after this letter in the filename. The last part, `~/my_monkey_data` is the destination directory to which you want to copy these data.
 
+Please check that these files were copied by typing this:
+
+`ls -l ~/my_monkey_data`
+
+You should see 9 files that are not of size zero.
+
 Below is an example `bash` script that should run all of our analyses for each individual.  Please use a text editor to make this program.  In the beginning of the script 5 variables are defined that specify, respectively, the path for the bwa and samtools programs, the path to the data, the path to the reference chromosome, and the name of the chromosome you are working on. You will need to modify the variables somewhat to match the chromosome you are working on and the directory. For example you should use the arrow keys to scroll up to the line that says `chromosome="chrXXX.fa"` and change the part that says `chrXXX.fa` to correspond with whatever chromosome you are working on.  For example, if youa re working on chromosome 10, please change this to instead read `chr10.fa`. Also, in the `path_to_chromosome` variable, you will need to change the part that says `YYY` to match your home directory name.
 
 
