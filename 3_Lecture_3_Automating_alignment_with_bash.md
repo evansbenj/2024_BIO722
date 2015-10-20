@@ -4,7 +4,7 @@
 
 Now that you have seen how to align data from one individual to a reference genome, we can automate the alignment of all individuals to the reference genome using a bash script. This is much better than going through all that stuff independently for each individual. We can accomplish this with a `bash` script by defining an `array` that contains the names of all of the individuals in the analysis, and then looping through this array and executing each of the commands for each individual.
 
-Before we automate this, please copy all of the subset fastq files to your `~/my_monkey_data directory` like this:
+Before we automate this, please copy all of the subset fastq files to your `~/my_monkey_data` directory like this:
 
 `cp /1/scratch/BIO720_Bens_section/subset_data/P*subset* ~/my_monkey_data`
 
