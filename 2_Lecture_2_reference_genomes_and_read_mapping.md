@@ -124,10 +124,13 @@ Where `XXX` is the sample ID number.  If you want to know the average depth acro
 
 Here the vertical bar `|` is a "pipe" that sends the information from the command before it to the command after it.  So the data you generated from `samtools` will be parsed with the unix `awk` command.  This will add the values of the third column `$3` to a variable called `sum` and then at the end (`END`) print out the word `Average` followed by the quotient `sum/NR` where `NR` is a built in variable that keeps track of the number of records.  A good description of `awk` is [here](http://www.folkstalk.com/2011/12/good-examples-of-awk-command-in-unix.html).
 
-Now it is your turn.  Using the manual for [samtools](http://www.htslib.org/doc/samtools-0.1.19.html) please quantify how many reads mapped to your chromosome for each individual and how many failed to map.  Do you know why so many failed to map?
+## Practice Problem 1
 
-## Practice Problem
+Now it is your turn. Using the same pipeline we have just gone through, please do the following:
+* demultiplex the complete dataset
+* rename the resulting fastq files to match the sample names instead of the barcode sequences
+* map the complete data from one individual to your reference chromosome.
 
-Please write a bash script that will provide the coverage statistic for all bam files in a folder that have the suffix "_sorted.bam".  You can (and should) use the internet for tips.
+Now, using the manual for [samtools](http://www.htslib.org/doc/samtools-0.1.19.html) please figure out which samtools flag you can use to quantify how many reads mapped to your chromosome for your mapped data and how many failed to map.  Do you know why so many failed to map?
 
 ## OK, if this all went smoothly we are now ready to automate the alignments with a bash script.  Please click [here](https://github.com/evansbenj/BIO720/blob/master/3_Lecture_3_Automating_alignment_with_bash.md) to go to the next page.
