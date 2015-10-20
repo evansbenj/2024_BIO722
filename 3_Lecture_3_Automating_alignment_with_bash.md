@@ -66,13 +66,13 @@ Now please check whether this worked by checking out the file size of the files 
 
 You should see lots of file including, for each sample a `_sorted.bam` file that is not of file size zero.
 
-## Practice Problem 1
+##  Practice Problem 6: Using a bash script to mapping the complete data from all individuals
 
 Imagine you were using the script above to work with a complete genome alignment.  This could take some time and you want to have some idea of how much progress the script has made.  Can you please use the Unix `echo` command to the bash script to keep you informed about which command is executing.  You could (for example) ask the script to tell you when command 1, 2...5 is done and for which individual it has been completed.
 
 Once this is done, we can try working with the program [Stacks](http://creskolab.uoregon.edu/stacks/manual/).  Stacks is actually a suite of programs will help us compile these data, calculate summary statistics, and also output the data to other software for further analysis.  
 
-## Practice Problem 2
+## Practice Problem 7: Using a bash script to get coverage statistics from all individuals
 
 Please write a bash script that will provide the coverage statistic for all bam files in a folder that have the suffix "_sorted.bam".  You can (and should) use the internet for tips.
 
