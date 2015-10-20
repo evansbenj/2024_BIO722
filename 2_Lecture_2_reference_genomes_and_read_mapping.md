@@ -100,7 +100,7 @@ Here you need to change the "XXX" to match the sample you are working with (for 
 
 Now we can generate a `.bam` file.  A `.bam` formatted file is a binary version of the `.sam` file.
 
-`samtools view -bt reference_genome -o data.bam data.sam`
+`samtools view -bt reference_genome data.sam -o data.bam`
 
 Sort the `.bam` file:
 
