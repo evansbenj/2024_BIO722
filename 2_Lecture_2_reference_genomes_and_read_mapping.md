@@ -106,6 +106,8 @@ Sort the `.bam` file:
 
 `samtools sort data.bam data_sorted`
 
+Here you do not need the `.bam` suffix after the `data_sorted` prefix; this suffix is added automatically by `samtools`.
+
 Make an index for the bam file, which is a `.bai` file:
 
 `samtools index data_sorted.bam`
