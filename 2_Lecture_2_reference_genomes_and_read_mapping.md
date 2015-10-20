@@ -70,7 +70,7 @@ Once you are in, please type this command:
 
 Now we can align the data from each individual to the reference genome using [`bwa`] (http://sourceforge.net/projects/bio-bwa/files). Because this takes a while to do with the fill dataset, I made a datasubset file that we can work with in class. You can find this here:  
 
-`/1/scratch/BIO720_Bens_section/subset_data/tonk_PF515_subset.fastq`
+`/1/scratch/BIO720_Bens_section/subset_data/PF515_subset.fastq`
 
 Please copy this to a new directory that you can make like this:
 
@@ -78,7 +78,7 @@ Please copy this to a new directory that you can make like this:
 
 and then copy it to this directory like this:
 
-`cp /1/scratch/BIO720_Bens_section/subset_data/tonk_PF515_subset.fastq ~/my_monkey_data`
+`cp /1/scratch/BIO720_Bens_section/subset_data/PF515_subset.fastq ~/my_monkey_data`
 
 Now let's map this data subset from one individual to the reference genome using `bwa` as follows:
 
@@ -86,7 +86,7 @@ Now let's map this data subset from one individual to the reference genome using
 
 For example, for this individual (PF515) you could type this
 
-`bwa aln ~/my_monkey_chromosome/chrXXX.fa ~/my_monkey_data/tonk_PF515_subset.fastq > ~/my_monkey_data/tonk_PF515_subset.sai`
+`bwa aln ~/my_monkey_chromosome/chrXXX.fa ~/my_monkey_data/PF515_subset.fastq > ~/my_monkey_data/PF515_subset.sai`
 
 (but with the `chrXXX.fa` changed to match the chromosome you are working on.)
 
