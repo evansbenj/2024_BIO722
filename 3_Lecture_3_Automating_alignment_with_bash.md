@@ -54,6 +54,12 @@ And now we should be able to execute the file.  Type this:
 
 `./alignment_commando`
 
+Now please check whether this worked by checking out the file size of the files in your `~/my_monkey_data` directory like this:
+
+`ls -l ~/my_monkey_data`
+
+You should see lots of file including, for each sample a `_sorted.bam` file that is not of file size zero.
+
 ## Practice Problem 1
 
 Imagine you were using the script above to work with a complete genome alignment.  This could take some time and you want to have some idea of how much progress the script has made.  Can you please use the Unix `echo` command to the bash script to keep you informed about which command is executing.  You could (for example) ask the script to tell you when command 1, 2...5 is done and for which individual it has been completed.
