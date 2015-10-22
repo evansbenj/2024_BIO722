@@ -73,7 +73,7 @@ A summary across all sites is available in another file called `batch_1.fst_summ
 
 With this information in hand, you should be able to calculate F<sub>ST</sub> for a different comparison by modifying your population_map file.  Please calculate F<sub>ST</sub> between one population comprised of samples PM565, PM566, and PM 567 and the other population comprised of the other samples.
 
-## Now let's move on to [learn more about Stacks](https://github.com/evansbenj/Reduced-Representation-Workshop/blob/master/7_More_on_Stacks.md).
+## Now let's move on to [learn more about Stacks](https://github.com/evansbenj/BIO720/blob/master/5_more_on_Stacks.md).
 
 
 
