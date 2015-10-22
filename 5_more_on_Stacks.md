@@ -1,6 +1,6 @@
 # More on Stacks:  Whitelists, blacklists, using individual modules, and summary statistics
 
-(Or you can go back to [Using Stacks with a Reference Genome](https://github.com/evansbenj/Reduced-Representation-Workshop/blob/master/6_Using_Stacks_with_a_reference_genome.md)).
+(Or you can go back to [Using Stacks with a Reference Genome](https://github.com/evansbenj/BIO720/blob/master/4_Using_Stacks_to_analyze_your_bam_files.md)).
 
 ## Whitelists, Blacklists, and Calculating Summary Statistics with `Populations`
 
