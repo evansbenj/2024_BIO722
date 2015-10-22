@@ -1,6 +1,6 @@
 # Using Stacks with a reference genome
 
-(Or you can go back to using a bask script [here](https://github.com/evansbenj/Reduced-Representation-Workshop/blob/master/5_Automating_alignment_with_a_bash_script.md)).
+(Or you can go back to using a bash script [here](https://github.com/evansbenj/BIO720/blob/master/3_Lecture_3_Automating_alignment_with_bash.md)).
 
 ## Stacks pipeline and setting up a run
 
