@@ -78,4 +78,4 @@ Once this is done, we can try working with the program [Stacks](http://creskolab
 
 Please write a bash script that will provide the coverage statistic for all bam files in a folder that have the suffix "_sorted.bam".  You can (and should) use the internet for tips.
 
-## Please click [here](https://github.com/evansbenj/Reduced-Representation-Workshop/blob/master/6_Using_Stacks_with_a_reference_genome.md) to go to the next page on using Stacks.
+## Please click [here](https://github.com/evansbenj/BIO720/blob/master/4_Using_Stacks_to_analyze_your_bam_files.md) to go to the next page on using Stacks.
