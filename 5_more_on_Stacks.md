@@ -8,7 +8,11 @@ Now lets try to calculate a summary statistic from specific genomic regions usin
 
 `cp -r /1/scratch/BIO720_Bens_section/Stacks_Results_chrX ~/my_monkey_data/.`
 
-Let's first look at the catalog file like this:
+Let's unzip the catalog file and check it out like this:
+
+`gunzip batch_1.catalog.tags.tsv.gz`
+
+and then
 
 `more batch_1.catalog.tags.tsv`
 
