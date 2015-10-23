@@ -1,7 +1,5 @@
 # Calculating pairwise nucleotide diversity with Stacks
 
-($$\pi$$)
-
 (Or you can go back to [Using Stacks with a Reference Genome](https://github.com/evansbenj/BIO720/blob/master/4_Using_Stacks_to_analyze_your_bam_files.md)).
 
 If we want to calculate pairwise nucleotide diversity on the chromosome to which we mapped our data, we can use the `populations` module of `Stacks` with the `blacklist` flag as follows:
