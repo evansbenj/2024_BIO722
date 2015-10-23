@@ -16,7 +16,7 @@ and then
 
 `more batch_1.catalog.tags.tsv`
 
-The first line begins with a hash (`#`) symbol and is reserved for comments.  The next lines have columns of text.  The 4th column lists the chromosome number and position of each tag.  We are going to generate a file in which we sample random SNPs from 1000 tags but we want to exclude data from the X chromosome because there are differences in copy number between males and females (i.e. two in XX females and one in XY males).  In order to do this, we can create a list of tags to include (a `whitelist`) or exclude (a `blacklist`), which is just a list of the numbers in the 3rd column that correspond with the `chrX` in the 4th column.  To generate a list based on this criterion, please use this `unix` command:
+The file should contain multiple columns of text.  The 4th and 5th columns list the chromosome number and chromosome position of each tag respectively.  We are going to generate a file in which we sample random SNPs from 1000 tags but we want to exclude data from the X chromosome because there are differences in copy number between males and females (i.e. two in XX females and one in XY males).  In order to do this, we can create a list of tags to include (a `whitelist`) or exclude (a `blacklist`), which is just a list of the numbers in the 3rd column that correspond with the `chrX` in the 4th column.  To generate a list based on this criterion, please use this `unix` command:
 
 `awk '$4 ~ /chrX/ {print $3}' batch_1.catalog.tags.tsv > ~/chrX_list`
 
