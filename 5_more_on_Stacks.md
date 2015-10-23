@@ -1,5 +1,7 @@
 # Calculating pairwise nucleotide diversity with Stacks
 
+(Or you can go back to [Using Stacks with a Reference Genome](https://github.com/evansbenj/BIO720/blob/master/4_Using_Stacks_to_analyze_your_bam_files.md)).
+
 If we want to calculate pairwise nucleotide diversity on the chromosome to which we mapped our data, we can use the `populations` module of `Stacks` with the `blacklist` flag as follows:
 
 `/usr/local/stacks/bin/populations -P ~/monkey/Stacks_Results -b 1 -r 1 -t 36`
@@ -13,8 +15,6 @@ We can view the pairwise nucleotide diversity statistic (Pi) in a file called `b
 For autosomes this statistic is accurate but there are problems with this calculation using only the X chromosome because some of the individuals are males; Ben will discuss these problems and a workaround.
 
 # More on Stacks:  Whitelists, blacklists, using individual modules, and summary statistics
-
-(Or you can go back to [Using Stacks with a Reference Genome](https://github.com/evansbenj/BIO720/blob/master/4_Using_Stacks_to_analyze_your_bam_files.md)).
 
 ## Whitelists, Blacklists, and Calculating Summary Statistics with `Populations`
 
