@@ -12,7 +12,7 @@ We can view the pairwise nucleotide diversity statistic (Pi) in a file called `b
 
 `more ~/monkey/Stacks_Results/batch_1.sumstats_summary.tsv`
 
-For autosomes this statistic is accurate but there are problems with this calculation using only the X chromosome because some of the individuals are males; Ben will discuss these problems and a workaround.
+As indicated in the header, the pairwise nucleotide diversity statistic (Pi) should be listed in the sixth to last column on the bottom row. For autosomes this statistic is accurate but there are problems with this calculation using only the X chromosome because some of the individuals are males; Ben will discuss these problems and a workaround.
 
 # More on Stacks:  Whitelists, blacklists, using individual modules, and summary statistics
 
