@@ -6,7 +6,7 @@
 
 Now lets try to calculate a summary statistic from specific genomic regions using the `populations` module of stacks. To accomplish this, lets work with a larger dataset that I made earlier.  Please copy this directory to your `my_monkey_data` directory like this:
 
-`cp /1/scratch/BIO720_Bens_section/Stacks_Results_chrX ~/my_monkey_data/.`
+`cp -r /1/scratch/BIO720_Bens_section/Stacks_Results_chrX ~/my_monkey_data/.`
 
 Let's first look at the catalog file like this:
 
