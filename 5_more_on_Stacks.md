@@ -1,6 +1,4 @@
-# Calculating pairwise nucleotide diversity$$\alpha$$ with Stacks
-
-$$\alpha, \beta,  \gamma, \Gamma$$
+# Calculating pairwise nucleotide diversity with Stacks
 
 (Or you can go back to [Using Stacks with a Reference Genome](https://github.com/evansbenj/BIO720/blob/master/4_Using_Stacks_to_analyze_your_bam_files.md)).
 
