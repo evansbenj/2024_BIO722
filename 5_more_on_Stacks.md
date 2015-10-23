@@ -4,9 +4,9 @@
 
 ## Whitelists, Blacklists, and Calculating Summary Statistics with `Populations`
 
-Now lets try to calculate a summary statistic from specific genomic regions using the `populations` module of stacks. To accomplish this, lets work with a larger dataset that I made earlier.  Please switch to this directory:
+Now lets try to calculate a summary statistic from specific genomic regions using the `populations` module of stacks. To accomplish this, lets work with a larger dataset that I made earlier.  Please copy this directory to your home directory like this:
 
-`cd /home/datasets/2015_Ben_Evans/complete_data/monkey/Stacks_Results`
+`cp /1/scratch/BIO720_Bens_section/Stacks_Results_chrX ~/.`
 
 Let's first look at the catalog file like this:
 
