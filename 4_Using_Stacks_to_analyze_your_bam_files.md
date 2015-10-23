@@ -54,7 +54,7 @@ One way to quantify population structure is using the F-statistic (F<sub>ST</sub
     -s ~/my_monkey_data/PM584_sorted.bam \
     -s ~/my_monkey_data/PM592_sorted.bam \
     -s ~/my_monkey_data/PM602_sorted.bam \
-   	-e /usr/local/stacks/bin/ -X "populations:--fstat" \
+   	-e /usr/local/stacks/bin/ -X "populations:--fstat"
 ```
 
 In this command, the backslashes `\` just indicate that the command is continued on the next line.  The program we are executing is a Perl script caled `ref_map.pl`.  Similar to the bash scripts we wrote earlier, this program just executes a bunch of other prorgams that come in the `Stacks` package. As you can see in the [`Stacks` manual](http://catchenlab.life.illinois.edu/stacks/comp/ref_map.php) the flags `-S`, `-b`, and `-n` respectively tell Stacks to disable recording the data in an SQL database (this is beyond the scope of this workshop), process the batchID 1, and allow zero mismatches between loci when building the catalog.  Other flags such as `-O`, `-o`, and `-s` respectively tell `Stacks` where the population map file is, where to write the results, and where the input bam files for each individual are.  The `-e` flag tells `Stacks` where the binary files that `refmap.pl` executes are located.
