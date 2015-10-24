@@ -14,9 +14,31 @@ We can view the pairwise nucleotide diversity statistic (Pi) in a file called `b
 
 As indicated in the header, the pairwise nucleotide diversity statistic (Pi) should be listed in the sixth to last column on the bottom row. For autosomes this statistic is accurate but there are problems with this calculation using only the X chromosome because some of the individuals are males; Ben will discuss these problems and a workaround.
 
-# More on Stacks:  Whitelists, blacklists, using individual modules, and summary statistics
+# Calculating divergence to the reference genome using `POPBAM`
 
-## Whitelists, Blacklists, and Calculating Summary Statistics with `Populations`
+[`POPBAM`](http://popbam.sourceforge.net/) is a program that is useful for calculating several population genetic statistics. Some of the functionality overlaps with that of `Stacks`.  We will use `POPBAM` to calculate the level of divergence of one of our samples to the reference genome.
+
+First we need to add some additional information to the readgroup header of our `bam` file.  Please type this:
+
+```
+samtools view -H XXX.bam > header.sam
+perl -pi.old -e 's{PL:illumina}{PL:illumina\tPO:POP1}g' header.sam
+samtools reheader header.sam XXX.bam > XXX_new.bam
+samtools index XXX_new.bam
+```
+
+The first line uses samtools to make a text file called `header.sam` that contains the header information for the file called `XXX.bam`.  You should use one of your sorted bam files for this. The second line uses perl to search and replace text in the header.sam file.  Basically this adds text to the readgroup portion of this file. Thie third line uses samtools to change the header of our file. And the fourth line makes a new index file for our new bam file.
+
+Now we can get divergence information using `POPBAM` like this:
+
+`popbam diverge -o 0 XXX_new.bam chrX -f path_to_reference_chromosome/chrXXX.fa > divergence.txt`
+
+This will write the output of `POPBAM` to a text file called `divergence.txt`
+
+
+# More on Stacks:  Whitelists, blacklists, using individual modules, and summary statistics in `Stacks`
+
+## Whitelists, Blacklists, and Calculating Summary Statistics with `Populations` 
 
 Now lets try to calculate a summary statistic from specific genomic regions using the `populations` module of stacks. To accomplish this, lets work with a larger dataset that I made earlier.  Please copy this directory to your `my_monkey_data` directory like this:
 
