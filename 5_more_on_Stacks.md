@@ -27,7 +27,7 @@ samtools reheader header.sam XXX.bam > XXX_new.bam
 samtools index XXX_new.bam
 ```
 
-The first line uses samtools to make a text file called `header.sam` that contains the header information for the file called `XXX.bam`.  You should use one of your sorted bam files for this. The second line uses perl to search and replace text in the header.sam file.  Basically this adds text to the readgroup portion of this file. Thie third line uses samtools to change the header of our file. And the fourth line makes a new index file for our new bam file.
+The first line uses samtools to make a text file called `header.sam` that contains the header information for the file called `XXX.bam`.  You should use one of your sorted bam files for this. The second line uses `Perl` to search and replace text in the header.sam file.  Basically this adds text to the readgroup portion of this file. Thie third line uses samtools to change the header of our file. And the fourth line makes a new index file for our new bam file.
 
 Now we can get divergence information using `POPBAM` like this:
 
