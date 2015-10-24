@@ -33,7 +33,7 @@ Now we can get divergence information using `POPBAM` like this:
 
 `popbam diverge -o 0 XXX_new.bam chrX -f path_to_reference_chromosome/chrXXX.fa chrXXX > divergence.txt`
 
-This will write the output of `POPBAM` to a text file called `divergence.txt`
+Don't forget to specify the chromosome that you are surveying at the end (`chrXXX`). This will write the output of `POPBAM` to a text file called `divergence.txt`
 
 
 # More on Stacks:  Whitelists, blacklists, using individual modules, and summary statistics in `Stacks`
