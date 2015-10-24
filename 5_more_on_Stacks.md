@@ -31,7 +31,7 @@ The first line uses samtools to make a text file called `header.sam` that contai
 
 Now we can get divergence information using `POPBAM` like this:
 
-`popbam diverge -o 0 XXX_new.bam chrX -f path_to_reference_chromosome/chrXXX.fa > divergence.txt`
+`popbam diverge -o 0 XXX_new.bam chrX -f path_to_reference_chromosome/chrXXX.fa chrXXX > divergence.txt`
 
 This will write the output of `POPBAM` to a text file called `divergence.txt`
 
