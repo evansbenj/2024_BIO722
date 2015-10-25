@@ -12,7 +12,9 @@ We can view the pairwise nucleotide diversity statistic (Pi) in a file called `b
 
 `more ~/monkey/Stacks_Results/batch_1.sumstats_summary.tsv`
 
-As indicated in the header, the pairwise nucleotide diversity statistic (Pi) should be listed in the sixth to last column on the bottom row. For autosomes this statistic is accurate but there are problems with this calculation using only the X chromosome because some of the individuals are males; Ben will discuss these problems and a workaround.
+As indicated in the header, the pairwise nucleotide diversity statistic (Pi) should be listed in the sixth to last column on the bottom row. For autosomes this statistic is accurate but there are problems with this calculation using only the X chromosome because some of the individuals are males; Ben will discuss these problems and a workaround he did with a perl script. The estimate of pi he recovered from the Stacks analysis of the bam files is 0.0005 subsitutitons per site.
+
+Now lets take some time for you to all analyze your bam files. Please let Ben know what your calculation of pi is for each of your chromosomes.
 
 # Calculating divergence to the reference genome using `POPBAM`
 
@@ -33,7 +35,7 @@ Now we can get divergence information using `POPBAM` like this:
 
 `popbam diverge -o 0 XXX_new.bam chrX -f path_to_reference_chromosome/chrXXX.fa chrXXX > divergence.txt`
 
-Don't forget to specify the chromosome that you are surveying at the end (`chrXXX`). This will write the output of `POPBAM` to a text file called `divergence.txt`
+Don't forget to specify the chromosome that you are surveying at the end (`chrXXX`). This will write the output of `POPBAM` to a text file called `divergence.txt`.  The divergence Ben got for PF515 was 0.00524.
 
 
 # More on Stacks:  Whitelists, blacklists, using individual modules, and summary statistics in `Stacks`
