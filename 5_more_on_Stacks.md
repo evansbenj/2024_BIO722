@@ -37,7 +37,6 @@ Now we can get divergence information using `POPBAM` like this:
 
 Don't forget to specify the chromosome that you are surveying at the end (`chrXXX`). This will write the output of `POPBAM` to a text file called `divergence.txt`.  The divergence Ben got for PF515 was 0.00524.
 
-
 # More on Stacks:  Whitelists, blacklists, using individual modules, and summary statistics in `Stacks`
 
 ## Whitelists, Blacklists, and Calculating Summary Statistics with `Populations` 
