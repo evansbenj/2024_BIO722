@@ -39,4 +39,6 @@ Now we can get divergence information using `POPBAM` like this:
 
 Don't forget to specify the chromosome that you are surveying at the end (`chrXXX`). This will write the output of `POPBAM` to a text file called `divergence.txt`.  The divergence Ben got for PF515 was 0.00524.
 
+Ben will now collect the data you collected, summarize it, compare it to the diversity and divergence estimates from the X, and discuss what implications it has for social system evolution in our monkeys.
+
 # Now let's use `Stacks` to make a phylogenetic tree [here](https://github.com/evansbenj/BIO720/blob/master/6_Making_a_phylogenetic_tree_with_Stacks.md).
