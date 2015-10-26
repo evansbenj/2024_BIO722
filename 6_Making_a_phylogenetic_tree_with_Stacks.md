@@ -1,6 +1,6 @@
 ## Using `Stacks` to export a file for phylogenetic analysis.
 
-(Or you can go back to Stacks and Structure [here](https://github.com/evansbenj/Reduced-Representation-Workshop/blob/master/8_Stacks_and_Structure.md)).
+(Or you can go back to using Stacks and PopBam [here](https://github.com/evansbenj/Reduced-Representation-Workshop/blob/master/8_Stacks_and_Structure.md)).
 
 Much in the same way that we used `Stacks` to export an input file for the program `Structure`, we can also use `Stacks` to export an input file for phylogenetic analysis.  Let's try this now.
 
