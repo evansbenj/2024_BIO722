@@ -24,7 +24,7 @@ Please make sure this file is tab delimited.  Then please type this command:
 
 Most of these flags were discussed previously. The `--phylip` flag combined with the `--phylip_var` flag tells `Stacks` to output sites that are variable between and within populations in `Phylip` format, which is the format of the input file for Joe Felsenstein's `Phylip` package. This can be easily modified for other programs, such as the `nexus` format. The `-M` flag tells `Stacks` to use the new population map file in which each individual is assigned to a different population.
 
-This should generate a file called `batch_1.phylip.tsv`.  
+This should generate a file called `batch_1.phylip`.  
 
 Let's have a look at this file now.  Please type this:
 
