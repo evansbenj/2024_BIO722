@@ -1,6 +1,6 @@
 ## Using `Stacks` to export a file for phylogenetic analysis.
 
-(Or you can go back to using Stacks and PopBam [here](https://github.com/evansbenj/BIO720/blob/master/5_more_on_Stacks.md)).
+(Or you can go back to using Stacks and POPBAM [here](https://github.com/evansbenj/BIO720/blob/master/5_more_on_Stacks.md)).
 
 We can also use `Stacks` to export an input file for phylogenetic analysis.  Let's try this now.
 
