@@ -18,7 +18,7 @@ Now lets take some time for you to all analyze your bam files. Please let Ben kn
 
 # Calculating divergence to the reference genome using `POPBAM`
 
-As some of you may realize, the mutation rates in males and females are not equivalent. In many species, including all primates, more cell divisions occur to make sperm than eggs, and for this reason (we think) the mutation rate is higher in males than in females.  Because X chromosomes spend 2/3rds of their time in females, we expect lower polymorphism on the X by virtue of this.  We can control for differences in mutation rate very simply -- by taking the ratio of pi to divergence in the X and the aDNA. We calculated pi above, now we need divergence.
+As some of you may realize, the mutation rates in males and females are not equivalent. In many species, including all primates, more cell divisions occur to make sperm than eggs, and for this reason (we think) the mutation rate is higher in males than in females.  Because X chromosomes spend 2/3rds of their time in females, we expect lower polymorphism on the X by virtue of this.  We can control for differences in mutation rate very simply – by taking the ratio of pi to divergence in the X and the aDNA. We calculated pi above, now we need divergence.
 
 [`POPBAM`](http://popbam.sourceforge.net/) is a program that is useful for calculating several population genetic statistics. Some of the functionality overlaps with that of `Stacks`.  We will use `POPBAM` to calculate the level of divergence of one of our samples to the reference genome.
 
