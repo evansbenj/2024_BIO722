@@ -2,13 +2,9 @@
 
 (Or you can go back to using Stacks and PopBam [here](https://github.com/evansbenj/BIO720/blob/master/5_more_on_Stacks.md)).
 
-Much in the same way that we used `Stacks` to export an input file for the program `Structure`, we can also use `Stacks` to export an input file for phylogenetic analysis.  Let's try this now.
+We can also use `Stacks` to export an input file for phylogenetic analysis.  Let's try this now.
 
-Because this (again) takes a little while, Ben did it in advance using the following commands (You do not need to type these).  First he went to the results directory from the complete dataset:
-
-`cd /home/datasets/2015_Ben_Evans/complete_data/monkey/Stacks_Results`
-
-Then he made a population map file called `population_map_all_different` in which all individuals were assigned to a different population.  This tab-delimited file looks like this:
+First please use your favorite text editor to make a population map file called `population_map_all_different` in which all individuals were assigned to a different population.  This tab-delimited file looks like this:
 
 ```
 PF515_sorted    population_1
@@ -22,7 +18,7 @@ PM592_sorted    population_8
 PM602_sorted    population_9
 ```
 
-...and then he typed this command:
+Please make sure this file is tab delimited.  Then please type this command:
 
 `/apps/stacks/1.29/bin/populations -P ./ -b 1 -r 1 -t 36 -M population_map_all_different --phylip --phylip_var`
 
