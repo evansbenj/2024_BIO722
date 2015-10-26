@@ -54,12 +54,5 @@ Now please download this tree file to your local computer using the scp command.
 
 You can now view the tree you made using the [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) program. Please install this program if you haven't already.
 
-## And this is just the beginning
-
-We covered some simple examples aimed at getting you started.  Not surprisingly there is much more to learn and each individual project will require some customization. 
-- To further increase your analytical flexibility, a simple first step would be to learn a simple computing language that can allow you to parse files and do simple calculations and iterative tasks.  I use `Perl` for this and `Python` is also a great option.  
-- Another obvious resource is the internet.  If you want to do something or have a question about a software, chances are that someone else has already had the same goal or question.  
-- If you are really feeling crazy, you can even read program manuals and README files that come with the software.
-
-
+# OK now let's use `Stacks` to make an iput file for `Structure`.  Please click here.
 
