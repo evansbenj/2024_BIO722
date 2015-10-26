@@ -54,5 +54,5 @@ Now please download this tree file to your local computer using the scp command.
 
 You can now view the tree you made using the [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) program. Please install this program if you haven't already.
 
-# OK now let's use `Stacks` to make an iput file for `Structure`.  Please click [here](https://github.com/evansbenj/BIO720/blob/master/7_Stacks_and_Structure.md).
+# OK now let's use `Stacks` to make an input file for `Structure` analysis.  Please click [here](https://github.com/evansbenj/BIO720/blob/master/7_Stacks_and_Structure.md).
 
