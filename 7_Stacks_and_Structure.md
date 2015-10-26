@@ -38,13 +38,13 @@ For this exercise we will require that there be no missing data from the SNPs in
 
 `head -n1 simple_structure.tsv |  sed 's/\t/\n/g' | wc -l`
 
-This should output the number of tab spaces in the first column of the file `simple_structure.tsv`.  Because the first column begins with a tab space, the actual number of loci is equal to this number **minus one**.
+This should output the number of tab spaces in the first column of the file `simple_structure.tsv`.  Because the first column begins with a tab space, the actual number of loci is equal to this number **minus two**.
 
 Now we are ready to run `Structure`.  Please type this command:
 
-`/apps/Structure/bin/structure -m /apps/Structure/sample/mainparams -e /apps/Structure/sample/extraparams -K 3 -L 268 -N 9 -i simple_structure.tsv -o output_K_3`
+`/apps/Structure/bin/structure -m /apps/Structure/sample/mainparams -e /apps/Structure/sample/extraparams -K 3 -L XXX -LOCDATA 1 -N 9 -i simple_structure.tsv -o output_K_3`
 
-This tells the system to execute the `Structure` program and it specifies the paths to two files (`mainparams` and `extraparams`) that are used in the analysis.  It then has flags for the number of populations (`-K`), the number of loci (`-L`; based on the number we got above from the `head` command), the number of individuals (`-N`; our study has 9 individuals), the input file (`-i`) and an output file (`-o`).
+This tells the system to execute the `Structure` program and it specifies the paths to two files (`mainparams` and `extraparams`) that are used in the analysis.  It then has flags for the number of populations (`-K`), the number of loci (`-L`; based on the number we got above from the `head` command minus 2 instead of `XXX`), the number of individuals (`-N`; our study has 9 individuals), the input file (`-i`) and an output file (`-o`).
 
  Assuming the command executes without error, you can check out the results in the file `output_K_3` like this:
  
