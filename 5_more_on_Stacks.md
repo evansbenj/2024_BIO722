@@ -39,30 +39,4 @@ Now we can get divergence information using `POPBAM` like this:
 
 Don't forget to specify the chromosome that you are surveying at the end (`chrXXX`). This will write the output of `POPBAM` to a text file called `divergence.txt`.  The divergence Ben got for PF515 was 0.00524.
 
-# More on Stacks:  Whitelists, blacklists, using individual modules, and summary statistics in `Stacks`
-
-## Whitelists, Blacklists, and Calculating Summary Statistics with `Populations` 
-
-Now lets try to calculate a summary statistic from specific genomic regions using the `populations` module of stacks. To accomplish this, lets work with a larger dataset that I made earlier.  Please copy this directory to your `my_monkey_data` directory like this:
-
-`cp -r /1/scratch/BIO720_Bens_section/Stacks_Results_chrX ~/my_monkey_data/.`
-
-Let's unzip the catalog file and check it out like this:
-
-`gunzip batch_1.catalog.tags.tsv.gz`
-
-and then
-
-`more batch_1.catalog.tags.tsv`
-
-The file should contain multiple columns of text.  The 4th and 5th columns list the chromosome number and chromosome position of each tag respectively.  We are going to generate a file in which we sample random SNPs from 1000 tags but we want to exclude data from the X chromosome because there are differences in copy number between males and females (i.e. two in XX females and one in XY males).  In order to do this, we can create a list of tags to include (a `whitelist`) or exclude (a `blacklist`), which is just a list of the numbers in the 3rd column that correspond with the `chrX` in the 4th column.  To generate a list based on this criterion, please use this `unix` command:
-
-`awk '$4 ~ /chrX/ {print $3}' batch_1.catalog.tags.tsv > ~/chrX_list`
-
-This uses a `unix` function called `awk`.  It says to print the number in column 3 to a file in your home directory (`~`) called `chrX_list` whenever the value in column 4 is equal to `chrX`.
-
-We can view this file by typing:
-
-`more ~/chrX_list`
-
-# Now let's use `Stacks` to make a `Structure` input file [here](https://github.com/evansbenj/Reduced-Representation-Workshop/blob/master/8_Stacks_and_Structure.md).
+# Now let's use `Stacks` to make a phylogenetic tree [here](https://github.com/evansbenj/BIO720/blob/master/6_Making_a_phylogenetic_tree_with_Stacks.md).
