@@ -1,6 +1,6 @@
 # Using `Stacks` to export an input file for `Structure`
 
-(Or you can go back to using `Stacks` to calculate summary statistics [here](https://github.com/evansbenj/Reduced-Representation-Workshop/blob/master/7_More_on_Stacks.md)).
+(Or you can go back to using `Stacks` to make a phylogenetic tree [here](https://github.com/evansbenj/BIO720/blob/master/6_Making_a_phylogenetic_tree_with_Stacks.md)).
 
 [`Structure`](http://pritchardlab.stanford.edu/structure_software/release_versions/v2.3.4/html/structure.html) is a software that attempts to assign individuals to *k* populations in such a way as to minimize Hardy-Weinberg and linkage disequilibrium.  We run `Structure` by specifying multiple values of *k* and then seeing which value(s) maximuze the likelihood of the data given the model of population structure. We can generate an input file for this program using `Stacks`. 
 
