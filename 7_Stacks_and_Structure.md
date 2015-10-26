@@ -12,27 +12,25 @@ This uses a `unix` command called `shuf`.  This tells the computer to print a ra
 
 Now we are ready to generate an input file for `Structure`.  Please type this command:
 
-`/apps/stacks/1.29/bin/populations -P ./ -b 1 -r 1 -t 36 --structure --write_single_snp -W ./1000_randoms -B chrX_list`
+`/usr/local/stacks/bin/populations -P ./ -b 1 -r 1 -t 36 --structure --write_single_snp -W ./1000_randoms -B chrXXX_list`
 
-This command directed the `populations` module of `Stacks` to output a single snp (the `--write_single_snp` flag) from tags specified by the `1000_randoms` file (the `-W` tag) but not to include any SNPs from chromosome X (the `-B` flag).
+This command directed the `populations` module of `Stacks` to output a single snp (the `--write_single_snp` flag) from tags specified by the `1000_randoms` file (the `-W` tag) but not to include any SNPs from chromosome XXX (the `-B` flag); please update the XXX part to match your chromosome.
 
 This generated a file called `batch_1.structure.tsv` which can be used as an input file for the program `Structure`.  Please copy this to your home directory like this:
 
-`scp /home/datasets/2015_Ben_Evans/complete_data/monkey/Stacks_Results/batch_1.structure.tsv ~/monkey/Stacks_Results`
-
 ## Running Structure
 
-Before we can run `Structure` with out data, we have some clerical issues to take care of.  First, please make sure you are in your home directory by typing this:
+Before we can run `Structure` with out data, we have some clerical issues to take care of.  First, please make sure you are in the Stacks Results directory by typing this (after updating the command appropriately):
 
-`cd ~/monkey/Stacks_Results`
+`cd path_to_Stacks_Results`
 
-Now lets delete the first row from our input file  - this row has a comment that we don't need.  Please type this:
+First we need to delete the first row from our input file  - this row has a comment that we don't need.  Please type this:
 
 `tail -n+2 batch_1.structure.tsv > simple_structure.tsv`
 
 This uses the Unix command `tail` to feed all lines beginning with the second line to a new file called `simple_structure.tsv`.
 
-Because we required that there be no missing data from the SNPs in our analysis, we can get a differing number of SNPs in our input file depending on which sites were randomly chosen. So we need to count how many columns we have in this file.  Please type this:
+For this exercise we will require that there be no missing data from the SNPs in our analysis, so we will get a differing number of SNPs in our input file depending on which sites were randomly chosen because some of our random 1000 loci have missing data. So we need to count how many columns we have in this file.  Please type this:
 
 `head -n1 simple_structure.tsv |  sed 's/\t/\n/g' | wc -l`
 
@@ -67,15 +65,9 @@ This tells us, for each individual, what the probability that that individual is
 
 ## A quick example of plotting with `R`
 
-To use `R` on this system, we need to load a module.  Please type this:
+We can plot this by making a file and pasting these data in a file using your favorite text editor. Please paste the data beginning with the line `1 PF515_sorte...` and save it.  THen type: `R` to open up the `R` environment.  
 
-`module load app/R`
-
-Now we can plot this by making a file and pasting these data in this file:
-
-`emacs assignments`
-
-If you now paste the data beginning with the line `1 PF515_sorte...` and save it (`Ctrl-X` and then `Ctrl-S`) and exit (`Ctrl-X` and then `Ctrl-C`) we can easily plot the data with R.  To do this type: `R`.  This should open up the `R` environment.  Now import the data:
+Now import the data:
 
 `>` `dat<-read.table(file="assignments")`
 
@@ -93,14 +85,9 @@ and now exit the `R` environment:
 
 `>` `q()`
 
-We can now dowload and view this file.  To download it, please open a new session and type this:
-
-`scp username@caf-hpc1.sun.ac.za:~/monkey/Stacks_Results/temp.pdf .`
-
-where `username` is your username.  You should be prompted for a password and then your file will download to your local computer.  You should be able to find this file, and then double click on the file and view it.
+We can now dowload and view this file.  
 
 ## Problem 6
 
 OK, now please generate a plot from Structure with *k* equal to 2 and then another plot with *k* equal to 4.  When can you conclude by comparing these plots?
 
-## OK, now let's make a [quick phylogeny using the RADseq data](https://github.com/evansbenj/Reduced-Representation-Workshop/blob/master/9_Stacks_and_Phylogenies.md).
