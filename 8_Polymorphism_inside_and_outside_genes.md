@@ -8,4 +8,6 @@ You can check out the contents of this file by typing:
 
 `more rhemac2.bed`
 
-This [page](https://genome.ucsc.edu/FAQ/FAQformat.html#format4) provides information about many genomic formats, including `bed` files. Please check it out.  As you can see, the first three columns are the ones we care about: these tell us the chromosome number, start and stop positions of genes (with the first base starting with zero, not one).
+This [page](https://genome.ucsc.edu/FAQ/FAQformat.html#format4) provides information about many genomic formats, including `bed` files. Please check it out.  As you can see, the first three columns are the ones we care about: these tell us the chromosome number, start and end coordinates of genes.  Please note that the numbering format for bed files is somewhat weird; the start coordinate is based on a numbering system beginning with zero, not one. And the end coordinate refers to the base after the end of the feature. As stated on this page, the first 100 base pairs of a chromosome would have bed coordinates of 0 to 100, and would span bases that are numbered 0 to 99.
+
+
