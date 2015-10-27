@@ -6,7 +6,7 @@
 
 [Stacks](http://catchenlab.life.illinois.edu/stacks/manual/) us a software suite that compiles reduced representation genome sequencing data first witih each individual in your analysis, and then across individuals.  It can calculate summary statistics from your data and also output your results in useful formats that other programs can take as input.
 
-Stacks actually can do some of the tasks that we have already done in this workshop, such as de-multiplexing Illumina data, trimming off linker sequences, and filtering sequences based on quality (the proportion of Ns in a read).  There is a very nice online manual [here](http://catchenlab.life.illinois.edu/stacks/manual/) and we will only scratch the surface of what this software can do.
+We have already used the `process_radtags` module of `Stacks` to de-multiplexing our Illumina data, trimming off linker sequences, and filter sequences based on quality (the proportion of Ns in a read).  There is a very nice online manual [here](http://catchenlab.life.illinois.edu/stacks/manual/) and we will only scratch the surface of what this software can do.
 
 The portion of Stacks that we will use consists of three main steps:
   1. For each individual, sort the data into 'loci' that have one or two alleles (i.e. that are homozygous or heterozygous, respectively).  For analyses with a reference genome, this is accomplished using the program `pstacks` using a `.bam` file as input.  Alternatively if you lack a reference genome, you can use `ustacks` instead of `pstacks`.
