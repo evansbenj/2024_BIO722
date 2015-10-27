@@ -4,11 +4,7 @@
 
 [`Structure`](http://pritchardlab.stanford.edu/structure_software/release_versions/v2.3.4/html/structure.html) is a software that attempts to assign individuals to *k* populations in such a way as to minimize Hardy-Weinberg and linkage disequilibrium.  We run `Structure` by specifying multiple values of *k* and then seeing which value(s) maximuze the likelihood of the data given the model of population structure. We can generate an input file for this program using `Stacks`. 
 
-The program `Structure` can not handle all of our data from the complete dataset, so we can select 1000 RADtags randomly to analyze. To do this, from within your `Stacks_Results` directory, please upzip the `batch_1.catalog.tags.tsv.gz` file like this:
-
-`gunzip batch_1.catalog.tags.tsv.gz`
-
-Now, please enter this command
+The program `Structure` can not handle all of our data from the complete dataset, so we can select 1000 RADtags randomly to analyze. To do this, please enter this command
 
 `shuf -n 1000 batch_1.catalog.tags.tsv | awk '{print $3}'  > 1000_randoms`
 
