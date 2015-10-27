@@ -2,9 +2,9 @@
 
 (Or you can go back to [Using Stacks with a Reference Genome](https://github.com/evansbenj/BIO720/blob/master/4_Using_Stacks_to_analyze_your_bam_files.md)).
 
-If we want to calculate pairwise nucleotide diversity on the chromosome to which we mapped our data, we can use the `populations` module of `Stacks` as follows:
+If we want to calculate pairwise nucleotide diversity on the chromosome to which we mapped our data, we can use the `populations` module of `Stacks` as follows (from within the `Stacks_Results` directory):
 
-`/usr/local/stacks/bin/populations -P path_to_Stacks_Results_folder/Stacks_Results -b 1 -r 1.0 -t 36`
+`/usr/local/stacks/bin/populations -P ./ -b 1 -r 1.0 -t 36`
 
 As detailed in the [manual](http://catchenlab.life.illinois.edu/stacks/comp/populations.php), this command directs the `populations` module of `Stacks` to write results to a directory specified by the `-P` flag. The `-r` flag says we want to only print data where 100% of the individuals have a genotype.  The `-b` and `-t` flags specify, respectively, that `populations` should focus on batch_ID number 1 (you can work with special IDs if you need to but this is beyond the scope of this workshop) and that `populations` should use 36 threads to do the calculations.  
 
