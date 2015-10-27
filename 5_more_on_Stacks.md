@@ -142,9 +142,9 @@ while ( my $line = <DATAINPUT2>) {
 
 Assuming that went smoothly, you can now compare pairwise nucleotide diversity inside and outside of genes using these commands:
 
-For nucleotide diversity inside genes, use a `whitelist`:
+From within the `Stacks_Results` directory, you can calculate nucleotide diversity inside of genes using this `whitelist`, like this:
 
-`/usr/local/stacks/bin/populations -P path_to_Stacks_Results_folder/Stacks_Results -b 1 -r 1.0 -t 36 -W gene_whitelist`
+`/usr/local/stacks/bin/populations -P ./ -b 1 -r 1.0 -t 36 -W gene.whitelist`
 
 Now check the pairwise diverisity within genes like this:
 
@@ -152,7 +152,7 @@ Now check the pairwise diverisity within genes like this:
 
 For nucleotide diversity outside of genes, use a `blacklist`:
 
-`/usr/local/stacks/bin/populations -P path_to_Stacks_Results_folder/Stacks_Results -b 1 -r 1.0 -t 36 -B gene_whitelist`
+`/usr/local/stacks/bin/populations -P ./ -b 1 -r 1.0 -t 36 -B gene.whitelist`
 
 Now check the pairwise diverisity within genes like this:
 
