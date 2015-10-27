@@ -59,9 +59,100 @@ This [page](https://genome.ucsc.edu/FAQ/FAQformat.html#format4) provides informa
 
 ## Making a whitelist from the bed file for use with `Stacks`
 
-I (hopefully) wrote a perl script that hopefully will generate a list of RAD loci from the `batch_1.catalog.tags.tsv` file that fall within the intervals provided in the `rhemac2.bed` file. We can then use this to generate polymorphism statistics inside and outside of genes with the `populations` module of `Stacks`.
+The `populations` module of `Stacks` can be fed a list of RAD loci to include (a whitelist) or exclude (a blacklist) from the analysis. The RADloci are listed in the file called `batch_1.catalog.tags.tsv`. Please unzip this file like this:
 
+`gunzip batch_1.catalog.tags.tsv.gz`
 
+and now check out the file like this:
 
+`more batch_1.catalog.tags.tsv`
 
+Each row corresponds to one RADlocus and the numbers in the third column are the ones we need to make a whitelist or a blacklist. The locations of the RADloci are indicated in columns 4 (the chromosome) and column 5 (the coordinate). Our task for each RADlocus is to check the annotation file (rhemac2.bed) to see if the RADlocus is inside a gene.
+
+Fortunately we are not going to do this by hand. I wrote a perl script that will generate a list of RAD loci from the `batch_1.catalog.tags.tsv` file that fall within the intervals provided in the `rhemac2.bed` file. We can then use this to generate polymorphism statistics inside and outside of genes with the `populations` module of `Stacks`.
+
+Here it is; please use your favorite text editor to make this file. Please change the permissions to allow it to be executable (`chmod +x filename`) and execute it as directed in the comment section. Ben will briefly explain what each part of the script does.
+
+``` perl
+#!/usr/bin/perl 
+use strict;
+
+# This program generates a whitelist for the populations module of Stacks
+# given a catelog file (e.g. batch_1.catalog.tags.tsv) and a bed formated annotation
+# file (e.g. rhemac2.bed)
+
+# To execute this program please type this:
+# make_my_whitelist.pl arg1 arg2 arg3
+# where arg1 and arg2 are catelog and bed file names respectively and
+# arg3 is an output filename
+# for example:
+# make_my_whitelist.pl batch_1.catalog.tags.tsv rhemac2.bed gene.whitelist
+
+my $inputfile = $ARGV[0];
+my $inputfile2 = $ARGV[1];
+my $outputfile = $ARGV[2];
+
+#### Prepare the input files 
+unless (open DATAINPUT, $inputfile) {
+	print "Can not find the data input file1!\n";
+	exit;
+}
+
+unless (open DATAINPUT2, $inputfile2) {
+	print "Can not find the data input file2!\n";
+	exit;
+}
+
+# check the output file
+unless (open(OUTFILE, ">$outputfile"))  {
+	print "I can\'t write to $outputfile   $!\n\n";
+	exit;
+}
+print "Creating output file: $outputfile\n";
+
+my %RADhash; # This will have format $RADhash{chromosome}[position] with value "locusnumber"
+my @line;
+my $n;
+my $rad_positions;
+
+while ( my $line = <DATAINPUT>) {
+	# split the line by tabs and load up an array called @line
+	@line = split("\t",$line);
+	# load the location and locus information into the RADhash
+	$RADhash{$line[3]}{$line[4]}=$line[2];
+} 
+while ( my $line = <DATAINPUT2>) {
+	# split the line by tabs and load up an array called @line
+	@line = split("\t",$line);
+	# for each line, check if there is a $RADhash entry that lies between $line[1] and $line[2]
+	for $rad_positions ( keys %{ $RADhash{$line[0]} } ){
+		print $rad_positions,"\n";
+		if (($rad_positions > $line[1])&&($rad_positions < $line[2])){
+			# if yes, print the value of ($RADhash{$line[0]}{$rad_positions} to the outfile
+			print OUTFILE $RADhash{$line[0]}{$rad_positions},"\n";
+		}
+	}
+}
+
+```
+
+Assuming that went smoothly, you can now compare pairwise nucleotide diversity inside and outside of genes using these commands:
+
+For nucleotide diversity inside genes, use a `whitelist`:
+
+`/usr/local/stacks/bin/populations -P path_to_Stacks_Results_folder/Stacks_Results -b 1 -r 1.0 -t 36 -W gene_whitelist`
+
+Now check the pairwise diverisity within genes like this:
+
+`more batch_1.sumstats_summary.tsv`
+
+For nucleotide diversity outside of genes, use a `blacklist`:
+
+`/usr/local/stacks/bin/populations -P path_to_Stacks_Results_folder/Stacks_Results -b 1 -r 1.0 -t 36 -B gene_whitelist`
+
+Now check the pairwise diverisity within genes like this:
+
+`more batch_1.sumstats_summary.tsv`
+
+Which was higher?
 # Now let's use `Stacks` to make a phylogenetic tree [here](https://github.com/evansbenj/BIO720/blob/master/6_Making_a_phylogenetic_tree_with_Stacks.md).
