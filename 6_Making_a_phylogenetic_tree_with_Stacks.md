@@ -30,7 +30,7 @@ Let's have a look at this file now.  Please type this:
 
 `more batch_1.phylip`
 
-You should be able to see a Phylip formatted file. You can press the space bar to scroll down the file and press `q` when you want to quit.  The first line has the number of taxa (9 in this case) followed by the number of characters of data.  The next line has a taxon name (`1`, which corresponds to the first sample PF515) followed by the sequence data.  Some of these data are regular nucleotides (A, C, G, or T) and others are [IUPAC symbols](http://www.bioinformatics.org/sms/iupac.html) that indicate heterozygous SNPs (Y for C/T, R for A/G, etc).  The lines after this give data for the next samples.
+You should be able to see a Phylip formatted file. You can press the space bar to scroll down the file and press `q` when you want to quit.  The first line has the number of taxa (9 in this case) followed by the number of characters of data.  The next line has a taxon name (`1`, which corresponds to the first sample PF515) followed by the sequence data.  Some of these data are regular nucleotides (A, C, G, or T) and others are [IUPAC symbols](http://www.bioinformatics.org/sms/iupac.html) that indicate heterozygous SNPs (Y for C/T, R for A/G, etc) and there are also missing data (Ns).  The lines after this give data for the next samples.
 
 ## Making a Quick phylogeny using `Phylip`
 
