@@ -41,7 +41,7 @@ PM602_sorted	population_2
 
 Note that the term tab-delimited means that there is a tab between the columns of information. Please make sure the columns have a tab between them (if you copy and paste the text above it probably will not have a tab). This file will be used to tell Stacks that the first five samples are from one population and the last four samples are from another population. In the example population map above the file names must match the names of each of your bam files, but without the `.bam` suffix.
 
-One way to quantify population structure is using the F-statistic (F<sub>ST</sub>).  F<sub>ST</sub> is an index of population structure that ranges from zero (no population structure) to one (two populations are each fixed for different alleles.  Let's calulate F<sub>ST</sub> between the two populations specified avove using `Stacks`.  To do this, please type:
+One way to quantify population structure is using the F-statistic (F<sub>ST</sub>).  F<sub>ST</sub> is an index of population structure that ranges from zero (no population structure) to one (two populations are each fixed for different alleles.  Let's calulate F<sub>ST</sub> between the two populations specified avove using `Stacks`.  To do this, please navigate to the directory with your bam files and populatin map and type:
 
 ```
 /usr/local/stacks/bin/ref_map.pl -S -b 1 -n 0 \
