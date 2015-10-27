@@ -45,17 +45,17 @@ One way to quantify population structure is using the F-statistic (F<sub>ST</sub
 
 ```
 /usr/local/stacks/bin/ref_map.pl -S -b 1 -n 0 \
-	-O ~/population_map \
-	-o ~/my_monkey_data/Stacks_Results \
-   	-s ~/my_monkey_data/PF515_sorted.bam \
-    -s ~/my_monkey_data/PM561_sorted.bam \
-    -s ~/my_monkey_data/PM565_sorted.bam \
-    -s ~/my_monkey_data/PM566_sorted.bam \
-    -s ~/my_monkey_data/PM567_sorted.bam \
-    -s ~/my_monkey_data/PM582_sorted.bam \
-    -s ~/my_monkey_data/PM584_sorted.bam \
-    -s ~/my_monkey_data/PM592_sorted.bam \
-    -s ~/my_monkey_data/PM602_sorted.bam \
+	-O ./population_map \
+	-o ./Stacks_Results \
+   	-s ./PF515_sorted.bam \
+    -s ./PM561_sorted.bam \
+    -s ./PM565_sorted.bam \
+    -s ./PM566_sorted.bam \
+    -s ./PM567_sorted.bam \
+    -s ./PM582_sorted.bam \
+    -s ./PM584_sorted.bam \
+    -s ./PM592_sorted.bam \
+    -s ./PM602_sorted.bam \
    	-e /usr/local/stacks/bin/ -X "populations:--fstat"
 ```
 
