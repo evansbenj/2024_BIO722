@@ -21,6 +21,8 @@ To get started, lets first make a directory within the `~/my_monkey_data` direct
 
 `mkdir ~/my_monkey_data/Stacks_Results`
 
+To make things easier, please also make sure that your bam files from the full data alignment to the rhesus genome are in the `~/my_monkey_data` directory.
+
 ## Analysis of population structure
 
 Let's first examine whether population structure is present within our sample by defining two populations.  This can be done in `Stacks` by making a file called a `population_map` in your home directory.  Use your favorite text editor to generate a file that contans this tab delimited information:
