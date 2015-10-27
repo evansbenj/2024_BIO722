@@ -44,7 +44,7 @@ Note that the term tab-delimited means that there is a tab between the columns o
 One way to quantify population structure is using the F-statistic (F<sub>ST</sub>).  F<sub>ST</sub> is an index of population structure that ranges from zero (no population structure) to one (two populations are each fixed for different alleles.  Let's calulate F<sub>ST</sub> between the two populations specified avove using `Stacks`.  To do this, please navigate to the directory with your bam files and populatin map and type:
 
 ```
-/usr/local/stacks/bin/ref_map.pl -S -b 1 -n 0 \
+/usr/local/stacks/bin/ref_map.pl -S -b 1 -n 2 \
 	-O ./population_map \
 	-o ./Stacks_Results \
    	-s ./PF515_sorted.bam \
@@ -59,7 +59,7 @@ One way to quantify population structure is using the F-statistic (F<sub>ST</sub
    	-e /usr/local/stacks/bin/ -X "populations:--fstat"
 ```
 
-In this command, the backslashes `\` just indicate that the command is continued on the next line.  The program we are executing is a Perl script caled `ref_map.pl`.  Similar to the bash scripts we wrote earlier, this program just executes a bunch of other prorgams that come in the `Stacks` package. As you can see in the [`Stacks` manual](http://catchenlab.life.illinois.edu/stacks/comp/ref_map.php) the flags `-S`, `-b`, and `-n` respectively tell Stacks to disable recording the data in an SQL database (this is beyond the scope of this workshop), process the batchID 1, and allow zero mismatches between loci when building the catalog.  Other flags such as `-O`, `-o`, and `-s` respectively tell `Stacks` where the population map file is, where to write the results, and where the input bam files for each individual are.  The `-e` flag tells `Stacks` where the binary files that `refmap.pl` executes are located (these are programs such as `cstacks` and `populations`)..
+In this command, the backslashes `\` just indicate that the command is continued on the next line.  The program we are executing is a Perl script caled `ref_map.pl`.  Similar to the bash scripts we wrote earlier, this program just executes a bunch of other prorgams that come in the `Stacks` package. As you can see in the [`Stacks` manual](http://catchenlab.life.illinois.edu/stacks/comp/ref_map.php) the flags `-S`, `-b`, and `-n` respectively tell Stacks to disable recording the data in an SQL database (this is beyond the scope of this workshop), process the batchID 1, and allow two mismatches between loci (alleles) when building the catalog.  Other flags such as `-O`, `-o`, and `-s` respectively tell `Stacks` where the population map file is, where to write the results, and where the input bam files for each individual are.  The `-e` flag tells `Stacks` where the binary files that `refmap.pl` executes are located (these are programs such as `cstacks` and `populations`)..
 
 We can also pass some of the programs referenced by `refmap.pl` some additional commands using the `-X` flag.  Here we have used this flag at the end to pass the program `populations` a this flag: `--fstat`, which tells the program `populations` to calculate F<sub>ST</sub> using the population map that we specified using the `-O` flag. 
 
