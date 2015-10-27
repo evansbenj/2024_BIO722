@@ -88,39 +88,43 @@ use strict;
 # for example:
 # make_my_whitelist.pl batch_1.catalog.tags.tsv rhemac2.bed gene.whitelist
 
+# first declare filename variables
 my $inputfile = $ARGV[0];
 my $inputfile2 = $ARGV[1];
 my $outputfile = $ARGV[2];
 
 #### Prepare the input files 
 unless (open DATAINPUT, $inputfile) {
-	print "Can not find the data input file1!\n";
+	print "Can not find the catelog input file!\n";
 	exit;
 }
 
 unless (open DATAINPUT2, $inputfile2) {
-	print "Can not find the data input file2!\n";
+	print "Can not find the annotation bed file!\n";
 	exit;
 }
 
 # check the output file
 unless (open(OUTFILE, ">$outputfile"))  {
-	print "I can\'t write to $outputfile   $!\n\n";
+	print "I can\'t write to $outputfile, please provide a name!\n";
 	exit;
 }
 print "Creating output file: $outputfile\n";
 
-my %RADhash; # This will have format $RADhash{chromosome}[position] with value "locusnumber"
-my @line;
-my $n;
-my $rad_positions;
+# define some variables
+my %RADhash; # This is a data structure called a hash that will have format $RADhash{chromosome}[position] with value "locusnumber"
+my @line; # this is a datastructure called an array
+my $n; # this is a data structure called a string
+my $rad_positions; # another string
 
+# Now we are going to loop through each line of the catelog file
 while ( my $line = <DATAINPUT>) {
 	# split the line by tabs and load up an array called @line
 	@line = split("\t",$line);
 	# load the location and locus information into the RADhash
 	$RADhash{$line[3]}{$line[4]}=$line[2];
 } 
+# Now we are going to loop through each line of the annotation file
 while ( my $line = <DATAINPUT2>) {
 	# split the line by tabs and load up an array called @line
 	@line = split("\t",$line);
