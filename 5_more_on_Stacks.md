@@ -41,7 +41,9 @@ Don't forget to specify the chromosome that you are surveying at the end (`chrXX
 
 Ben will now collect the data you collected, summarize it, compare it to the diversity and divergence estimates from the X, and discuss what implications it has for social system evolution in our monkeys.
 
-# Using a whitelists and blacklists to explore polymorphism inside and outside of genes.
+# Using a whitelists and blacklists to explore polymorphism inside and outside of genes
+
+One concern about these statistics is that genomic regions that contain genes may be subject to effects of natural selection. To test this, we can use annotation information for our reference genome to identify and exclude RADtags that are located within genes. To do this we will download annotations for the rhemac2 genome and use a perl script to generate a "blacklist" of genomic regions to exclude from our analysis.
 
 ## Downloading an annotation of rhesus genes
 
