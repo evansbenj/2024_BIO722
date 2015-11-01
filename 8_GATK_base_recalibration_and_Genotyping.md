@@ -29,10 +29,10 @@ use strict;
 # This script will read in the *_sorted.bam file names in a directory, and 
 # make and execute a GATK commandline on these files.  
 
-my $status;
 my $path_to_reference_genome="~/my_monkey_chromosome/";
 my $reference_genome="chrXXX.fa"
 my @files;
+my $status;
    
 @files = glob("*_sorted.bam");
 
@@ -53,3 +53,37 @@ In this script the `@files = glob("*_sorted.bam");` command uses the `glob` func
 
 With the indel vcf file, we can then use a function called `IndelRealigner`, which takes as input this `vcf` file to realign bases when possible an minimize mis-called SNPs.
 
+Here is a perl script that executes the `IndelRealigner` function:
+
+```perl
+#!/usr/bin/perl
+use warnings;
+use strict;
+
+# This script will read in the *_sorted.bam file names in a directory, and 
+# make and execute a GATK commandline on these files.  
+
+my $path_to_reference_genome="~/my_monkey_chromosome/";
+my $reference_genome="chrXXX.fa"
+my $status;
+my @files;
+   
+@files = glob("*_sorted.bam");
+
+for (0..$#files){
+    $files[$_] =~ s/\_sorted.bam$//;
+}
+
+my $commandline = "java -Xmx1G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T IndelRealigner ";
+
+foreach(@files){
+    $commandline = $commandline." -I ".$_."_sorted.bam ";
+}
+
+$commandline = $commandline."-R "..$path_to_reference_genome.$reference_genome." --targetIntervals forIndelRealigner.intervals --nWayOut _realigned.bam";
+
+$status = system($commandline);
+
+$status = system ("rename _stampy_sorted_rg.stampy_realigned.bam _stampy_realigned.bam *_stampy_sorted_rg.stampy_realigned.bam");
+$status= system ("rename _stampy_sorted_rg.stampy_realigned.bai _stampy_realigned.bai *_stampy_sorted_rg.stampy_realigned.bai");
+```
