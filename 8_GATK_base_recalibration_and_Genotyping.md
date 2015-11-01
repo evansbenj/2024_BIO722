@@ -97,4 +97,4 @@ $status = system ("rename _stampy_sorted_rg.stampy_realigned.bam _stampy_realign
 $status= system ("rename _stampy_sorted_rg.stampy_realigned.bai _stampy_realigned.bai *_stampy_sorted_rg.stampy_realigned.bai");
 ```
 
-You could name this script `Step_2_execute_GATK_IndelRealigner.pl`.
+As above, please copy and paste this script, make it executable, and execute it. You could name this script `Step_2_execute_GATK_IndelRealigner.pl`. Please don't forget to modify the name of your reference chromosome as appropriate.
