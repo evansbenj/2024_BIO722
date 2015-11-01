@@ -1,0 +1,5 @@
+# The Genome Analysis Toolkit (GATK): base recalibration and SNP calling.
+
+So far we have mapped Illumina reads to a reference genome using the programs `samtools` and `bwa` and we have expedited this process with a bash script. We have also used the program `Stacks` to perform various tasks including demultiplexing our data (using the `process_RADtags` program), calculate various polymorphism statistics (using the `populations` program), and output input files for other software such as `Phylip` and `Structure`. 
+
+There are still a few concerns with these approaches and one might view them as `exploratory` analyses for that reason. Once concern is that `Stacks` uses a preset error rate to make SNP calls as opposed to using the quality scores from the fastq files. This is potentially less a less accurate approach than using the fastq quality scores. And even if we did use the fastq quality scores, another concern is that there can be variation among reads in the accuracy of the quality scores. You may recall that fastq files report quality scores on a Phred-scale as described [here]
