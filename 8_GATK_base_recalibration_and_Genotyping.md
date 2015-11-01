@@ -17,7 +17,7 @@ An important part of any study is its ability to be replicated by others. In fac
 
 # Realigning insertion/deletion (indels) using `GATK`
 
-We can use `GATK` to identify indels that may be associated with inappropriate mapping differences among the individuals in our study. This is done in two steps.  The first uses the `GATK` function called `RealignerTarget` to identify indels in our data. This function produces a `vcf` file that has information about the locations of all indels in any individual relative to the reference genome. Let's check out again how a vcf file displays information about indels [here](http://samtools.github.io/hts-specs/VCFv4.2.pdf).
+We can use `GATK` to identify indels that may be associated with inappropriate mapping differences among the individuals in our study. This is done in two steps.  The first uses the `GATK` function called `RealignerTarget` to identify indels in our data. This function produces a text file that has information about the locations of all indels in any individual relative to the reference genome. Let's check out again how a vcf file displays information about indels [here](http://samtools.github.io/hts-specs/VCFv4.2.pdf).
 
 Here is a perl script that wil lexecute the `RealignerTarget` function in `GATK` on our data:
 
@@ -51,7 +51,13 @@ Please copy and paste this script, change the permissions to allow it to be exec
 
 In this script the `@files = glob("*_sorted.bam");` command uses the `glob` function to look for all files in your directory with that end with "_sorted.bam" and then it adds them to an array called `@files`. The `$status = system($commandline);` line executes the test stored in the $commandline variable.
 
-With the indel vcf file, we can then use a function called `IndelRealigner`, which takes as input this `vcf` file to realign bases when possible an minimize mis-called SNPs.
+When it is done, please check out the file it made like this:
+
+`more forIndelRealigner.intervals`
+
+You shoudl see a list of intervals coordinates following the chromosome of your reference chromosome.
+
+With the indel text file, we can then use a function called `IndelRealigner`, which takes as input this `vcf` file to realign bases when possible an minimize mis-called SNPs.
 
 Here is a perl script that executes the `IndelRealigner` function:
 
