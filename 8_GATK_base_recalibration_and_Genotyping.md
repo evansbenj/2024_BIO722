@@ -65,36 +65,31 @@ With the indel text file, we can then use a function called `IndelRealigner`, wh
 Here is a perl script that executes the `IndelRealigner` function:
 
 ```perl
-#!/usr/bin/perl
+#!/usr/bin/perl                                                                                                                      
 use warnings;
 use strict;
 
-# This script will read in the *_sorted.bam file names in a directory, and 
-# make and execute a GATK commandline on these files.  
+# This script will read in the *_sorted.bam file names in a directory, and                                                           
+# make and execute a GATK commandline on these files.                                                                                
 
 my $path_to_reference_genome="~/my_monkey_chromosome/";
 my $reference_genome="chrXXX.fa";
 my $status;
 my @files;
-   
-@files = glob("*_sorted.bam");
 
-for (0..$#files){
-    $files[$_] =~ s/\_sorted.bam$//;
-}
+@files = glob("*_sorted.bam");
 
 my $commandline = "java -Xmx1G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T IndelRealigner ";
 
 foreach(@files){
-    $commandline = $commandline." -I ".$_."_sorted.bam ";
+    $commandline = $commandline." -I ".$_;
 }
 
-$commandline = $commandline."-R ".$path_to_reference_genome.$reference_genome." --targetIntervals forIndelRealigner.intervals --nWayOut _realigned.bam";
+$commandline = $commandline." -R ".$path_to_reference_genome.$reference_genome." --targetIntervals forIndelRealigner.intervals --nWa\
+yOut _realigned.bam";
 
 $status = system($commandline);
 
-$status = system ("rename _stampy_sorted_rg.stampy_realigned.bam _stampy_realigned.bam *_stampy_sorted_rg.stampy_realigned.bam");
-$status= system ("rename _stampy_sorted_rg.stampy_realigned.bai _stampy_realigned.bai *_stampy_sorted_rg.stampy_realigned.bai");
 ```
 
 As above, please copy and paste this script, make it executable, and execute it. You could name this script `Step_2_execute_GATK_IndelRealigner.pl`. Please don't forget to modify the name of your reference chromosome as appropriate.
