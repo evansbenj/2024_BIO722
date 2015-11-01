@@ -30,7 +30,7 @@ use strict;
 # make and execute a GATK commandline on these files.  
 
 my $path_to_reference_genome="~/my_monkey_chromosome/";
-my $reference_genome="chrXXX.fa"
+my $reference_genome="chrXXX.fa";
 my @files;
 my $status;
    
@@ -64,7 +64,7 @@ use strict;
 # make and execute a GATK commandline on these files.  
 
 my $path_to_reference_genome="~/my_monkey_chromosome/";
-my $reference_genome="chrXXX.fa"
+my $reference_genome="chrXXX.fa";
 my $status;
 my @files;
    
