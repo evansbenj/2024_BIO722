@@ -18,9 +18,9 @@ An important part of any study is its ability to be replicated by others. In fac
 
 # Realigning insertion/deletion (indels) using `GATK`
 
-TO begin, let's check out again how a vcf file displays information about indels [here](http://samtools.github.io/hts-specs/VCFv4.2.pdf).
+Before we begin, let's first check out again how a vcf file displays information about indels [here](http://samtools.github.io/hts-specs/VCFv4.2.pdf).
 
-We can use `GATK` to identify indels that may be associated with inappropriate mapping differences among the individuals in our study. This is done in two steps.  The first uses the `GATK` function called `RealignerTarget` to identify indels in our data. This function produces a text file that has information about the locations of all indels in any individual relative to the reference genome. 
+We will use `GATK` to identify indels that may be associated with inappropriate mapping differences among the individuals in our study, and then realign them across all individuals. This is done in two steps.  The first uses the `GATK` function called `RealignerTarget` to identify indels in our data. This function produces a text file that has information about the locations of all indels in any individual relative to the reference genome. 
 
 Here is a perl script that wil lexecute the `RealignerTarget` function in `GATK` on our data:
 
