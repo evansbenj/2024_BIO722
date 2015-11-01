@@ -30,9 +30,11 @@ use strict;
 # make and execute a GATK commandline on these files.  
 
 my $status;
+my $path_to_reference_genome="~/my_monkey_chromosome/";
+my $reference_genome="chrXXX.fa"
 my @files;
    
-@files = glob("*_stampy_sorted_rg.bam");
+@files = glob("*_sorted.bam");
 
 my $commandline = "java -Xmx1G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T RealignerTargetCreator ";
 
@@ -40,13 +42,12 @@ foreach(@files){
     $commandline = $commandline." -I ".$_." ";
 }
 
-$commandline = $commandline."-R /home/ben/2015_BIO720/rhesus_genome/macaque_masked_chromosomes_ym.fasta -o stampy_forIndelRealigner_ym.intervals";
-
+$commandline = $commandline."-R ".$path_to_reference_genome.$reference_genome." -o forIndelRealigner.intervals";
 
 $status = system($commandline);
 ```
 
-Please copy and paste this script, change the permissions to allow it to be executable, and execute it on your samples.
+Please copy and paste this script, change the permissions to allow it to be executable, and execute it on your samples from within the directory that contains your sorted bam files. You will need to adjust the `$reference_genome` variable to match your chromosome.
 
 With the indel vcf file, we can then use a function called `IndelRealigner`, which takes as input this `vcf` file to realign bases when possible an minimize mis-called SNPs.
 
