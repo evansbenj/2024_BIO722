@@ -49,5 +49,7 @@ $status = system($commandline);
 
 Please copy and paste this script, change the permissions to allow it to be executable, and execute it on your samples from within the directory that contains your sorted bam files. You will need to adjust the `$reference_genome` variable to match your chromosome.
 
+In this script the `@files = glob("*_sorted.bam");` command uses the `glob` function to look for all files in your directory with that end with "_sorted.bam" and then it adds them to an array called `@files`. The `$status = system($commandline);` line executes the test stored in the $commandline variable.
+
 With the indel vcf file, we can then use a function called `IndelRealigner`, which takes as input this `vcf` file to realign bases when possible an minimize mis-called SNPs.
 
