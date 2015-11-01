@@ -22,7 +22,7 @@ Before we begin, let's first check out again how a vcf file displays information
 
 We will use `GATK` to identify indels that may be associated with inappropriate mapping differences among the individuals in our study, and then realign them across all individuals. This is done in two steps.  The first uses the `GATK` function called `RealignerTarget` to identify indels in our data. This function produces a text file that has information about the locations of all indels in any individual relative to the reference genome. 
 
-Here is a perl script that wil lexecute the `RealignerTarget` function in `GATK` on our data:
+Here is a perl script that will execute the `RealignerTarget` function in `GATK` on our data:
 
 ```perl
 #!/usr/bin/perl
@@ -52,7 +52,7 @@ $status = system($commandline);
 
 Please copy and paste this script, change the permissions to allow it to be executable, and execute it on your samples from within the directory that contains your sorted bam files. I suggest naming your scripts using a sensible system, such as with descriptions and numbers in ascending order.  For example, you could name this script `Step_1_execute_GATK_RealignerTargetCreator.pl`. You will need to adjust the `$reference_genome` variable to match your chromosome.
 
-In this script the `@files = glob("*_sorted.bam");` command uses the `glob` function to look for all files in your directory with that end with "_sorted.bam" and then it adds them to an array called `@files`. The `$status = system($commandline);` line executes the test stored in the $commandline variable.
+In this script the `@files = glob("*_sorted.bam");` command uses the `glob` function to look for all files in your directory with that end with "_sorted.bam" and then it adds them to an array called `@files`. The `$status = system($commandline);` line executes the test stored in the $commandline variable. The commandline executes the java `.jar` file and allocates 1 Gb of RAM for the job (-Xmx1G`).
 
 When it is done, please check out the file it made like this:
 
