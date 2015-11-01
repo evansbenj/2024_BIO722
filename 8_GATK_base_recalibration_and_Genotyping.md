@@ -88,7 +88,7 @@ foreach(@files){
     $commandline = $commandline." -I ".$_."_sorted.bam ";
 }
 
-$commandline = $commandline."-R "..$path_to_reference_genome.$reference_genome." --targetIntervals forIndelRealigner.intervals --nWayOut _realigned.bam";
+$commandline = $commandline."-R ".$path_to_reference_genome.$reference_genome." --targetIntervals forIndelRealigner.intervals --nWayOut _realigned.bam";
 
 $status = system($commandline);
 
