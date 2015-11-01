@@ -11,4 +11,42 @@ There are still a few concerns with these approaches and one might view them as 
 
 The Genome Analysis Toolkit [GATK](https://www.broadinstitute.org/gatk/) provides solutions to these concerns and in general may provide better genotype calls than `Stacks`. Similar to `Stacks`, `GATK` is a suite of programs or functions.  `GATK` is written in java. In class we will use `GATK` to perform base recalibration on our data and to perform genotype calls using the adjusted quality scores concurrently across all of the individuals in our study.
 
+# A brief note about Ben's approach to using `GATK` (and doing analyses in general)
+
+An important part of any study is its ability to be replicated by others. In fact, when you go to publish a study, a reasonable reason that a journal could reject your paper would be if there is insufficient details about your methodology to allow for someone to repeat the analysis. For this reason it is minimally crucial to write down every step that you perform in your analysis, including the version of the software you use, and it is adviseable to make available the scripts you use to the community. The latter point can easily be done with databases such as [dryad](http://datadryad.org/). For describing in detail the steps of an analysis, I find it useful to have every step performed by a script. For the purposes of this class, we will perform one step with one script (we will use `perl` scripts), but obviously once could do multiple steps in one script. As you will see (and have seen with the bash script we used earlier), this also makes the building of commandlines quite simple and saves you from typing out sample names and directories by hand.
+
+# Realigning insertion/deletion (indels) using `GATK`
+
+We can use `GATK` to identify indels that may be associated with inappropriate mapping differences among the individuals in our study. This is done in two steps.  The first uses the `GATK` function called `RealignerTarget` to identify indels in our data. This function produces a `vcf` file that has information about the locations of all indels in any individual relative to the reference genome. Let's check out again how a vcf file displays information about indels [here](http://samtools.github.io/hts-specs/VCFv4.2.pdf).
+
+Here is a perl script that wil lexecute the `RealignerTarget` function in `GATK` on our data:
+
+```perl
+#!/usr/bin/perl
+use warnings;
+use strict;
+
+# This script will read in the *_sorted.bam file names in a directory, and 
+# make and execute a GATK commandline on these files.  
+
+my $status;
+my @files;
+   
+@files = glob("*_stampy_sorted_rg.bam");
+
+my $commandline = "java -Xmx1G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T RealignerTargetCreator ";
+
+foreach(@files){
+    $commandline = $commandline." -I ".$_." ";
+}
+
+$commandline = $commandline."-R /home/ben/2015_BIO720/rhesus_genome/macaque_masked_chromosomes_ym.fasta -o stampy_forIndelRealigner_ym.intervals";
+
+
+$status = system($commandline);
+```
+
+Please copy and paste this script, change the permissions to allow it to be executable, and execute it on your samples.
+
+With the indel vcf file, we can then use a function called `IndelRealigner`, which takes as input this `vcf` file to realign bases when possible an minimize mis-called SNPs.
 
