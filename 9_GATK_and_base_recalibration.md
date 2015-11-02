@@ -2,6 +2,8 @@
 
 Or you can go back to realigning indels [here](https://github.com/evansbenj/BIO720/blob/master/8_GATK_realigning_indels.md).
 
+## Base recalibration and recalling genotypes
+
 Now that we have the indels realigned, we can proceed with base recalibration.
 
 There are several `GATK` functions that we need to execute to accomplish this. We can do these in one perl script that does the following:
@@ -39,7 +41,7 @@ foreach(@files){
     $commandline = $commandline." -I ".$_." ";
 }
 
-$commandline = $commandline." -out_mode EMIT_VARIANTS_ONLY -o ./nonrecal_varonly_unifiedgenotyper.vcf";
+$commandline = $commandline." -out_mode EMIT_VARIANTS_ONLY -o ./nonrecal_varonly.vcf";
 
 # Execute this command line to call genotypes
 $status = system($commandline);
@@ -73,11 +75,38 @@ $status = system($commandline);
 # Now use UnifiedGenotyper to recall bases with recalibrated quality scores; output a vcf file 
 $commandline = "java -Xmx3G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R ".$path_to_reference_genome.$reference_genome;
 $commandline = $commandline." -I concatentated_and_recalibrated_round1.bam";
-$commandline = $commandline." -o concatentated_and_recalibrated_round1.vcf";
+$commandline = $commandline." -o recalibrated_round1.vcf";
 
 
 $status = system($commandline);
 
 ```
+
+As previously, you will need to modify this script to point to the path and filename of your chromosome.
+
+## Comparing genotype calls before and after base recalibration
+
+How can we determine whether base recalibration made a difference?  To accomplish this, we can use software called `vcftools` to compare the base calls made before (`nonrecal_varonly.vcf`) and after (`recalibrated_round1.vcf`) base recalibration.
+
+To use `vcftools`, we need to gzip and index the vcf files we will compare. Please type this:
+
+`/usr/local/tabix/bgzip nonrecal_varonly.vcf`
+`/usr/local/tabix/bgzip recalibrated_round1.vcf`
+
+This makes two files with a suffix `gz`.  Now please type this:
+
+`/usr/local/tabix/tabix -p vcf nonrecal_varonly.vcf.gz`
+`/usr/local/tabix/tabix -p vcf recalibrated_round1.vcf.gz`
+
+Now we can use the `vcf-compare` module of `vcftools` to compare these vcf files like this:
+
+`/usr/local/vcftools/src/perl/vcf-compare xxx.vcf.gz yyy.vcf.gz > compare.out`
+
+so you can type this:
+
+`/usr/local/vcftools/src/perl/vcf-compare nonrecal_varonly.vcf.gz recalibrated_round1.vcf.gz > compare.out`
+
+Now check out the output (`more compare.out`), which is basically a Venn diagram of SNPs in each vcf file. Is there a big difference between these files and if so what is the nature of this difference?
+
 
 # Problem 8. At home, please run this script on your bam files with the complete data.
