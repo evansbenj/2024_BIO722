@@ -56,7 +56,7 @@ $status = system($commandline);
 
 
 # Now use PrintReads to output a new concatenated bam file with recalibrated quality scores
-my $commandline = "java -Xmx3G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T PrintReads -R ".$path_to_reference_genome.$reference_genome;
+$commandline = "java -Xmx3G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T PrintReads -R ".$path_to_reference_genome.$reference_genome;
 
 foreach(@files){
     $commandline = $commandline." -I ".$_." ";
@@ -69,7 +69,7 @@ $status = system($commandline);
 
 
 # Now use UnifiedGenotyper to recall bases with recalibrated quality scores; output a vcf file 
-my $commandline = "java -Xmx3G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R ".$path_to_reference_genome.$reference_genome;
+$commandline = "java -Xmx3G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R ".$path_to_reference_genome.$reference_genome;
 $commandline = $commandline." -I concatentated_and_recalibrated_round1.bam";
 $commandline = $commandline." -o concatentated_and_recalibrated_round1.vcf";
 
