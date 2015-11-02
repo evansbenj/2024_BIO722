@@ -20,7 +20,7 @@ An important part of any study is its ability to be replicated by others. In fac
 
 Before we begin, let's first check out again how a vcf file displays information about indels [here](http://samtools.github.io/hts-specs/VCFv4.2.pdf).
 
-We will use `GATK` to identify indels that may be associated with inappropriate mapping differences among the individuals in our study, and then realign them across all individuals. This is done in two steps.  The first uses the `GATK` function called `RealignerTarget` to identify indels in our data. This function produces a text file that has information about the locations of all indels in any individual relative to the reference genome. 
+We will use `GATK` to identify indels that may be associated with inappropriate mapping differences among the individuals in our study, and then realign them across all individuals. This is done in two steps.  The first uses the `GATK` function called `RealignerTarget` to identify indels in our data. This function produces a text file that has information about the locations of all indels in any individual relative to the reference genome. Because the second step takes a few dozen minutes to run with the full dataset, for class we will work with the subset datasets that you previously mapped to your chromosome.
 
 Here is a perl script that will execute the `RealignerTarget` function in `GATK` on our data:
 
@@ -92,3 +92,5 @@ $status = system($commandline);
 ```
 
 As above, please copy and paste this script, make it executable, and execute it. You could name this script `Step_2_execute_GATK_IndelRealigner.pl`. Please don't forget to modify the name of your reference chromosome as appropriate.
+
+# Problem 7. OK please do these steps at home on the full data set.
