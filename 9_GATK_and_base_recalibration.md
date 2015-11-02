@@ -100,6 +100,10 @@ This makes two files with a suffix `gz`.  Now please type this:
 
 `/usr/local/tabix/tabix -p vcf recalibrated_round1.vcf.gz`
 
+In order for `vcftools` to work we need to make sure it knows where to find the `tabix` program. Please type this:
+
+`export PATH=${PATH}:/usr/local/tabix/`
+
 Now we can use the `vcf-compare` module of `vcftools` to compare these vcf files like this:
 
 `/usr/local/vcftools/src/perl/vcf-compare xxx.vcf.gz yyy.vcf.gz > compare.out`
