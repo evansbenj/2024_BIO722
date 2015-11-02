@@ -58,7 +58,7 @@ When it is done, please check out the file it made like this:
 
 `more forIndelRealigner.intervals`
 
-You shoudl see a list of intervals coordinates following the chromosome of your reference chromosome.
+You should see a list of intervals coordinates following the chromosome of your reference chromosome.
 
 With the indel text file, we can then use a function called `IndelRealigner`, which takes as input this `vcf` file to realign bases when possible an minimize mis-called SNPs.
 
