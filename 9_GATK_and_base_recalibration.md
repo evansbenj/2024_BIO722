@@ -116,3 +116,5 @@ Now check out the output (`more compare.out`), which is basically a Venn diagram
 
 
 # Problem 8. At home, please run this script on your bam files with the complete data.
+
+# OK now we can move on to using `GATK` to filter our data [here]().
