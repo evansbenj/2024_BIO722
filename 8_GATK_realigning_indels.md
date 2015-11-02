@@ -52,7 +52,7 @@ $status = system($commandline);
 
 Please copy and paste this script, change the permissions to allow it to be executable, and execute it on your samples from within the directory that contains your sorted bam files. I suggest naming your scripts using a sensible system, such as with descriptions and numbers in ascending order.  For example, you could name this script `Step_1_execute_GATK_RealignerTargetCreator.pl`. You will need to adjust the `$reference_genome` variable to match your chromosome.
 
-In this script the `@files = glob("*_sorted.bam");` command uses the `glob` function to look for all files in your directory with that end with "_sorted.bam" and then it adds them to an array called `@files`. The `$status = system($commandline);` line executes the test stored in the $commandline variable. The commandline executes the java `.jar` file and allocates a maximum of 1 Gb of memory for the Java virtual machine (`-Xmx1G`).
+In this script the `@files = glob("*_sorted.bam");` command uses the `glob` function to look for all files in your directory with that end with "_sorted.bam" and then it adds them to an array called `@files`. The `$status = system($commandline);` line executes the test stored in the `$commandline` variable. The commandline executes the java `.jar` file and allocates a maximum of 1 Gb of memory for the Java virtual machine (`-Xmx1G`).
 
 When it is done, please check out the file it made like this:
 
