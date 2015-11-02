@@ -93,6 +93,8 @@ $status = system($commandline);
 
 As above, please copy and paste this script, make it executable, and execute it. You could name this script `Step_2_execute_GATK_IndelRealigner.pl`. Please don't forget to modify the name of your reference chromosome as appropriate.
 
+If your run completed successfully, you should see new bam files that have the ending `*_sorted_realigned.bam`. These files should be about the same size as the `*sorted.bam` files.  Please check this by typing `ls -l`.
+
 # Problem 7. OK please do these steps at home on the full data set.
 
 # OK, now let's move on to base recalibration with GATK [here](https://github.com/evansbenj/BIO720/blob/master/9_GATK_and_base_recalibration.md).
