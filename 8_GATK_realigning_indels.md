@@ -1,4 +1,4 @@
-# The Genome Analysis Toolkit (GATK): base recalibration and SNP calling.
+# The Genome Analysis Toolkit (GATK): indel realignment.
 
 ## Or you can go back to using `Stacks` to generate files for Phylip and Structure [here](https://github.com/evansbenj/BIO720/blob/master/7_Stacks_and_Structure.md).
 
