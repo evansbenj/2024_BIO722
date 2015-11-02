@@ -5,10 +5,10 @@ Or you can go back to realigning indels [here](https://github.com/evansbenj/BIO7
 Now that we have the indels realigned, we can proceed with base recalibration.
 
 There are several `GATK` functions that we need to execute to accomplish this. We can do these in one perl script that does the following:
-1. Use UnifiedGenotyper to output a **vcf file** with variable sites.
-2. Use BaseRecalibrator to output a **base recalibration table** based on these sites.
-3. Use PrintReads to output a **new concatenated bam file** with Recalibrated quality scores.
-4. Use UnifiedGenotyper to recall the genotypes using the new quality scores, output a new **vcf file**.
+* Use UnifiedGenotyper to output a **vcf file** with variable sites.
+* Use BaseRecalibrator to output a **base recalibration table** based on these sites.
+* Use PrintReads to output a **new concatenated bam file** with Recalibrated quality scores.
+* Use UnifiedGenotyper to recall the genotypes using the new quality scores, output a new **vcf file**.
 
 ``` perl
 #!/usr/bin/perl
@@ -20,7 +20,7 @@ use strict;
 # (1) Use UnifiedGenotyper to output a vcf file with variable sites
 # (2) Use BaseRecalibrator to output a base recalibration table based on these sites
 # (3) Use PrintReads to output a new concatenated bam file with Recalibrated quality scores
-# (4) Use UnifiedGenotyper to recall the genotypes using the new quality scores.
+# (4) Use UnifiedGenotyper to recall the genotypes using the new quality scores; output a new vcf file.
 
 my $path_to_reference_genome="~/my_monkey_chromosome/";
 my $reference_genome="chrXXX.fa";
