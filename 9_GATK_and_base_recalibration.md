@@ -91,11 +91,13 @@ How can we determine whether base recalibration made a difference?  To accomplis
 To use `vcftools`, we need to gzip and index the vcf files we will compare. Please type this:
 
 `/usr/local/tabix/bgzip nonrecal_varonly.vcf`
+
 `/usr/local/tabix/bgzip recalibrated_round1.vcf`
 
 This makes two files with a suffix `gz`.  Now please type this:
 
 `/usr/local/tabix/tabix -p vcf nonrecal_varonly.vcf.gz`
+
 `/usr/local/tabix/tabix -p vcf recalibrated_round1.vcf.gz`
 
 Now we can use the `vcf-compare` module of `vcftools` to compare these vcf files like this:
