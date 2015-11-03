@@ -12,18 +12,16 @@ Here's an example of a script that can do these steps.  Please copy this and mak
 
 
 ``` perl
-
-
-#!/usr/bin/perl
+!/usr/bin/perl                                                                                                                                                           
 use warnings;
 use strict;
 
-# This script will do the following:
-# (1) it will use UnifiedGenotyper to recall bases with recalibrated quality scores
-# and output a vcf file with all sites, including variant and homozygous calls.
-# (2) It will then use SelectVariants to make another vcf file with only indels in it. 
-# (3) then it will use VariantFiltration to mark indels and other potentially low quality sites near indels
-# (4) it will use SelectVariants to output an filtered vcf file from which filtered positions have been removed.
+# This script will do the following:                                                                                                                                      
+# (1) it will use UnifiedGenotyper to recall bases with recalibrated quality scores                                                                                       
+# and output a vcf file with all sites, including variant and homozygous calls.                                                                                           
+# (2) It will then use SelectVariants to make another vcf file with only indels in it.                                                                                    
+# (3) then it will use VariantFiltration to mark indels and other potentially low quality sites near indels                                                               
+# (4) it will use SelectVariants to output an filtered vcf file from which filtered positions have been removed.                                                          
 
 
 
@@ -31,25 +29,25 @@ my $path_to_reference_genome="~/my_monkey_chromosome/";
 my $reference_genome="chrXXX.fa";
 my $status;
 
-# output all sites with UnifiedGenotyper
+# output all sites with UnifiedGenotyper                                                                                                                                  
 my $commandline = "java -Xmx3G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R ".$path_to_reference_genome.$reference_genome;
 $commandline = $commandline." -I concatentated_and_recalibrated_round1.bam";
 $commandline = $commandline." -out_mode EMIT_ALL_CONFIDENT_SITES -o recalibrated_round1_allsites.vcf";
 $status = system($commandline);
 
-# make a file with only indels using SelectVariants
-$commandline = "java -Xmx2G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T SelectVariants -R ".$path_to_reference_genome.$reference_genome; 
+# make a file with only indels using SelectVariants                                                                                                                       
+$commandline = "java -Xmx2G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T SelectVariants -R ".$path_to_reference_genome.$reference_genome;
 $commandline = $commandline." --variant recalibrated_round1_allsites.vcf -selectType INDEL -o indels_only.vcf";
 $status = system($commandline);
 
-# flag the vcf file using the indel file
-$commandline = "java -Xmx3G -jar GenomeAnalysisTK.jar -T VariantFiltration -R ".$path_to_reference_genome.$reference_genome; 
-$commandline = $commandline."-o flagged.vcf --variant recalibrated_round1_allsites.vcf "
+# flag the vcf file using the indel file                                                                                                                                  
+$commandline = "java -Xmx3G -jar GenomeAnalysisTK.jar -T VariantFiltration -R ".$path_to_reference_genome.$reference_genome;
+$commandline = $commandline."-o flagged.vcf --variant recalibrated_round1_allsites.vcf ";
 $commandline = $commandline." --mask indels_only.vcf --maskName INDEL --maskExtension 10";
 $status = system($commandline);
 
-# output a new filtered genotype file using SelectVariants
-java -Xmx2g -jar GenomeAnalysisTK.jar -T SelectVariants -R ".$path_to_reference_genome.$reference_genome;
+# output a new filtered genotype file using SelectVariants                                                                                                                
+$commandline = "java -Xmx2g -jar GenomeAnalysisTK.jar -T SelectVariants -R ".$path_to_reference_genome.$reference_genome;
 $commandline = $commandline." --variant flagged.vcf -o filtered.vcf -select \'vc.isNotFiltered()\'";
 $status = system($commandline);
 
