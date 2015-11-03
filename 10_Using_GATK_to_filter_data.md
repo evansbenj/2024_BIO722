@@ -38,7 +38,7 @@ $commandline = $commandline." -out_mode EMIT_ALL_CONFIDENT_SITES -o recalibrated
 $status = system($commandline);
 
 # make a file with only indels using SelectVariants
-$commandline = "java -Xmx2G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T SelectVariants -R .$path_to_reference_genome.$reference_genome; 
+$commandline = "java -Xmx2G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T SelectVariants -R " .$path_to_reference_genome.$reference_genome; 
 $commandline = $commandline." --variant recalibrated_round1_allsites.vcf -selectType INDEL -o indels_only.vcf";
 $status = system($commandline);
 
