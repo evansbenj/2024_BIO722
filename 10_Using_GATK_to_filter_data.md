@@ -4,7 +4,9 @@ Or go back to GATK and base recalibration [here](https://github.com/evansbenj/BI
 
 It is often the case, despite our efforts to generate high quality genotype calls, that some genotypes just don't make sense.  For example, we might observe a heterozygous genotype on the male specific portion of the Y chromosome or we might see some genotypes from a female on the Y chromosome. We can easily identify and screen out these sites (i.e. filter them) using `GATK`.
 
-For the purposes of this class, we will first generate a vcf file that has all of the called sites in it (previous vcf files had only variable sites). We will then filter these data based on whether they are near an insertion deletion. Ben will discuss other filtering steps we can do that are relevant to datasets mapped to a complete genome (as opposed to our data which are mapped to individual chromosomes).
+For the purposes of this class, we will first generate a vcf file that has all of the called sites in it (previous vcf files had only variable sites). We will then filter these data based on whether they are near an insertion/deletion (indel), and output a filtered vcf file that has these sites removed. 
+
+Ben will discuss other filtering steps we can do that are relevant to datasets mapped to a complete genome (as opposed to our data which are mapped to individual chromosomes).
 
 Here's an example of a script that can do these steps.  Please copy this and make an executeable file and execute it on the subset data we have been working with. You could name it "Step_4_flag_and_filter.pl".
 
