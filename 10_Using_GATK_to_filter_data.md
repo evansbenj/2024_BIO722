@@ -22,8 +22,8 @@ use strict;
 # (1) it will use UnifiedGenotyper to recall bases with recalibrated quality scores
 # and output a vcf file with all sites, including variant and homozygous calls.
 # (2) It will then use SelectVariants to make another vcf file with only indels in it. 
-# (3) then it will use VariantFiltration to mark indels and other low quality sites
-# (4) it will use SelectVariants to output a filtered vcf file.
+# (3) then it will use VariantFiltration to mark indels and other potentially low quality sites near indels
+# (4) it will use SelectVariants to output an filtered vcf file from which filtered positions have been removed.
 
 
 
