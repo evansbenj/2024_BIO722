@@ -56,6 +56,7 @@ $status = system($commandline);
 Other examples one could add to the VariantFilteration command line for Ben to discuss:
 ```
 --filterExpression "DP < 5" --filterName "LowCoverage" 
+--filterExpression "MQ0 >= 4 && ((MQ0 / (1.0 * DP)) > 0.1)" --filterName "HARD_TO_VALIDATE" 
 --filterExpression "CHROM == 'chrY' && vc.getGenotype('PF515').isHom()" --filterName "Y_chrom_homoz_filter_for_PF515"
 ```
 
