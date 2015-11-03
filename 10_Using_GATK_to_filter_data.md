@@ -4,6 +4,8 @@ Or go back to GATK and base recalibration [here](https://github.com/evansbenj/BI
 
 It is often the case, despite our efforts to generate high quality genotype calls, that some genotypes just don't make sense.  For example, we might observe a heterozygous genotype on the male specific portion of the Y chromosome or we might see some genotypes from a female on the Y chromosome. We can easily identify and screen out these sites (i.e. filter them) using `GATK`.
 
+For the purposes of this class, we will 
+
 ``` perl
 
 
@@ -40,7 +42,7 @@ $status = system($commandline);
 # filter the vcf file using the indel file and other criteria using VariantFiltration
 $commandline = "java -Xmx3G -jar GenomeAnalysisTK.jar -T VariantFiltration -R ".$path_to_reference_genome.$reference_genome; 
 $commandline = $commandline."-o marked.vcf --variant recalibrated_round1_allsites.vcf "
-$commandline = $commandline." --filterExpression \"DP < 5 \" --filterName \"LowCoverage\"";
+$commandline = $commandline." --filterExpression \"DP < 5 \" --filterName \"LowCoverage\" --mask indels_only.vcf --maskName INDEL --maskExtension 10";
 
 #--filterExpression "CHROM == 'chrY' && vc.getGenotype('PF515').isHom()" --filterName "Y_chrom_homoz_filter_for_PF515" 
 
