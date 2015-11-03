@@ -14,7 +14,7 @@ Now we are ready to generate an input file for `Structure`.  Please type this co
 
 `/usr/local/stacks/bin/populations -P ./ -b 1 -r 1 -t 36 --structure --write_single_snp -W ./1000_randoms`
 
-This command directed the `populations` module of `Stacks` to output a single snp (the `--write_single_snp` flag) from tags specified by the `1000_randoms` file (the `-W` tag). Here the -W flag specifies a "Whitelist", which is a lost of RADtags to include (exclusively) in the analysis.
+This command directed the `populations` module of `Stacks` to output a single snp (the `--write_single_snp` flag) from tags specified by the `1000_randoms` file (the `-W` tag). Here the -W flag specifies a "Whitelist", which is a list of RADtags to include (exclusively) in the analysis.
 
 This generated a file called `batch_1.structure.tsv` which can be used as an input file for the program `Structure`.  Please copy this to your home directory like this:
 
