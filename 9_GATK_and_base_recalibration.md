@@ -36,24 +36,21 @@ my @files;
 
 # construct a commandline for the UnifiedGenotyper; output a vcf file with only variable sites
 my $commandline = "java -Xmx1G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R ".$path_to_reference_genome.$reference_genome;
-
 foreach(@files){
     $commandline = $commandline." -I ".$_." ";
 }
-
-$commandline = $commandline." -out_mode EMIT_VARIANTS_ONLY -o ./nonrecal_varonly.vcf";
+$commandline = $commandline."-out_mode EMIT_VARIANTS_ONLY -o ./nonrecal_varonly.vcf";
 
 # Execute this command line to call genotypes
 $status = system($commandline);
 
 # Now make a new commandline for the BaseRecalibrator, output a table for base recalibration 
-$commandline = "java -Xmx3G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T BaseRecalibrator -R ".$path_to_reference_genome.$reference_genome." ";
-
+$commandline = "java -Xmx3G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T BaseRecalibrator -R ".$path_to_reference_genome.$reference_genome;
 foreach(@files){
     $commandline = $commandline." -I ".$_." ";
 }
 
-$commandline = $commandline." -knownSites ./nonrecal_varonly.vcf -o recal_data.table";
+$commandline = $commandline."-knownSites ./nonrecal_varonly.vcf -o recal_data.table";
 
 # Execute this command line
 $status = system($commandline);
