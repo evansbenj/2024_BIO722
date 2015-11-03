@@ -33,23 +33,22 @@ my $status;
 my $commandline = "java -Xmx3G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R ".$path_to_reference_genome.$reference_genome;
 $commandline = $commandline." -I concatentated_and_recalibrated_round1.bam";
 $commandline = $commandline." -out_mode EMIT_ALL_CONFIDENT_SITES -o recalibrated_round1_allsites.vcf";
-
 $status = system($commandline);
 
 # make a file with only indels using SelectVariants
 $commandline = "java -Xmx2G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T SelectVariants -R .$path_to_reference_genome.$reference_genome; 
 $commandline = $commandline." --variant recalibrated_round1_allsites.vcf -selectType INDEL -o indels_only.vcf";
-
 $status = system($commandline);
 
-# filter the vcf file using the indel file and other criteria using VariantFiltration
+# flag the vcf file using the indel file
 $commandline = "java -Xmx3G -jar GenomeAnalysisTK.jar -T VariantFiltration -R ".$path_to_reference_genome.$reference_genome; 
-$commandline = $commandline."-o marked.vcf --variant recalibrated_round1_allsites.vcf "
+$commandline = $commandline."-o flagged.vcf --variant recalibrated_round1_allsites.vcf "
 $commandline = $commandline." --mask indels_only.vcf --maskName INDEL --maskExtension 10";
+$status = system($commandline);
 
 # output a new filtered genotype file using SelectVariants
 java -Xmx2g -jar GenomeAnalysisTK.jar -T SelectVariants -R ".$path_to_reference_genome.$reference_genome;
-$commandline = $commandline." --variant marked.vcf -o filtered.vcf -select \'vc.isNotFiltered()\'";
+$commandline = $commandline." --variant flagged.vcf -o filtered.vcf -select \'vc.isNotFiltered()\'";
 $status = system($commandline);
 
 ```
