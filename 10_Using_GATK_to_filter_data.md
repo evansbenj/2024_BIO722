@@ -8,7 +8,7 @@ For the purposes of this class, we will first generate a vcf file that has all o
 
 Ben will discuss other filtering steps we can do that are relevant to datasets mapped to a complete genome (as opposed to our data which are mapped to individual chromosomes).
 
-Here's an example of a script that can do these steps.  Please copy this and make an executeable file and execute it on the subset data we have been working with. You could name it "Step_4_flag_and_filter.pl".
+Here's an example of a script that can do these steps.  Please copy this and make an executeable file and execute it on the subset data we have been working with. You could name it `Step_4_flag_and_filter.pl`.
 
 
 ``` perl
