@@ -45,8 +45,6 @@ $commandline = "java -Xmx3G -jar GenomeAnalysisTK.jar -T VariantFiltration -R ".
 $commandline = $commandline."-o marked.vcf --variant recalibrated_round1_allsites.vcf "
 $commandline = $commandline." --mask indels_only.vcf --maskName INDEL --maskExtension 10";
 
-#--filterExpression "CHROM == 'chrY' && vc.getGenotype('PF515').isHom()" --filterName "Y_chrom_homoz_filter_for_PF515" 
-
 # output a new filtered genotype file using SelectVariants
 java -Xmx2g -jar GenomeAnalysisTK.jar -T SelectVariants -R ".$path_to_reference_genome.$reference_genome;
 $commandline = $commandline." --variant marked.vcf -o filtered.vcf -select \'vc.isNotFiltered()\'";
