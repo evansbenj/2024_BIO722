@@ -3,3 +3,50 @@
 Or go back to GATK and base recalibration [here](https://github.com/evansbenj/BIO720/blob/master/9_GATK_and_base_recalibration.md).
 
 It is often the case, despite our efforts to generate high quality genotype calls, that some genotypes just don't make sense.  For example, we might observe a heterozygous genotype on the male specific portion of the Y chromosome or we might see some genotypes from a female on the Y chromosome. We can easily identify and screen out these sites (i.e. filter them) using `GATK`.
+
+``` perl
+
+
+#!/usr/bin/perl
+use warnings;
+use strict;
+
+# This script will do the following:
+# (1) it will use UnifiedGenotyper to recall bases with recalibrated quality scores
+# and output a vcf file with all sites, including variant and homozygous calls.
+# (2) It will then use SelectVariants to make another vcf file with only indels in it. 
+# (3) then it will use VariantFiltration to mark indels and other low quality sites
+# (4) it will use SelectVariants to output a filtered vcf file.
+
+
+
+my $path_to_reference_genome="~/my_monkey_chromosome/";
+my $reference_genome="chrXXX.fa";
+my $status;
+
+# output all sites with UnifiedGenotyper
+my $commandline = "java -Xmx3G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R ".$path_to_reference_genome.$reference_genome;
+$commandline = $commandline." -I concatentated_and_recalibrated_round1.bam";
+$commandline = $commandline." -out_mode EMIT_ALL_CONFIDENT_SITES -o recalibrated_round1_allsites.vcf";
+
+$status = system($commandline);
+
+# make a file with only indels using SelectVariants
+$commandline = "java -Xmx2G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T SelectVariants -R .$path_to_reference_genome.$reference_genome; 
+$commandline = $commandline." --variant recalibrated_round1_allsites.vcf -selectType INDEL -o indels_only.vcf";
+
+$status = system($commandline);
+
+# filter the vcf file using the indel file and other criteria using VariantFiltration
+$commandline = "java -Xmx3G -jar GenomeAnalysisTK.jar -T VariantFiltration -R ".$path_to_reference_genome.$reference_genome; 
+$commandline = $commandline."-o marked.vcf --variant recalibrated_round1_allsites.vcf "
+$commandline = $commandline." --filterExpression \"DP < 5 \" --filterName \"LowCoverage\"";
+
+#--filterExpression "CHROM == 'chrY' && vc.getGenotype('PF515').isHom()" --filterName "Y_chrom_homoz_filter_for_PF515" 
+
+# output a new filtered genotype file using SelectVariants
+java -Xmx2g -jar GenomeAnalysisTK.jar -T SelectVariants -R ".$path_to_reference_genome.$reference_genome;
+$commandline = $commandline." --variant marked.vcf -o filtered.vcf -select \'vc.isNotFiltered()\'";
+$status = system($commandline);
+
+```
