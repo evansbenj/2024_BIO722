@@ -12,6 +12,13 @@ There are still a few concerns with these approaches and one might view them as 
 
 The Genome Analysis Toolkit [GATK](https://www.broadinstitute.org/gatk/) provides solutions to these concerns and in general may provide better genotype calls than `Stacks`. Similar to `Stacks`, `GATK` is a suite of programs or functions.  `GATK` is written in java. In class we will use `GATK` to realign our data near indels across our sample, correct our quality scores (i.e perform "base recalibration"), and then do genotype calling using the adjusted quality scores concurrently across all of the individuals in our study. We will then use various functions to filter our high quality genotypes, leaving only the "super duper high quality" data for our analysis.
 
+To summarize, GATK can do lots of things. Here, we will use it to:
+* Realign indels (RealignerTargetCreator, IndelRealigner)
+* Recalibrate base quality scores (BaseRecalibrator, PrintReads)
+* Call genotypes (UnifiedGenotyper)
+* Filter genotype calls (VariantFiltration, SelectVariants)
+
+
 # A brief note about Ben's approach to using `GATK` (and doing analyses in general)
 
 An important part of any study is its ability to be replicated by others. In fact, a journal could reject your paper if there are insufficient details about your methodology to allow for someone to repeat the analysis. For this reason it is minimally crucial to write down every step that you perform in your analysis, including the version of the software you use, and it is adviseable to make available the scripts you use to the community. The latter point can easily be done with databases such as [dryad](http://datadryad.org/). For describing in detail the steps of an analysis, I find it useful to have every step performed by a script. For the purposes of this class, we will first perform one step at a time, each with one script (we will use `perl` scripts). After this we will do multiple steps with one script. As you will see (and have seen with the bash script we used earlier), this also makes the building of commandlines quite simple, and saves you from typing out sample names and directories by hand.
