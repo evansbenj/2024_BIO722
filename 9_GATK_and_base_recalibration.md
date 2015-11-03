@@ -12,7 +12,7 @@ There are several `GATK` functions that we need to execute to accomplish this. W
 * Use PrintReads to output a **new concatenated bam file** with Recalibrated quality scores.
 * Use UnifiedGenotyper to recall the genotypes using the new quality scores, output a new **vcf file**.
 
-I wrote another perl script that can do this for us below. In class, please run this on the subset realigned bam files. 
+I wrote another perl script that can do this for us below. In class, please run this on the subset realigned bam files. You could name it `Step_3_base_recalibration.pl`
 
 ``` perl
 #!/usr/bin/perl
