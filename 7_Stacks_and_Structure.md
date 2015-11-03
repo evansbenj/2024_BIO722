@@ -65,7 +65,7 @@ This tells us, for each individual, what the probability that that individual is
 
 ## A quick example of plotting with `R`
 
-We can plot this by making a file and pasting these data in a file using your favorite text editor. Please paste the data beginning with the line `1 PF515_sorte...` and save it.  THen type: `R` to open up the `R` environment.  
+We can plot this by making a file and pasting these data in a file using your favorite text editor. Please paste the data shown above but beginning with the line `1 PF515_sorte...` and save it. Could could call the file `assignments`.  THen type: `R` to open up the `R` environment.  
 
 Now import the data:
 
