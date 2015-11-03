@@ -4,7 +4,7 @@
 
 We can also use `Stacks` to export an input file for phylogenetic analysis.  Let's try this now.
 
-From within your `Stacks_Results` directoyr, please use your favorite text editor to make a population map file called `population_map_all_different` in which all individuals were assigned to a different population.  This tab-delimited file looks like this:
+From within your `Stacks_Results` directory, please use your favorite text editor to make a population map file called `population_map_all_different` in which all individuals were assigned to a different population.  This tab-delimited file looks like this:
 
 ```
 PF515_sorted    PF515
