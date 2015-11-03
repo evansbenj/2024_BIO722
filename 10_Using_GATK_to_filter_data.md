@@ -42,7 +42,7 @@ $status = system($commandline);
 
 # flag the vcf file using the indel file                                                                                                                                  
 $commandline = "java -Xmx3G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T VariantFiltration -R ".$path_to_reference_genome.$reference_genome;
-$commandline = $commandline."-o flagged.vcf --variant recalibrated_round1_allsites.vcf ";
+$commandline = $commandline." -o flagged.vcf --variant recalibrated_round1_allsites.vcf ";
 $commandline = $commandline." --mask indels_only.vcf --maskName INDEL --maskExtension 10";
 $status = system($commandline);
 
