@@ -83,19 +83,19 @@ As previously, you will need to modify this script to point to the path and file
 
 ## Comparing genotype calls before and after base recalibration
 
-How can we determine whether base recalibration made a difference?  To accomplish this, we can use software called `vcftools` to compare the base calls made before (`nonrecal_varonly.vcf`) and after (`recalibrated_round1.vcf`) base recalibration.
+How can we determine whether base recalibration made a difference?  To accomplish this, we can use software called `vcftools` to compare the base calls made before (`nonrecal_varonly.vcf`) and after (`concatentated_and_recalibrated_round1.vcf`) base recalibration.
 
 To use `vcftools`, we need to gzip and index the vcf files we will compare. Please type this:
 
 `/usr/local/tabix/bgzip nonrecal_varonly.vcf`
 
-`/usr/local/tabix/bgzip recalibrated_round1.vcf`
+`/usr/local/tabix/bgzip concatentated_and_recalibrated_round1.vcf`
 
 This makes two files with a suffix `gz`.  Now please type this:
 
 `/usr/local/tabix/tabix -p vcf nonrecal_varonly.vcf.gz`
 
-`/usr/local/tabix/tabix -p vcf recalibrated_round1.vcf.gz`
+`/usr/local/tabix/tabix -p vcf concatentated_and_recalibrated_round1.vcf.gz`
 
 In order for `vcftools` to work we need to make sure it knows where to find the `tabix` program. Please type this:
 
@@ -107,7 +107,7 @@ Now we can use the `vcf-compare` module of `vcftools` to compare these vcf files
 
 so you can type this:
 
-`/usr/local/vcftools/src/perl/vcf-compare nonrecal_varonly.vcf.gz recalibrated_round1.vcf.gz > compare.out`
+`/usr/local/vcftools/src/perl/vcf-compare nonrecal_varonly.vcf.gz concatentated_and_recalibrated_round1.vcf.gz > compare.out`
 
 Now check out the output (`more compare.out`), which is basically a Venn diagram of SNPs in each vcf file. Is there a big difference between these files and if so what is the nature of this difference?
 
