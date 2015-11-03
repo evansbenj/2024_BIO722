@@ -53,12 +53,25 @@ $status = system($commandline);
 
 ```
 
-Other examples one could add to the VariantFilteration command line for Ben to discuss:
-```
---filterExpression "DP < 5" --filterName "LowCoverage" 
---filterExpression "MQ0 >= 4 && ((MQ0 / (1.0 * DP)) > 0.1)" --filterName "HARD_TO_VALIDATE" 
---filterExpression "CHROM == 'chrY' && vc.getGenotype('PF515').isHom()" --filterName "Y_chrom_homoz_filter_for_PF515"
-```
+Note that this part of the `VariantFiltration` commandline:
+
+` --mask indels_only.vcf --maskName INDEL --maskExtension 10`
+
+will flag indels and also sites +/- 10 bp from indels.
+
+Other examples one could add to the VariantFilteration command line for Ben to discuss include:
+
+`--filterExpression "DP < 5" --filterName "LowCoverage" `
+
+which flags sites with an average depth of coverage less than 5,
+
+`--filterExpression "MQ0 >= 4 && ((MQ0 / DP) > 0.1)" --filterName "HARD_TO_VALIDATE" `
+
+which flags sites with at least 4 reads that map well to another part of the genome and where these reads comprise more than 10% of the reads at that position, and
+
+`--filterExpression "CHROM == 'chrY' && vc.getGenotype('PF515').isHom()" --filterName "Y_chrom_homoz_filter_for_PF515"`
+
+which flags sites on the Y chromosome that are homozygous in individual PF515.
 
 # Problem 9.
 
