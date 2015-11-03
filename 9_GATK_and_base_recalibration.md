@@ -53,7 +53,7 @@ foreach(@files){
     $commandline = $commandline." -I ".$_." ";
 }
 
-$commandline = $commandline." -knownSites ./nonrecal_varonly_unifiedgenotyper.vcf -o recal_data.table";
+$commandline = $commandline." -knownSites ./nonrecal_varonly.vcf -o recal_data.table";
 
 # Execute this command line
 $status = system($commandline);
