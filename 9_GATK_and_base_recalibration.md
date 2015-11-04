@@ -109,7 +109,7 @@ Now we can use the `vcf-compare` module of `vcftools` to compare these vcf files
 
 so you can type this:
 
-`/usr/local/vcftools/src/perl/vcf-compare nonrecal_varonly.vcf.gz concatentated_and_recalibrated_round1.vcf.gz > compare.out`
+`/usr/local/vcftools/src/perl/vcf-compare nonrecal_varonly.vcf.gz recalibrated_round1.vcf.gz > compare.out`
 
 Now check out the output (`more compare.out`), which is basically a Venn diagram of SNPs in each vcf file. Is there a big difference between these files and if so what is the nature of this difference?
 
