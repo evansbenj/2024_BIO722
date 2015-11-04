@@ -91,7 +91,7 @@ To use `vcftools`, we need to gzip and index the vcf files we will compare. Plea
 
 `/usr/local/tabix/bgzip nonrecal_varonly.vcf`
 
-`/usr/local/tabix/bgzip concatentated_and_recalibrated_round1.vcf`
+`/usr/local/tabix/bgzip recalibrated_round1.vcf`
 
 This makes two files with a suffix `gz`.  Now please type this:
 
