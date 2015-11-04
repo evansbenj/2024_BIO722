@@ -97,7 +97,7 @@ This makes two files with a suffix `gz`.  Now please type this:
 
 `/usr/local/tabix/tabix -p vcf nonrecal_varonly.vcf.gz`
 
-`/usr/local/tabix/tabix -p vcf concatentated_and_recalibrated_round1.vcf.gz`
+`/usr/local/tabix/tabix -p vcf recalibrated_round1.vcf.gz`
 
 In order for `vcftools` to work we need to make sure it knows where to find the `tabix` program. Please type this:
 
