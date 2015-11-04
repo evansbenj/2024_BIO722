@@ -4,6 +4,8 @@
 
 ## Base recalibration and recalling genotypes
 
+Check out a description of the problem [here](http://gatkforums.broadinstitute.org/discussion/44/base-quality-score-recalibration-bqsr).
+
 Now that we have the indels realigned, we can proceed with base recalibration.
 
 There are several `GATK` functions that we need to execute to accomplish this. We can do these in one perl script that does the following:
