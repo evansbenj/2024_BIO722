@@ -12,7 +12,7 @@ Here's an example of a script that can do these steps.  Please copy this and mak
 
 
 ``` perl
-!/usr/bin/perl                                                                                                                                                           
+#!/usr/bin/perl                                                                                                                                                          
 use warnings;
 use strict;
 
