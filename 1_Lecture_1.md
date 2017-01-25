@@ -12,7 +12,7 @@ Your statistical power, precision, and accuracy will depend on the quantity and 
 
 ## How much does this cost and where can I do it?
 
-I've done RADseq multiple times at [Floragenix](http://www.floragenex.com/), which is located in Oregon, USA.  I've also done Genotype by Sequencing at [Cornell University](http://www.biotech.cornell.edu/brc/genomic-diversity-facility) in New York, USA.  In 2017, the prices for a 95 RADseq sample run, including library preparation but no bioinformatics is  US$3325. 150bp single end reads on one lane of a HiSeq4000 machine will cost around US$1670.I anticipate that the cost of these services will decline considerably over the next few years and that more sequencing centers will offer this service.
+I've done RADseq multiple times at [Floragenix](http://www.floragenex.com/), which is located in Oregon, USA.  I've also done Genotype by Sequencing at [Cornell University](http://www.biotech.cornell.edu/brc/genomic-diversity-facility) in New York, USA.  In 2017, the prices for a 95 RADseq sample run, including library preparation but no bioinformatics is  US$3325. 150bp single end reads on one lane of a HiSeq4000 machine will cost around US$1670. I anticipate that the cost of these services will decline considerably over the next few years and that more sequencing centers will offer this service.
 
 ## A quick note about Markdown and Github
 
