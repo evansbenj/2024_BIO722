@@ -43,13 +43,13 @@ In this sequence the number signs indicate low quality reads at the end (right s
 ## Example data
 The data we will be working witb are single end 100 bp reads from one Illumina lane. The data are from 9 individuals that were barcoded and multiplexed on this lane (see below for more explanation). The path to the complete dataset is:
 
-`/1/scratch/BIO720_Bens_section/complete_data/forward.fastq`
+`/1/scratch/monkey_data2/forward.fastq`
 
 Please use the `ls` command to find out how large this file is.
 
-As you (hopefully) can see, this is a LARGE file.  Because the tasks we will perform take a while with this much data, I made a smaller dataset to work with here:
+As you (hopefully) can see, this is a LARGE file (~32 Gb).  Because the tasks we will perform take a while with this much data, I made a smaller dataset (32Mb) to work with here:
 
-`/1/scratch/BIO720_Bens_section/subset_data/forward_subset.fastq`
+`/1/scratch/monkey_data2/forward_subset.fastq`
 
 In case you are interested, I made this using the unix `cat` and `awk` commands as follows:
 
@@ -62,13 +62,13 @@ Here the `cat` command pipes the file called 'forward.fastq` to the `awk command
 ## Quality Control
 Before we do anything with individual sequences, it is a good idea to survey the overall quality of the data.  We can do this with many free tools; for this class we will use a program called [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/).  To run this program please type this:
 
-`/usr/local/fastqc/fastqc -o output_directory datafile`
+`/usr/local/fastqc/fastqc datafile`
 
-where `output_directory` is the directory to which you want to write the output and `datafile` is the example dataset listed above (or whereever your data are). This should give you some feedback about the analysis as it runs and generate a file called `datafile.zip` in the output directory.  
+where `output_directory` is the directory to which you want to write the output and `datafile` is the example dataset listed above (or whereever your data are). This should give you some feedback about the analysis as it runs and generate a file called `datafile.zip`.  
 
 Here is an example of a commandline I ran:
 
-`/usr/local/fastqc/fastqc -o /home/evanslab /1/scratch/BIO720_Bens_section/subset_data/forward_subset.fastq`
+`/usr/local/fastqc/fastqc forward_subset.fastq`
 
 (You would have to change the `evanslab` part to match your home directory because you don't have write permissions to my directory). This command is equivalent to this: 
 
