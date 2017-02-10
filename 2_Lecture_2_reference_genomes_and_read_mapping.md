@@ -18,27 +18,23 @@ As an example, let's look at some information on the "completely" sequenced geno
 
 Reference genomes for many sequences are available at multiple publicly available databases.  We can download the complete genome sequence for the rhesus macaque from the [USC genome browser](http://hgdownload.cse.ucsc.edu/downloads.html#rhesus).  I did this earlier because it takes a while.  The whole genome comes as a fasta-formatted file, and I split it up into individual fasta files corresponding with each of the chromosomes.  These are located in this directory:
 
-`/1/scratch/BIO720_Bens_section/rhesus_chromosomes/`
+`/1/scratch/ben/rhesus_chromosomes/`
 
 Now check out what is in this directory by typing this:
 
-`ls /1/scratch/BIO720_Bens_section/rhesus_chromosomes/`
+`ls /1/scratch/ben/rhesus_chromosomes/`
 
-Ben will assign you a chromosome to work with.  Please copy this chromosome sequence to a new directory that you make like this:
+Ben will assign you a chromosome to work with.  Please make a symbolic link to this chromosome reference sequence in a new directory that you make like this:
 
 `mkdir ~/my_monkey_chromosome`
 
-and then copy your chromosome to that directory like this:
+and then change to that directory and make a symbolic link to the chromosome file like this:
 
-`cp /1/scratch/BIO720_Bens_section/rhesus_chromosomes/chrXXX.fa ~/my_monkey_chromosome/.` 
+`ln -s /1/scratch/ben/rhesus_chromosomes/chrZZZ.fa` 
 
-Here and henceforth, you will need to change the `chrXXX.fa` part to match whatever chromosome Ben assigned to you.  For example, if you are working on chromosome 9, you should type this:
+Here and henceforth, you will need to change the `chrZZZ.fa` part to match whatever chromosome Ben assigned to you.  For example, if you are working on chromosome 9, you should type this:
 
-`cp /1/scratch/BIO720_Bens_section/rhesus_chromosomes/chr9.fa ~/my_monkey_chromosome/.` 
-
-You can check whether you succeeded and also see how big this datafile is like this:
-
-`ls -l ~/my_monkey_chromosome/chrXXX.fa` 
+`ln -s /1/scratch/ben/rhesus_chromosomes/chr9.fa` 
 
 Before we map our data to this reference genome, we need to generate some files that will be used in the mapping process.  This can be done in three steps:
 
