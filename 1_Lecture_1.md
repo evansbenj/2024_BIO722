@@ -48,9 +48,11 @@ Please login to info and navigate to the scratch directory as follows:
 
 And make a directory for yourself
 
-`mkdir usrname`
+`mkdir XXXX`, where `XXX` is your username.
 
-And switch to that directory (`cd usrname`) and make a symbolic link to the subsetted data (`ln -s /1/scratch/monkey_data2/forward_subset.fastq`) and to the full dataset (`ln -s ln -s /1/scratch/monkey_data2/forward.fastq`)
+Next, please switch to that directory (`cd XXX`) and make a symbolic link to the subsetted data (`ln -s /1/scratch/monkey_data2/forward_subset.fastq`) and to the full dataset (`ln -s ln -s /1/scratch/monkey_data2/forward.fastq`)
+
+OK, now we have the data set up for us to work with.
 
 ## Example data
 The data we will be working witb are single end 100 bp reads from one Illumina lane. The data are from 9 individuals that were barcoded and multiplexed on this lane (see below for more explanation). The path to the complete dataset is:
@@ -74,28 +76,20 @@ Here the `cat` command pipes the file called 'forward.fastq` to the `awk command
 ## Quality Control
 Before we do anything with individual sequences, it is a good idea to survey the overall quality of the data.  We can do this with many free tools; for this class we will use a program called [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/).  To run this program please type this:
 
-`/usr/local/fastqc/fastqc datafile`
+`/usr/local/fastqc/fastqc forward_subset.fastq`
 
-where `output_directory` is the directory to which you want to write the output and `datafile` is the example dataset listed above (or whereever your data are). This should give you some feedback about the analysis as it runs and generate a file called `datafile.zip`.  
+This should give you some feedback about the analysis as it runs and generate a file called `datafile.zip` and an html file called `forward_subset_fastqc.html`.
+
+Please download the `html` file to your local computer and open it in a browser (or watch Ben do this).
 
 Here is an example of a commandline I ran:
 
 `/usr/local/fastqc/fastqc forward_subset.fastq`
 
-(You would have to change the `evanslab` part to match your home directory because you don't have write permissions to my directory). This command is equivalent to this: 
-
-`fastqc -o ~ /1/scratch/BIO720_Bens_section/subset_data/forward_subset.fastq`
-
-The latter command works because the program `fastqc` is already in your $PATH variable (thanks to Brian) and because the `~` is a shortcut for your home directory.
-
-Please download this `.zip` file to your computer, uncompress it, and open the `.html` file in a browser.  You should see the quality control plots that were generated that Brian went over in an earlier class.
-
 ## De-Multiplexing
 Most RRGS methods rely on the Illumina sequencing platform.  These machines generate data using something called a "flowcell" that is divided up into eight "lanes".  Small scale projects typically would run multiple samples (from different species or different individuals within a species) on one lane.  Because the sequence methodology requires the ligation (attachment) of a linker (a bit of DNA) to each side of bits of DNA that will be sequenced, it is straightforward to combine multiple samples (multiplex) from different individuals in a single lane. This is done by adding a unique identifier sequence (a barcode) to the linker that is used on each sample.  Note that this barcode is different from "DNA barcoding", the latter of which generally refers to the use of a small variable genomic region (such as the COI gene for animals) for species and population identification.
 
-A first step in our analysis pipeline is to organize data from each of our samples that were run together on an Illumina lane (De-multiplexing our data) and also to filter our data and trim off bits that have lots of errors or that have sequences from the laboratory procedures that were used to generate the data (Trimming/Quality control).  To begin please make sure you are in your home directory by typing this:
-
-`cd ~`
+A first step in our analysis pipeline is to organize data from each of our samples that were run together on an Illumina lane (De-multiplexing our data) and also to filter our data and trim off bits that have lots of errors or that have sequences from the laboratory procedures that were used to generate the data (Trimming/Quality control; next section).  
 
 When samples are run on an Illumina machine, DNA is broken up into many small fragments and a small bit of DNA called an adaptor is then added on each of the fragments. This adaptor allows the sequencing process to occur, essentially by making possible high-throughput put polymerase chain reaction (ask Ben about this if you are unfamiliar). To make possible the multiplexing of samples on one Illumina lane, each sample is linked to a unique adaptor that contains a "barcode" sequence that allows us to sort out which samples each sequence came from.  For our dataset, we have nine individuals from one species (the Tonkean macaque). Each of the samples received the following barcodes:
 
@@ -127,13 +121,13 @@ We will use this information in a moment to de-multiplex our data. Please use yo
 
 ## Quality control and trimming
 
-A first step in analysis of Illumina data is to identify adaptor and barcode sequences in our data, sort sequneces by the barcode, and remove the adaptor and barcode sequences from the data.  We can also get rid of sequences that have ambiguous barcodes due to sequencing errors. We additionally can get rid of sequences with low quality scores and trim them all so they have the same length (this last step would not normally be done for RNAseq data but it is a reasonable thing to do for RADseq data).
+A first step in analysis of Illumina data is to identify adaptor and barcode sequences in our data, sort sequences by the barcode, and remove adaptor and barcode sequences from the data.  We can also get rid of sequences that have ambiguous barcodes due to sequencing errors. We additionally can get rid of sequences with low quality scores and trim them all so they have the same length (this last step would not normally be done for RNAseq data but it is a reasonable thing to do for RADseq data).
 
 Illumina generates sequences that have errors in base calls.  Errors typically become more common towards the end of the sequence read, and sometimes (but not always) an "N" is inserted in positions where the base pair is difficult to call.  But sometimes it makes an incorrect call as well. 
 
 We will use software package called `Stacks` to de-multiplex and trim our data.  This is actually a suite of programs and we will be using the application called `process_radtags` within `Stacks`.  `Stacks` has a very nice online manual [here](http://catchenlab.life.illinois.edu/stacks/manual). FYI, other software that does trimming of RADseq data is available [here](https://github.com/johnomics/RADtools/blob/master/RADpools).
 
-Brian has installed most of the software we need in a directory called `/usr/local/bin`. Before we de-multiplex our data subset, we need to make a directory for the de-multiplexed data to be stored in. From your home directory (`cd ~`), please type this:
+Brian has installed most of the software we need in a directory called `/usr/local/bin`. Before we de-multiplex our data subset, we need to make a directory for the de-multiplexed data to be stored in. From your current directory  (`/1/scratch/XXX`), please type this:
 
 `mkdir samples`
 
@@ -150,7 +144,7 @@ The other flags tell `process_radtags` to remove adapter sequences that are spec
 
 Here is an example of the commandline I used to de-multiplex the subset of the data:
 
-`/usr/local/bin/process_radtags -f /1/scratch/BIO720_Bens_section/subset_data/forward_subset.fastq -b monkey.barcodes -o ./samples/ -e sbfI -t 75 -r -c -q --adapter_1 GATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG --adapter_2 AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT --adapter_mm 2 --filter_illumina`
+`/usr/local/bin/process_radtags -f forward_subset.fastq -b monkey.barcodes -o ./samples/ -e sbfI -t 75 -r -c -q --adapter_1 GATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG --adapter_2 AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT --adapter_mm 2 --filter_illumina`
 
 If you enter the `samples` directory, you should see your de-multiplexed files, each named by the barcode. Please rename each of these nine files to have the sample name instead of the barcode using the `mv` command.  For example:
 
@@ -170,12 +164,9 @@ How would your `grep` command differ for a `fasta` file compared to a `fastq` fi
 
 Please use FastQC to evaluate read quality of your trimmed sequences.  How do the trimmed reads differ from the untrimmed reads?
 
-## Practice problem 3: Now do this with the full dataset
+## Practice problem 3 (for home): Please do this with the full dataset (`forward.fastq`)
 
 After class, please use `process_radtags` to demultiplex the full dataset located here:
-
-`/1/scratch/monkey_data/forward.fastq`
-
 
 ## OK, now we are ready to move on to mapping reads to a reference genome.  Please click [here](https://github.com/evansbenj/BIO720/blob/master/2_Lecture_2_reference_genomes_and_read_mapping.md).
 
