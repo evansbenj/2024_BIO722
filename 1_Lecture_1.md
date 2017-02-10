@@ -40,6 +40,18 @@ AFHJJJFIJJJJIJJJJJHFDDDDDB0530&0)00&)0&05007BDD#################################
 
 In this sequence the number signs indicate low quality reads at the end (right side) of the sequence.  
 
+## Set up a directory on scratch and make symbolic links
+
+Please login to info and navigate to the scratch directory as follows:
+
+`cd /1/scratch/`
+
+And make a directory for yourself
+
+`mkdir usrname`
+
+And switch to that directory (`cd usrname`) and make a symbolic link to the subsetted data (`ln -s /1/scratch/monkey_data2/forward_subset.fastq`) and to the full dataset (`ln -s ln -s /1/scratch/monkey_data2/forward.fastq`)
+
 ## Example data
 The data we will be working witb are single end 100 bp reads from one Illumina lane. The data are from 9 individuals that were barcoded and multiplexed on this lane (see below for more explanation). The path to the complete dataset is:
 
