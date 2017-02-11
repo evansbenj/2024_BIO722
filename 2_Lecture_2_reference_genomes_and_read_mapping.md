@@ -103,20 +103,21 @@ The `samse` command of `bwa` tells the software that we are working with single-
 
 For example, you could type this:
 
-`bwa samse -r "@RG\tID:FLOWCELL1.LANE6\tSM:`ZZZ`\tPL:illumina" my_monkey_chromosome/chr9.fa samples/PF515_`ZZZ`.sai samples/PF515.fq | samtools view -bShu - > samples/PF515_`ZZZ`.bam
+`bwa samse -r "@RG\tID:FLOWCELL1.LANE6\tSM:`SAMPLEID`\tPL:illumina" my_monkey_chromosome/chr`ZZZ`.fa samples/PF515_chr`ZZZ`.sai samples/PF515.fq | samtools view -bShu - > samples/PF515_chr`ZZZ`.bam`
 
-Here you need to change the "ZZZ" to match the chromosome you are working with (for example change XXX to PF515 if you are working with sample PF515) and you need to type the path and filenames of your reference genome, the .sai file, and the fastq file.
+Here you need to change the "ZZZ" to match the chromosome you are working with and the "SAMPLEID" to the sample you are working with (e.g. PF515). You also need to type the path and filenames of your reference genome, the .sai file, and the fastq file.
 
 Now sort the `.bam` file:
 
 `samtools sort samples/data.bam samples/data_sorted`
 
-Here you do not need the `.bam` suffix after the `data_sorted` prefix; this suffix is added automatically by `samtools`.
+Here you do not need the `.bam` suffix after the `data_sorted` prefix; this suffix is added automatically by `samtools`. For example:
 
-Make an index for the bam file, which is a `.bai` file:
+`samtools sort samples/PF515_chrX.bam samples/PF515_chrX_sorted`
+
+Now please make an index for the bam file, which is a `.bai` file:
 
 `samtools index samples/data_sorted.bam`
-
 
 ## Updates to bwa
 
@@ -124,6 +125,7 @@ The `MEM` algorithm is an update to bwa that has a simpler pipeline for preparin
 
 `bwa mem -M -t 16 -r "@RG\tID:FLOWCELL1.LANE6\tSM:PF515\tPL:illumina" my_monkey_chromosome/chr9.fa samples/PF515.fq | samtools view -bSh - > samples/PF515.bam`
 
+We have not used this algorithm for this example because the Stacks software we are using is not compatible with the output (although a recent update is).
 
 ## Practice Problem 4: Assessing coverage
 
@@ -135,15 +137,15 @@ Where `XXX` is the sample ID number.  If you want to know the average depth acro
 
 `samtools depth XXX_sorted.bam | awk '{sum+=$3} END { print "Average = ",sum/NR}'`
 
-Here the vertical bar `|` is a "pipe" that sends the information from the command before it to the command after it.  So the data you generated from `samtools` will be parsed with the unix `awk` command.  This will add the values of the third column `$3` to a variable called `sum` and then at the end (`END`) print out the word `Average` followed by the quotient `sum/NR` where `NR` is a built in variable that keeps track of the number of records.  A good description of `awk` is [here](http://www.folkstalk.com/2011/12/good-examples-of-awk-command-in-unix.html).
+Here, as previously, the vertical bar `|` is a "pipe" that sends the information from the command before it to the command after it.  So the data you generated from `samtools` will be parsed with the unix `awk` command.  This will add the values of the third column `$3` to a variable called `sum` and then at the end (`END`) print out the word `Average` followed by the quotient `sum/NR` where `NR` is a built in variable that keeps track of the number of records.  A good description of `awk` is [here](http://www.folkstalk.com/2011/12/good-examples-of-awk-command-in-unix.html).
 
-## Practice Problem 5: De-multiplexing the complete dataset and mapping the data to your reference chromosome for one individual
+## Practice Problem 5 (for home): De-multiplexing the complete dataset and mapping the data to your reference chromosome for one individual
 
-Now it is your turn. Using the same pipeline we have just gone through, please do the following:
+Using the same pipeline we have just gone through, please do the following:
 * demultiplex the complete dataset
 * rename the resulting fastq files to match the sample names instead of the barcode sequences
 * map the complete data from one individual (e.g. PF515) to your reference chromosome.
 
-Now, using the manual for [samtools](http://www.htslib.org/doc/samtools-0.1.19.html) please figure out which samtools flag you can use to quantify how many reads mapped to your chromosome for your mapped data and how many failed to map.  Do you know why so many failed to map?
+Now, using the idxstats options of [samtools](http://www.htslib.org/doc/samtools-0.1.19.html) please check how many reads mapped to your chromosome for your mapped data and how many failed to map.  Do you know why so many failed to map?
 
 ## OK, if this all went smoothly we are now ready to automate the alignments with a bash script.  Please click [here](https://github.com/evansbenj/BIO720/blob/master/3_Lecture_3_Automating_alignment_with_bash.md) to go to the next page.
