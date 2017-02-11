@@ -42,28 +42,27 @@ In this sequence the number signs indicate low quality reads at the end (right s
 
 ## Set up a directory on scratch and make symbolic links
 
-Please login to info and navigate to the scratch directory as follows:
+Please login to info, connect to info115 (rsh info115) and navigate to the scratch directory as follows:
 
-`cd /1/scratch/`
+`cd /2/scratch/`
 
 And make a directory for yourself
 
 `mkdir XXXX`, where `XXX` is your username.
 
-Next, please switch to that directory (`cd XXX`) and make a symbolic link to the subsetted data (`ln -s /1/scratch/monkey_data2/forward_subset.fastq`) and to the full dataset (`ln -s ln -s /1/scratch/monkey_data2/forward.fastq`)
+Next, please switch to that directory (`cd XXX`) and make a symbolic link to a subsetted dataset (`ln -s /1/scratch/monkey_data2/forward_subset.fastq`) and to the full dataset (`ln -s /1/scratch/monkey_data2/forward.fastq`)
 
 OK, now we have the data set up for us to work with.
 
 ## Example data
 The data we will be working witb are single end 100 bp reads from one Illumina lane. The data are from 9 individuals that were barcoded and multiplexed on this lane (see below for more explanation). The path to the complete dataset is:
 
-`/1/scratch/monkey_data2/forward.fastq`
+Please use the `ls` command to find out how large the full dataset is.
+`ls -lh /1/scratch/monkey_data2/forward.fastq`
 
-Please use the `ls` command to find out how large this file is.
+As you (hopefully) can see, this is a large file (~32 Gb).  Because the tasks we will perform take a while with this much data, I made a smaller dataset (32Mb) to work with here:
 
-As you (hopefully) can see, this is a LARGE file (~32 Gb).  Because the tasks we will perform take a while with this much data, I made a smaller dataset (32Mb) to work with here:
-
-`/1/scratch/monkey_data2/forward_subset.fastq`
+`ls -lh /1/scratch/monkey_data2/forward_subset.fastq`
 
 In case you are interested, I made this using the unix `cat` and `awk` commands as follows:
 
@@ -78,16 +77,14 @@ Before we do anything with individual sequences, it is a good idea to survey the
 
 `/usr/local/fastqc/fastqc forward_subset.fastq`
 
-This should give you some feedback about the analysis as it runs and generate a file called `datafile.zip` and an html file called `forward_subset_fastqc.html`.
+This should give you some feedback about the analysis as it runs and generate an html file called `forward_subset_fastqc.html`.
 
 Please download the `html` file to your local computer and open it in a browser (or watch Ben do this).
 
-Here is an example of a commandline I ran:
-
-`/usr/local/fastqc/fastqc forward_subset.fastq`
-
 ## De-Multiplexing
-Most RRGS methods rely on the Illumina sequencing platform.  These machines generate data using something called a "flowcell" that is divided up into eight "lanes".  Small scale projects typically would run multiple samples (from different species or different individuals within a species) on one lane.  Because the sequence methodology requires the ligation (attachment) of a linker (a bit of DNA) to each side of bits of DNA that will be sequenced, it is straightforward to combine multiple samples (multiplex) from different individuals in a single lane. This is done by adding a unique identifier sequence (a barcode) to the linker that is used on each sample.  Note that this barcode is different from "DNA barcoding", the latter of which generally refers to the use of a small variable genomic region (such as the COI gene for animals) for species and population identification.
+Most RRGS methods rely on the Illumina sequencing platform.  These machines generate data using something called a "flowcell" that is divided up into eight "lanes". Small scale projects typically would run multiple samples (from different species or different individuals within a species) on one lane. Because the sequence methodology requires the ligation (attachment) of a linker (a bit of DNA) to each side of bits of DNA that will be sequenced, it is straightforward to combine multiple samples (multiplex) from different individuals in a single lane. This is done by adding a unique identifier sequence (a barcode) to the linker that is used on each sample.  
+
+Note that this barcode is different from "DNA barcoding", the latter of which generally refers to the use of a small variable genomic region (such as the COI gene for animals) for species and population identification.
 
 A first step in our analysis pipeline is to organize data from each of our samples that were run together on an Illumina lane (De-multiplexing our data) and also to filter our data and trim off bits that have lots of errors or that have sequences from the laboratory procedures that were used to generate the data (Trimming/Quality control; next section).  
 
@@ -127,7 +124,7 @@ Illumina generates sequences that have errors in base calls.  Errors typically b
 
 We will use software package called `Stacks` to de-multiplex and trim our data.  This is actually a suite of programs and we will be using the application called `process_radtags` within `Stacks`.  `Stacks` has a very nice online manual [here](http://catchenlab.life.illinois.edu/stacks/manual). FYI, other software that does trimming of RADseq data is available [here](https://github.com/johnomics/RADtools/blob/master/RADpools).
 
-Brian has installed most of the software we need in a directory called `/usr/local/bin`. Before we de-multiplex our data subset, we need to make a directory for the de-multiplexed data to be stored in. From your current directory  (`/1/scratch/XXX`), please type this:
+Brian has installed most of the software we need in a directory called `/usr/local/bin`. Before we de-multiplex our data subset, we need to make a directory for the de-multiplexed data to be stored in. From your current directory  (`/2/scratch/your_usrname`), please type this:
 
 `mkdir samples`
 
@@ -146,13 +143,23 @@ Here is an example of the commandline I used to de-multiplex the subset of the d
 
 `/usr/local/bin/process_radtags -f forward_subset.fastq -b monkey.barcodes -o ./samples/ -e sbfI -t 75 -r -c -q --adapter_1 GATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG --adapter_2 AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT --adapter_mm 2 --filter_illumina`
 
-If you enter the `samples` directory, you should see your de-multiplexed files, each named by the barcode. Please rename each of these nine files to have the sample name instead of the barcode using the `mv` command.  For example:
+If you enter the `samples` directory, you should see your de-multiplexed files, each named by the barcode. Let's check the log file:
+
+`more samples/process_radtags.log`
+
+You should see statistics on the number of reads retained or rejected, why they were rejected, and how many reads per individual were retained. Rejection of reads happens if the software cannot find a SbfI restriction enzyme site (ambiguous RADtag), or cannot place the barcode (ambiguous barcode), if it is low quality (lots of Ns), or if it contains Illumina adaptor sequences.
+
+Please rename each of these nine files to have the sample name instead of the barcode using the `mv` command.  For example, within the `samples` directory:
 
 `mv sample_CCTCTTATCA.fq PF515.fq`
-
-and then similarly for the other 8 files (`mv sample_TATCGTTAGT.fq PM561.fq`, etc.)
-
-You should also see a log file that gives some statistics about the output from `process_radtags`
+`mv sample_TATCGTTAGT.fq PM561.fq`
+`mv sample_TAGTGCGGTC.fq PM565.fq`
+`mv sample_GGCCGGTAAC.fq PM566.fq`
+`mv sample_AGGAACCTCG.fq PM567.fq`
+`mv sample_TTATCCGTAG.fq PM582.fq`
+`mv sample_CGCTATACGG.fq PM584.fq`
+`mv sample_CACGCAACGA.fq PM592.fq`
+`mv sample_ATCCGTCTAC.fq PM602.fq`
 
 ## Practice problem 1: How many reads do we have for each individual?
 
