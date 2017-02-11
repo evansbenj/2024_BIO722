@@ -16,7 +16,7 @@ As an example, let's look at some information on the "completely" sequenced geno
 
 ## Preparing your reference genome
 
-Reference genomes for many sequences are available at multiple publicly available databases.  We can download the complete genome sequence for the rhesus macaque from the [USC genome browser](http://hgdownload.cse.ucsc.edu/downloads.html#rhesus).  I did this earlier because it takes a while.  The whole genome comes as a fasta-formatted file, and I split it up into individual fasta files corresponding with each of the chromosomes.  These are located in this directory:
+Reference genomes for many sequences are available at multiple publicly available databases.  We can download the complete genome sequence for the rhesus macaque from the [USC genome browser](http://hgdownload.cse.ucsc.edu/downloads.html#rhesus).  I did this earlier because it takes a while.  The whole genome comes as a fasta-formatted file, and I split it up into individual fasta files corresponding with each of the chromosomes.  Symbolic links to these files are located in this directory:
 
 `/1/scratch/ben/rhesus_chromosomes/`
 
@@ -24,43 +24,57 @@ Now check out what is in this directory by typing this:
 
 `ls /1/scratch/ben/rhesus_chromosomes/`
 
-Ben will assign you a chromosome to work with.  Please make a symbolic link to this chromosome reference sequence in a new directory that you make like this:
+Ben will assign you a chromosome to work with.  From the `/2/scratch/YOUR_USERNAME/` directory, please make a symbolic link to this chromosome reference sequence in a new directory that you make like this:
 
-`mkdir ~/my_monkey_chromosome`
-
-and then change to that directory and make a symbolic link to the chromosome file like this:
-
-`ln -s /1/scratch/ben/rhesus_chromosomes/chrZZZ.fa` 
+`mkdir my_monkey_chromosome`
+`ln -s /1/scratch/ben/rhesus_chromosomes/chr`ZZZ`.fa my_monkey_chromosome/` 
 
 Here and henceforth, you will need to change the `chrZZZ.fa` part to match whatever chromosome Ben assigned to you.  For example, if you are working on chromosome 9, you should type this:
 
-`ln -s /1/scratch/ben/rhesus_chromosomes/chr9.fa` 
+`ln -s /1/scratch/ben/rhesus_chromosomes/chr9.fa my_monkey_chromosome/` 
 
 Before we map our data to this reference genome, we need to generate some files that will be used in the mapping process.  This can be done in three steps:
 
-1. `bwa index -a bwtsw ~/my_monkey_chromosome/chrXXX.fa`
+1. Make an index file.   
 
-  The `/apps/bwa/0.7.12/bwa` command tells the computer to execute the bwa program.  The `index` command tells `bwa` to generate index files from the rhesus genome file that is indicated by the `~/my_monkey_chromosome/chrXXX.fa`. The `-a bwtsw` flag specifies the indexing algorithm for `bwa` to use.  
-  
-  (But delete the two XXs - I added them in to prevent people from just copying and pasting things)
+    The `bwa` command tells the computer to execute the bwa program.  The `index` command tells `bwa` to generate index files from the rhesus genome file that is indicated by the `my_monkey_chromosome/chrXXX.fa`. The `-a bwtsw` flag specifies the indexing algorithm for `bwa` to use.  
   
   This step will take a few minutes.
+  
+  `screen -S make_an_index_file`
+  
+  then type this:
+  
+  `bwa index -a bwtsw my_monkey_chromosome/chrZZZ.fa`
+  
+  Then exit the screen by typing `ctrl-a` then `ctrl-d`
+  
+  You can list the screens you have like this:
+  
+  `screen -ls`
+
+  and you can return to the screen you started like this:
+  
+  `screen -r make_an_index_file`
+  
+  when it is done, you can exit and then kill the screen like this:
+  
+  `ctrl-a` then `ctrl-d` and then
+  
+  screen -X -S make_an_index_file kill
+
 
 2. We now need to to generate another file using `samtools`.  Please type this:
 
-  `samtools faidx ~/my_monkey_chromosome/chrXXX.fa`
+  `samtools faidx ~/my_monkey_chromosome/chrZZZ.fa`
 
-  Here, the `samtools` command tells the computer to execute the `samtools` program.  The `faidx` option tells samtools to generate a file called `chrXXX.fai` in which each line has information for one the contigs within the reference genome, including the contig name, size, location and other information.  Our reference genome has a contig for each chromosome.
+  Here, the `samtools` command tells the computer to execute the `samtools` program.  The `faidx` option tells samtools to generate a file called `chrZZZ.fai` in which each line has information for one the contigs within the reference genome, including the contig name, size, location and other information.  Our reference genome has a contig for each chromosome.
 
-3.  The third thing we need to do is to generate a `.dict` file with a program called [`picard`](http://broadinstitute.github.io/picard/).  To do this, first enter the `my_monkey_chromosome` directory like this:
+3.  The third thing we need to do is to generate a `.dict` file with a program called [`picard`](http://broadinstitute.github.io/picard/).  To do this, please type this command:
 
-`cd ~/my_monkey_chromosome`
+  `java -jar /usr/local/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=my_monkey_chromosome/chrZZZ.fa OUTPUT=chrZZZ.dict`
 
-Once you are in, please type this command:
-
-  `java -jar /usr/local/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=chrXXX.fa OUTPUT=chrXXX.dict`
-
-  As before, you will need to change the `chrXXX` in this command to match the chromosome you are working with.  This should generate a file called `~/my_monkey_chromosome/chrXXX.dict`
+  As before, you will need to change the `chrXXX` in this command to match the chromosome you are working with.  This should generate a file called `my_monkey_chromosome/chrXXX.dict`
 
 ## Mapping the data to the reference genome
 
