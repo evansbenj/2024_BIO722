@@ -27,6 +27,7 @@ Now check out what is in this directory by typing this:
 Ben will assign you a chromosome to work with.  From the `/2/scratch/YOUR_USERNAME/` directory, please make a symbolic link to this chromosome reference sequence in a new directory that you make like this:
 
 `mkdir my_monkey_chromosome`
+
 `ln -s /1/scratch/ben/rhesus_chromosomes/chr`ZZZ`.fa my_monkey_chromosome/` 
 
 Here and henceforth, you will need to change the `chrZZZ.fa` part to match whatever chromosome Ben assigned to you.  For example, if you are working on chromosome 9, you should type this:
