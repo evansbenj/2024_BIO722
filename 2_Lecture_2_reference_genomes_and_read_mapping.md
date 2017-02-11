@@ -89,38 +89,40 @@ Now we can align the data from each individual to the reference genome using [`b
 
 For example, for individual PF515 you could type this
 
-`bwa aln my_monkey_chromosome/chr`ZZZ`.fa samples/PF515.fq > PF515)chr`ZZZ`.sai`
+`bwa aln my_monkey_chromosome/chr`ZZZ`.fa samples/PF515.fq > samples/PF515_chr`ZZZ`.sai`
 
 (but with the `chr`ZZZ parts changed to match the chromosome you are working on.)
 
 As you can see in the [`bwa` manual] (http://bio-bwa.sourceforge.net/bwa.shtml), the `aln` flag tells `bwa` to align the reads to the reference genome (or, using the `bwa` jargon, find the coordinates of the reference genome that map each read. There are several additional options you could specify if you want.  For example, you could use the `-M` flag to set a limit on the number of mismatches between a read and the reference genome.  Because we are mapping data from one species to a reference genome from another, we will not do this.
 
-This command generates an intermediate file with the `.sai` suffix (which stands for `suffix array index`). Now we need to generate a `.sam` formatted file from our `.sai` files.  A `.sam` file is a tab delimited text file that contains the alignment data.  We also need to add a header to each `.sam` file, so we can type this command:
+This command generates an intermediate file with the `.sai` suffix (which stands for `suffix array index`). Now we need to generate a binary `.bam` formatted file from our `.sai` files.  We will bypass writing a non-binary `.sam` file, which is a tab delimited text file that contains the alignment data, using a pipe.  We also need to add a header while we do this, so we can type this command:
 
-`bwa samse -r "@RG\tID:FLOWCELL1.LANE6\tSM:XXX\tPL:illumina" reference.fa data.sai data.fastq > data.sam`
+`bwa samse -r "@RG\tID:FLOWCELL1.LANE6\tSM:XXX\tPL:illumina" reference.fa data.sai data.fq > data.sam | samtools view -bShu - > data_ref.bam`
 
-Here you need to change the "XXX" to match the sample you are working with (for example change XXX to PF515 if you are working with sample PF515) and you need to type the path and filenames of your reference genome, the .sai file, and the fastq file.
+The `samse` command of `bwa` tells the software that we are working with single-end data. The -r tells the software we wish to provide a readgroup (which is used later by the Genome Analysis Tookkit software). We then pipe the output using the vertical bar to the program `samtools`, which then prints the alignment (`view`) to an output file, The function of the `-bShu` flags can be found by typing `samtools view` at the command prompt.
 
-Now we can generate a `.bam` file.  A `.bam` formatted file is a binary version of the `.sam` file.
+For example, you could type this:
 
-`samtools view -bt reference_genome data.sam -o data.bam`
+`bwa samse -r "@RG\tID:FLOWCELL1.LANE6\tSM:`ZZZ`\tPL:illumina" my_monkey_chromosome/chr9.fa samples/PF515_`ZZZ`.sai samples/PF515.fq | samtools view -bShu - > samples/PF515_`ZZZ`.bam
 
-Sort the `.bam` file:
+Here you need to change the "ZZZ" to match the chromosome you are working with (for example change XXX to PF515 if you are working with sample PF515) and you need to type the path and filenames of your reference genome, the .sai file, and the fastq file.
 
-`samtools sort data.bam data_sorted`
+Now sort the `.bam` file:
+
+`samtools sort samples/data.bam samples/data_sorted`
 
 Here you do not need the `.bam` suffix after the `data_sorted` prefix; this suffix is added automatically by `samtools`.
 
 Make an index for the bam file, which is a `.bai` file:
 
-`samtools index data_sorted.bam`
+`samtools index samples/data_sorted.bam`
 
 
 ## Updates to bwa
 
 The `MEM` algorithm is an update to bwa that has a simpler pipeline for preparing the reference genome. For that, all you need to do is index the genome, and then type this:
 
-`bwa mem -M -t 16 my_monkey_chromosome/chr9.fa samples/sample_ATCCGTCTAC.fq | samtools view -bSh - > test.bam`
+`bwa mem -M -t 16 -r "@RG\tID:FLOWCELL1.LANE6\tSM:PF515\tPL:illumina" my_monkey_chromosome/chr9.fa samples/PF515.fq | samtools view -bSh - > samples/PF515.bam`
 
 
 ## Practice Problem 4: Assessing coverage
