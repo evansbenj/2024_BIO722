@@ -67,13 +67,17 @@ Before we map our data to this reference genome, we need to generate some files 
 
 2. We now need to to generate another file using `samtools`.  Please type this:
 
-  `samtools faidx ~/my_monkey_chromosome/chr`ZZZ`.fa`
+  `samtools faidx my_monkey_chromosome/chr`ZZZ`.fa`
 
-  Here, the `samtools` command tells the computer to execute the `samtools` program.  The `faidx` option tells samtools to generate a file called `chrZZZ.fai` in which each line has information for one the contigs within the reference genome, including the contig name, size, location and other information.  Our reference genome has a contig for each chromosome.
+  Here, the `samtools` command tells the computer to execute the `samtools` program.  The `faidx` option tells samtools to generate a file called `chr`ZZZ`.fai` in which each line has information for one the contigs within the reference genome, including the contig name, size, location and other information.  Our reference genome has a contig for each chromosome.
 
-3.  The third thing we need to do is to generate a `.dict` file with a program called [`picard`](http://broadinstitute.github.io/picard/).  To do this, please type this command:
+3.  The third thing we need to do is to generate a `.dict` file with a program called [`picard`](http://broadinstitute.github.io/picard/).  To do this, we need to use the latest version of java.  Please type this command to make a symbolic link to this version:
 
-  `java -jar /usr/local/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=my_monkey_chromosome/chr`ZZZ`.fa OUTPUT=chr`ZZZ`.dict`
+`ln -s /home/ben/jre1.8.0_111/bin/java`
+
+OK, now run picard like this:
+
+  `java -jar /usr/local/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=my_monkey_chromosome/chr`ZZZ`.fa OUTPUT=my_monkey_chromosome/chr`ZZZ`.dict`
 
   As before, you will need to change the `chr`ZZZ in this command to match the chromosome you are working with.  This should generate a file called `my_monkey_chromosome/chr`ZZZ`.dict`
 
@@ -85,11 +89,11 @@ Now we can align the data from each individual to the reference genome using [`b
 
 Please copy this to a new directory that you can make like this:
 
-`mkdir ~/my_monkey_data`
+`mkdir my_monkey_data`
 
 and then copy it to this directory like this:
 
-`cp /1/scratch/BIO720_Bens_section/subset_data/PF515_subset.fastq ~/my_monkey_data`
+`cp /1/scratch/BIO720_Bens_section/subset_data/PF515_subset.fastq my_monkey_data`
 
 Now let's map this data subset from one individual to the reference genome using `bwa` as follows:
 
@@ -97,9 +101,9 @@ Now let's map this data subset from one individual to the reference genome using
 
 For example, for this individual (PF515) you could type this
 
-`bwa aln ~/my_monkey_chromosome/chrXXX.fa ~/my_monkey_data/PF515_subset.fastq > ~/my_monkey_data/PF515_subset.sai`
+`bwa aln ~/my_monkey_chromosome/chr`ZZZ`.fa ~/my_monkey_data/PF515_subset.fastq > ~/my_monkey_data/PF515_subset.sai`
 
-(but with the `chrXXX.fa` changed to match the chromosome you are working on.)
+(but with the `chr`ZZZ`.fa` changed to match the chromosome you are working on.)
 
 As you can see in the [`bwa` manual] (http://bio-bwa.sourceforge.net/bwa.shtml), the `aln` flag tells `bwa` to align the reads to the reference genome (or, using the `bwa` jargon, find the coordinates of the reference genome that map each read. There are several additional options you could specify if you want.  For example, you could use the `-M` flag to set a limit on the number of mismatches between a read and the reference genome.  Because we are mapping data from one species to a reference genome from another, we will not do this.
 
@@ -122,6 +126,14 @@ Here you do not need the `.bam` suffix after the `data_sorted` prefix; this suff
 Make an index for the bam file, which is a `.bai` file:
 
 `samtools index data_sorted.bam`
+
+
+## Updates to bwa
+
+The `MEM` algorithm is an update to bwa that has a simpler pipeline for preparing the reference genome. For that, all you need to do is index the genome, and then type this:
+
+`bwa mem -M -t 16 my_monkey_chromosome/chr9.fa samples/sample_ATCCGTCTAC.fq | samtools view -bSh - > test.bam`
+
 
 ## Practice Problem 4: Assessing coverage
 
