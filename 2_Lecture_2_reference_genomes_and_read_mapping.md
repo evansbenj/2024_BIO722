@@ -38,7 +38,7 @@ Before we map our data to this reference genome, we need to generate some files 
 
 1. Make an index file.   
 
-    The `bwa` command tells the computer to execute the bwa program.  The `index` command tells `bwa` to generate index files from the rhesus genome file that is indicated by the `my_monkey_chromosome/chrXXX.fa`. The `-a bwtsw` flag specifies the indexing algorithm for `bwa` to use.  
+    The `bwa` command tells the computer to execute the bwa program.  The `index` command tells `bwa` to generate index files from the rhesus genome file that is indicated by the `my_monkey_chromosome/chr`ZZZ`.fa`. The `-a bwtsw` flag specifies the indexing algorithm for `bwa` to use.  
   
   This step will take a few minutes.
   
@@ -46,7 +46,7 @@ Before we map our data to this reference genome, we need to generate some files 
   
   then type this:
   
-  `bwa index -a bwtsw my_monkey_chromosome/chrZZZ.fa`
+  `bwa index -a bwtsw my_monkey_chromosome/chr`ZZZ`.fa`
   
   Then exit the screen by typing `ctrl-a` then `ctrl-d`
   
@@ -67,15 +67,15 @@ Before we map our data to this reference genome, we need to generate some files 
 
 2. We now need to to generate another file using `samtools`.  Please type this:
 
-  `samtools faidx ~/my_monkey_chromosome/chrZZZ.fa`
+  `samtools faidx ~/my_monkey_chromosome/chr`ZZZ`.fa`
 
   Here, the `samtools` command tells the computer to execute the `samtools` program.  The `faidx` option tells samtools to generate a file called `chrZZZ.fai` in which each line has information for one the contigs within the reference genome, including the contig name, size, location and other information.  Our reference genome has a contig for each chromosome.
 
 3.  The third thing we need to do is to generate a `.dict` file with a program called [`picard`](http://broadinstitute.github.io/picard/).  To do this, please type this command:
 
-  `java -jar /usr/local/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=my_monkey_chromosome/chrZZZ.fa OUTPUT=chrZZZ.dict`
+  `java -jar /usr/local/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=my_monkey_chromosome/chr`ZZZ`.fa OUTPUT=chr`ZZZ`.dict`
 
-  As before, you will need to change the `chrXXX` in this command to match the chromosome you are working with.  This should generate a file called `my_monkey_chromosome/chrXXX.dict`
+  As before, you will need to change the `chr`ZZZ in this command to match the chromosome you are working with.  This should generate a file called `my_monkey_chromosome/chr`ZZZ`.dict`
 
 ## Mapping the data to the reference genome
 
