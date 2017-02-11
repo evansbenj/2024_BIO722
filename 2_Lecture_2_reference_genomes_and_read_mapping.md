@@ -83,27 +83,15 @@ OK, now run picard like this:
 
 ## Mapping the data to the reference genome
 
-Now we can align the data from each individual to the reference genome using [`bwa`] (http://sourceforge.net/projects/bio-bwa/files). Because this takes a while to do with the fill dataset, I made a datasubset file that we can work with in class. You can find this here:  
-
-`/1/scratch/BIO720_Bens_section/subset_data/PF515_subset.fastq`
-
-Please copy this to a new directory that you can make like this:
-
-`mkdir my_monkey_data`
-
-and then copy it to this directory like this:
-
-`cp /1/scratch/BIO720_Bens_section/subset_data/PF515_subset.fastq my_monkey_data`
-
-Now let's map this data subset from one individual to the reference genome using `bwa` as follows:
+Now we can align the data from each individual to the reference genome using [`bwa`] (http://sourceforge.net/projects/bio-bwa/files). 
 
 `bwa aln reference_genome data.fastq > data.sai`
 
-For example, for this individual (PF515) you could type this
+For example, for individual PF515 you could type this
 
-`bwa aln ~/my_monkey_chromosome/chr`ZZZ`.fa ~/my_monkey_data/PF515_subset.fastq > ~/my_monkey_data/PF515_subset.sai`
+`bwa aln my_monkey_chromosome/chr`ZZZ`.fa samples/PF515.fq > PF515)chr`ZZZ`.sai`
 
-(but with the `chr`ZZZ`.fa` changed to match the chromosome you are working on.)
+(but with the `chr`ZZZ parts changed to match the chromosome you are working on.)
 
 As you can see in the [`bwa` manual] (http://bio-bwa.sourceforge.net/bwa.shtml), the `aln` flag tells `bwa` to align the reads to the reference genome (or, using the `bwa` jargon, find the coordinates of the reference genome that map each read. There are several additional options you could specify if you want.  For example, you could use the `-M` flag to set a limit on the number of mismatches between a read and the reference genome.  Because we are mapping data from one species to a reference genome from another, we will not do this.
 
