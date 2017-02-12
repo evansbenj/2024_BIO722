@@ -25,7 +25,7 @@ As some of you may realize, the mutation rates in males and females are not equi
 First we need to add some additional information to the readgroup header of our `bam` file.  Please type this:
 
 ```
-samtools view -H XXX.bam > header.sam
+samtools view -H ZZZ.bam > header.sam
 perl -pi.old -e 's{PL:illumina}{PL:illumina\tPO:POP1}g' header.sam
 samtools reheader header.sam XXX.bam > XXX_new.bam
 samtools index XXX_new.bam
