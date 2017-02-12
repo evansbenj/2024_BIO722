@@ -17,15 +17,13 @@ Once loci are compiled within and across individuals, we can use the program `po
 
 The pipeline of programs within `Stacks` can be run in a batch using a `Perl` script that comes with the program called `refmap.pl`.  This script functions in a similar way to the bash scripts we have used already but it has some added features, such as allowing options to be specified using flags.
 
-To get started, lets first make a directory within the `~/my_monkey_data` directory that has our data called `Stacks_Results`.  To do this, please type this command:
+To get started, lets first make a directory within the `samples` directory that has our data called `Stacks_Results`.  To do this, please type this command:
 
-`mkdir ~/my_monkey_data/Stacks_Results`
-
-To make things easier, please also make sure that your bam files from the full data alignment to the rhesus genome are in the `~/my_monkey_data` directory.
+`mkdir samples/Stacks_Results`
 
 ## Analysis of population structure
 
-Let's first examine whether population structure is present within our sample by defining two populations.  This can be done in `Stacks` by making a file called a `population_map` in your home directory.  Use your favorite text editor to generate a file that contans this tab delimited information:
+Let's first examine whether population structure is present within our sample by defining two populations.  This can be done in `Stacks` by making a file called a `population_map` in your home directory.  Please switch to the `samples` directory and use your favorite text editor to generate a file called `population_map` that contans this tab delimited information:
 
 ```
 PF515_sorted	population_1
@@ -41,21 +39,21 @@ PM602_sorted	population_2
 
 Note that the term tab-delimited means that there is a tab between the columns of information. Please make sure the columns have a tab between them (if you copy and paste the text above it probably will not have a tab). This file will be used to tell Stacks that the first five samples are from one population and the last four samples are from another population. In the example population map above the file names must match the names of each of your bam files, but without the `.bam` suffix.
 
-One way to quantify population structure is using the F-statistic (F<sub>ST</sub>).  F<sub>ST</sub> is an index of population structure that ranges from zero (no population structure) to one (two populations are each fixed for different alleles.  Let's calulate F<sub>ST</sub> between the two populations specified avove using `Stacks`.  To do this, please navigate to the directory with your bam files and populatin map and type:
+One way to quantify population structure is using the F-statistic (F<sub>ST</sub>).  F<sub>ST</sub> is an index of population structure that ranges from zero (no population structure) to one (two populations are each fixed for different alleles.  Let's calulate F<sub>ST</sub> between the two populations specified avove using `Stacks`.  To do this, from within the `samples` directory, please type:
 
 ```
 /usr/local/stacks/bin/ref_map.pl -S -b 1 -n 2 \
 	-O ./population_map \
 	-o ./Stacks_Results \
-   	-s ./PF515_sorted.bam \
-    -s ./PM561_sorted.bam \
-    -s ./PM565_sorted.bam \
-    -s ./PM566_sorted.bam \
-    -s ./PM567_sorted.bam \
-    -s ./PM582_sorted.bam \
-    -s ./PM584_sorted.bam \
-    -s ./PM592_sorted.bam \
-    -s ./PM602_sorted.bam \
+   	-s ./PF515_chrZZZ_sorted.bam \
+    -s ./PM561_chrZZZ_sorted.bam \
+    -s ./PM565_chrZZZ_sorted.bam \
+    -s ./PM566_chrZZZ_sorted.bam \
+    -s ./PM567_chrZZZ_sorted.bam \
+    -s ./PM582_chrZZZ_sorted.bam \
+    -s ./PM584_chrZZZ_sorted.bam \
+    -s ./PM592_chrZZZ_sorted.bam \
+    -s ./PM602_chrZZZ_sorted.bam \
    	-e /usr/local/stacks/bin/ -X "populations:--fstat"
 ```
 
