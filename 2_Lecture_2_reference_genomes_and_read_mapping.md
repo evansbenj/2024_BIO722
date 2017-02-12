@@ -121,7 +121,7 @@ Now please make an index for the bam file, which is a `.bai` file:
 
 ## Updates to bwa
 
-The `MEM` algorithm is an update to bwa that has a simpler pipeline for preparing the reference genome. For that, all you need to do is index the genome, and then type this:
+The `mem` algorithm is an update to bwa that has a simpler pipeline for preparing the reference genome. For that, all you need to do is index the genome, and then type this:
 
 `bwa mem -M -t 16 -r "@RG\tID:FLOWCELL1.LANE6\tSM:PF515\tPL:illumina" my_monkey_chromosome/chr9.fa samples/PF515.fq | samtools view -bSh - > samples/PF515.bam`
 
