@@ -33,9 +33,9 @@ samtools index XXX_new.bam
 
 The first line uses samtools to make a text file called `header.sam` that contains the header information for the file called `XXX.bam`.  You should use one of your sorted bam files for this. The second line uses `Perl` to search and replace text in the header.sam file.  Basically this adds text to the readgroup portion of this file. Thie third line uses samtools to change the header of our file. And the fourth line makes a new index file for our new bam file.
 
-Now we can get divergence information using `POPBAM` like this:
+Now we can get divergence information using `POPBAM` (from within the `samples` directory) like this:
 
-`popbam diverge -o 0 XXX_new.bam chrX -f path_to_reference_chromosome/chrXXX.fa chrXXX > divergence.txt`
+`popbam diverge -o 0 XXX_new.bam chrX -f ../my_monkey_chromosome/chrXXX.fa chrXXX > divergence.txt`
 
 Don't forget to specify the chromosome that you are surveying at the end (`chrXXX`). This will write the output of `POPBAM` to a text file called `divergence.txt`.  The divergence Ben got for PF515 was 0.00524.
 
