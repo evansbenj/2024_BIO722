@@ -49,7 +49,9 @@ One concern about these statistics is that genomic regions that contain genes ma
 
 One advantage to working with an annotated genome sequence is that we can easily access information about gene locations. For the rhesus genome we are working with, we can download the coordinates of known genes [here](http://genome.ucsc.edu/cgi-bin/hgTables). Please visit this page now.
 
-To download the annotations for rhemac2, please select "Mammal" from the clade menue, "Rhesus" from the genome menu, and "Jan. 2006 (MGSC Merged 1.0/rhemac2)" from the assembly menu.  In the group menu please select "Genes and Gene predictions" and for the track menu please select "RefSeq Genes".  In the table menu, please select "refGene" and in the region option please click the "genome" button.  Now change the output format to "BED - browser extensible data" and enter in the output file a name for your annotation file such as "rhemac2.bed". Once you have done all this, please click the "get output" button. Please upload this to your info account.
+If you wanted to download the annotations for rhemac2, you could select "Mammal" from the clade menue, "Rhesus" from the genome menu, and "Jan. 2006 (MGSC Merged 1.0/rhemac2)" from the assembly menu.  Then, in the group menu you would select "Genes and Gene predictions" and for the track menu select "RefSeq Genes".  In the table menu, you would select "refGene" and in the region option click the "genome" button.  Now change the output format to "BED - browser extensible data" and enter in the output file a name for your annotation file such as "rhemac2.bed". Once you have done all this, you would click the "get output" button. If you want to download this and upload it to your account, go ahead.  Alternatively, within the `my_monkey_chromosome` directory, just make a symbolic link to my version of this file like this:
+
+`ln -s /home/ben/2015_BIO720/rhemac2.bed`
 
 You can check out the contents of this file by typing:
 
@@ -83,7 +85,7 @@ use strict;
 
 # To execute this program please type this:
 # make_my_whitelist.pl arg1 arg2 arg3
-# where arg1 and arg2 are catelog and bed file names respectively and
+# where arg1 and arg2 are catalog and bed file names respectively and
 # arg3 is an output filename
 # for example:
 # make_my_whitelist.pl batch_1.catalog.tags.tsv rhemac2.bed gene.whitelist
