@@ -22,7 +22,7 @@ As some of you may realize, the mutation rates in males and females are not equi
 
 [`POPBAM`](http://popbam.sourceforge.net/) is a program that is useful for calculating several population genetic statistics. Some of the functionality overlaps with that of `Stacks`.  We will use `POPBAM` to calculate the level of divergence of one of our samples to the reference genome.
 
-First we need to add some additional information to the readgroup header of our `bam` file.  Please type this:
+First we need to add some additional information to the readgroup header of our `bam` file.  From within the `samples` folder, please type this:
 
 ```
 samtools view -H ZZZ.bam > header.sam
