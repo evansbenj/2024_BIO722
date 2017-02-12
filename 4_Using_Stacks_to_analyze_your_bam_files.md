@@ -26,15 +26,15 @@ To get started, lets first make a directory within the `samples` directory that 
 Let's first examine whether population structure is present within our sample by defining two populations.  This can be done in `Stacks` by making a file called a `population_map` in your home directory.  Please switch to the `samples` directory and use your favorite text editor to generate a file called `population_map` that contans this tab delimited information:
 
 ```
-PF515_sorted	population_1
-PM561_sorted	population_1
-PM565_sorted	population_1
-PM566_sorted	population_1
-PM567_sorted	population_1
-PM582_sorted	population_2
-PM584_sorted	population_2
-PM592_sorted	population_2
-PM602_sorted	population_2
+PF515_chrZZZ_sorted	population_1
+PM561_chrZZZ_sorted	population_1
+PM565_chrZZZ_sorted	population_1
+PM566_chrZZZ_sorted	population_1
+PM567_chrZZZ_sorted	population_1
+PM582_chrZZZ_sorted	population_2
+PM584_chrZZZ_sorted	population_2
+PM592_chrZZZ_sorted	population_2
+PM602_chrZZZ_sorted	population_2
 ```
 
 Note that the term tab-delimited means that there is a tab between the columns of information. Please make sure the columns have a tab between them (if you copy and paste the text above it probably will not have a tab). This file will be used to tell Stacks that the first five samples are from one population and the last four samples are from another population. In the example population map above the file names must match the names of each of your bam files, but without the `.bam` suffix.
