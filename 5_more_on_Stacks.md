@@ -97,7 +97,7 @@ my $outputfile = $ARGV[2];
 
 #### Prepare the input files 
 unless (open DATAINPUT, $inputfile) {
-	print "Can not find the catelog input file!\n";
+	print "Can not find the catalog input file!\n";
 	exit;
 }
 
