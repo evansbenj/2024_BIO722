@@ -48,7 +48,7 @@ Please login to info, connect to info115 (rsh info115) and navigate to the scrat
 
 And make a directory for yourself
 
-`mkdir XXXX`, where `XXX` is your username.
+`mkdir ZZZ`, where `ZZZ` is your username.
 
 Next, please switch to that directory (`cd XXX`) and make a symbolic link to a subsetted dataset (`ln -s /1/scratch/monkey_data2/forward_subset.fastq`) and to the full dataset (`ln -s /1/scratch/monkey_data2/forward.fastq`)
 
