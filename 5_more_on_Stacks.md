@@ -80,7 +80,7 @@ Here it is; please use your favorite text editor to make this file. Please chang
 use strict;
 
 # This program generates a whitelist for the populations module of Stacks
-# given a catelog file (e.g. batch_1.catalog.tags.tsv) and a bed formated annotation
+# given a catalog file (e.g. batch_1.catalog.tags.tsv) and a bed formated annotation
 # file (e.g. rhemac2.bed)
 
 # To execute this program please type this:
