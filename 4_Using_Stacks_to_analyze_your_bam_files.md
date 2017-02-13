@@ -11,7 +11,7 @@ We have already used the `process_radtags` module of `Stacks` to de-multiplexing
 The portion of Stacks that we will use consists of three main steps:
   1. For each individual, sort the data into 'loci' that have one or two alleles (i.e. that are homozygous or heterozygous, respectively).  For analyses with a reference genome, this is accomplished using the program `pstacks` using a `.bam` file as input.  Alternatively if you lack a reference genome, you can use `ustacks` instead of `pstacks`.
   2. Across all individuals, generate a catalog of loci that is a comprehensive list of all genomic regions that have data from at least one individual.  This is accomplished with the `cstacks` program.
-  3. Once a catelog of all loci is made, we can compile the data for all individuals to generate a multi-individual genotype for each locus.  This is done with the `sstacks` program
+  3. Once a catalog of all loci is made, we can compile the data for all individuals to generate a multi-individual genotype for each locus.  This is done with the `sstacks` program
 
 Once loci are compiled within and across individuals, we can use the program `populations` within `Stacks` to analyze the data, including calculating pairwise nucleotide diversity. We can also output the data in different formats that can be analyzed with other software such as [`Phylip`](http://evolution.genetics.washington.edu/phylip/getme.html) and [`Structure`](http://pritchardlab.stanford.edu/structure.html). 
 
