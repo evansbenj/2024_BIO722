@@ -59,6 +59,23 @@ You can check out the contents of this file by typing:
 
 This [page](https://genome.ucsc.edu/FAQ/FAQformat.html#format4) provides information about many genomic formats, including `bed` files. Please check it out.  As you can see, the first three columns are the ones we care about: these tell us the chromosome number, start and end coordinates of genes.  Please note that the numbering format for bed files is somewhat weird; the start coordinate is based on a numbering system beginning with zero, not one. And the end coordinate refers to the base after the end of the feature. As stated on this page, the first 100 base pairs of a chromosome would have bed coordinates of 0 to 100, and would span bases that are numbered 0 to 99.
 
+## Let's work with the full dataset mapped to one chromosome
+
+To save time, I mapped the full data to chromosome 9 and sorted and indexed the bam files. Please make a symbolic link to these files like this:
+
+ln -s /1/scratch/ben/PF515_chr9_sorted.bam
+ln -s /1/scratch/ben/PM561_chr9_sorted.bam
+ln -s /1/scratch/ben/PM565_chr9_sorted.bam
+ln -s /1/scratch/ben/PM566_chr9_sorted.bam
+ln -s /1/scratch/ben/PM567_chr9_sorted.bam
+ln -s /1/scratch/ben/PM582_chr9_sorted.bam
+ln -s /1/scratch/ben/PM584_chr9_sorted.bam
+ln -s /1/scratch/ben/PM592_chr9_sorted.bam
+ln -s /1/scratch/ben/PM602_chr9_sorted.bam
+
+Then, please make a new Stacks directory and execute the Stacks analysis for these data as previously.
+
+
 ## Making a whitelist from the bed file for use with `Stacks`
 
 The `populations` module of `Stacks` can be fed a list of RAD loci to include (a whitelist) or exclude (a blacklist) from the analysis. The RADloci are listed in the file called `batch_1.catalog.tags.tsv`. Please unzip this file like this:
