@@ -141,6 +141,8 @@ while ( my $line = <DATAINPUT2>) {
 }
 
 ```
+From within the `Stacks_Results` directory, I executed this script like this: 
+`./make_my_whitelist.pl batch_1.catalog.tags.tsv ../../my_monkey_chromosome/rhemac2.bed gene.whitelist`
 
 Assuming that went smoothly, you can now compare pairwise nucleotide diversity inside and outside of genes using these commands:
 
