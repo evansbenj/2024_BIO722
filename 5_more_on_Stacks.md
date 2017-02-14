@@ -61,7 +61,7 @@ This [page](https://genome.ucsc.edu/FAQ/FAQformat.html#format4) provides informa
 
 ## Let's work with the full dataset mapped to one chromosome
 
-To save time, I mapped the full data to chromosome 9 and sorted and indexed the bam files. Please make a symbolic link to these files like this:
+To save time, I mapped the full data to chromosome 9 and sorted and indexed the bam files. Please make a directory `/2/scratch/ZZZ/full_data_mapped_to_chr9`, enter this directory, and then make symbolic links to the bam files I made like this:
 ```
 ln -s /1/scratch/ben/PF515_chr9_sorted.bam
 ln -s /1/scratch/ben/PM561_chr9_sorted.bam
