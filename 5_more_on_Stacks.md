@@ -174,7 +174,17 @@ while ( my $line = <DATAINPUT2>) {
 
 ```
 From within the `Stacks_Results` directory, I executed this script like this: 
-`./make_my_whitelist.pl batch_1.catalog.tags.tsv ../../my_monkey_chromosome/rhemac2.bed gene.whitelist`
+
+```
+./make_my_whitelist.pl batch_1.catalog.tags.tsv ../../my_monkey_chromosome/rhemac2.bed gene.whitelist
+```
+
+Now you can check out the whitelist like this:
+```
+more gene.whitelist
+```
+
+You should see a column of numbers - each number corresponds to a RADtag that lies within a gene (or at least starts within one).
 
 Assuming that went smoothly, you can now compare pairwise nucleotide diversity inside and outside of genes using these commands:
 
