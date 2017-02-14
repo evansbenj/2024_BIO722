@@ -73,7 +73,7 @@ ln -s /1/scratch/ben/PM584_chr9_sorted.bam
 ln -s /1/scratch/ben/PM592_chr9_sorted.bam
 ln -s /1/scratch/ben/PM602_chr9_sorted.bam
 ```
-Then, please make a new Stacks directory and execute the Stacks analysis for these data as previously.
+Then, please make a new Stacks directory and execute the Stacks pipeline for these data as described above.
 
 
 ## Making a whitelist from the bed file for use with `Stacks`
