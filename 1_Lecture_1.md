@@ -114,7 +114,7 @@ CGCTATACGG	PM584
 CACGCAACGA	PM592
 ATCCGTCTAC	PM602
 ```
-We will use this information in a moment to de-multiplex our data. Please use your favourite text editor to generate a file in your home directory (`cd ~`) called `monkey.barcodes` and paste in only the barcode sequences (without the sample names). 
+We will use this information in a moment to de-multiplex our data. Please use your favourite text editor to generate a file in your home directory (`/2/scratch/ZZZ/`) called `monkey.barcodes` and paste in only the barcode sequences (without the sample names). 
 
 ## Quality control and trimming
 
