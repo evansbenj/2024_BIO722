@@ -8,11 +8,11 @@ If we want to calculate pairwise nucleotide diversity on the chromosome to which
 
 As detailed in the [manual](http://catchenlab.life.illinois.edu/stacks/comp/populations.php), this command directs the `populations` module of `Stacks` to write results to a directory specified by the `-P` flag. The `-r` flag says we want to only print data where 100% of the individuals have a genotype.  The `-b` and `-t` flags specify, respectively, that `populations` should focus on batch_ID number 1 (you can work with special IDs if you need to but this is beyond the scope of this workshop) and that `populations` should use 36 threads to do the calculations.  
 
-From within the `Stacks_Results` directory, we can view the pairwise nucleotide diversity statistic \pi in a file called `batch_1.sumstats_summary.tsv` like this:
+From within the `Stacks_Results` directory, we can view the pairwise nucleotide diversity statistic (pi) in a file called `batch_1.sumstats_summary.tsv` like this:
 
 `more batch_1.sumstats_summary.tsv`
 
-As indicated in the header, $$\pi$$ should be listed in the sixth to last column on the bottom row. For autosomes this statistic is accurate but there are problems with this calculation using only the X chromosome because some of the individuals are males; Ben will discuss these problems and a workaround he did with a perl script. The estimate of $$\pi$$ he recovered from the Stacks analysis of the bam files is 0.00108 substutitons per site.
+As indicated in the header, pairwise nucleotide diversity should be listed in the sixth to last column on the bottom row. For autosomes this statistic is accurate but there are problems with this calculation using only the X chromosome because some of the individuals are males; Ben will discuss these problems and a workaround he did with a perl script. The estimate of pairwise nucleotide diversity he recovered from the Stacks analysis of the bam files is 0.00108 substutitons per site.
 
 Now lets take some time for you to all analyze your bam files. Please let Ben know what your calculation of pi is for each of your chromosomes.
 
