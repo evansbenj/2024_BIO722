@@ -50,7 +50,7 @@ And make a directory for yourself
 
 `mkdir ZZZ`, where `ZZZ` is your username.
 
-Next, please switch to that directory (`cd XXX`) and make a symbolic link to a subsetted dataset (`ln -s /1/scratch/monkey_data2/forward_subset.fastq`) and to the full dataset (`ln -s /1/scratch/monkey_data2/forward.fastq`)
+Next, please switch to that directory (`cd ZZZ`) and make a symbolic link to a subsetted dataset (`ln -s /1/scratch/monkey_data2/forward_subset.fastq`) and to the full dataset (`ln -s /1/scratch/monkey_data2/forward.fastq`)
 
 OK, now we have the data set up for us to work with.
 
