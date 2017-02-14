@@ -55,8 +55,10 @@ You should see lots of file including, for each sample a `_sorted.bam` file that
 
 If this worked, you can now delete the intermediate files like this:
 
-`rm -f samples/*_chrZZZ.bam`
-`rm -f samples/*.sai`
+```
+rm -f samples/*_chrZZZ.bam
+rm -f samples/*.sai
+```
 
 
 ##  Practice Problem 6 (for home): Using a bash script to mapping the complete data from all individuals
