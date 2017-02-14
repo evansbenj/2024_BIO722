@@ -73,8 +73,23 @@ ln -s /1/scratch/ben/PM584_chr9_sorted.bam
 ln -s /1/scratch/ben/PM592_chr9_sorted.bam
 ln -s /1/scratch/ben/PM602_chr9_sorted.bam
 ```
-Then, please make a new Stacks directory and execute the Stacks pipeline for these data as described above.
-
+Then, please make a new Stacks directory and execute the Stacks pipeline for these data as described above. For example:
+```
+mkdir Stacks_Results
+/usr/local/stacks/bin/ref_map.pl -S -b 1 -n 2 \
+    -O ../samples/population_map \
+    -o ./Stacks_Results \
+    -s ./PF515_chr9_sorted.bam \
+    -s ./PM561_chr9_sorted.bam \
+    -s ./PM565_chr9_sorted.bam \
+    -s ./PM566_chr9_sorted.bam \
+    -s ./PM567_chr9_sorted.bam \
+    -s ./PM582_chr9_sorted.bam \
+    -s ./PM584_chr9_sorted.bam \
+    -s ./PM592_chr9_sorted.bam \
+    -s ./PM602_chr9_sorted.bam \
+    -e /usr/local/stacks/bin/ -X "populations:--fstat"
+```   
 
 ## Making a whitelist from the bed file for use with `Stacks`
 
