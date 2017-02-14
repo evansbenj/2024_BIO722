@@ -52,7 +52,7 @@ Now please download this tree file to your local computer using the scp command.
 
 `scp username@info.mcmaster.ca:path_to_the_file_I_want/filename directory_on_my_local_computer_where_I_want_the_file_to_go`
 
-You can now view the tree you made using the [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) program. Please install this program if you haven't already.
+You can now view the tree you made using the [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) program. You can install this program if you want to or Ben can show you the tree.
 
 # OK now let's use `Stacks` to make an input file for `Structure` analysis.  Please click [here](https://github.com/evansbenj/BIO720/blob/master/7_Stacks_and_Structure.md).
 
