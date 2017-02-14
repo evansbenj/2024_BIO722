@@ -75,7 +75,7 @@ Here the `cat` command pipes the file called 'forward.fastq` to the `awk command
 ## Quality Control
 Before we do anything with individual sequences, it is a good idea to survey the overall quality of the data.  We can do this with many free tools; for this class we will use a program called [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/).  To run this program please type this:
 
-`/usr/local/fastqc/fastqc forward_subset.fastq`
+`fastqc forward_subset.fastq`
 
 This should give you some feedback about the analysis as it runs and generate an html file called `forward_subset_fastqc.html`.
 
