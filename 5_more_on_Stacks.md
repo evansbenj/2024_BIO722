@@ -62,7 +62,7 @@ This [page](https://genome.ucsc.edu/FAQ/FAQformat.html#format4) provides informa
 ## Let's work with the full dataset mapped to one chromosome
 
 To save time, I mapped the full data to chromosome 9 and sorted and indexed the bam files. Please make a symbolic link to these files like this:
-
+```
 ln -s /1/scratch/ben/PF515_chr9_sorted.bam
 ln -s /1/scratch/ben/PM561_chr9_sorted.bam
 ln -s /1/scratch/ben/PM565_chr9_sorted.bam
@@ -72,7 +72,7 @@ ln -s /1/scratch/ben/PM582_chr9_sorted.bam
 ln -s /1/scratch/ben/PM584_chr9_sorted.bam
 ln -s /1/scratch/ben/PM592_chr9_sorted.bam
 ln -s /1/scratch/ben/PM602_chr9_sorted.bam
-
+```
 Then, please make a new Stacks directory and execute the Stacks analysis for these data as previously.
 
 
