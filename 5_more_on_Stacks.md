@@ -37,7 +37,7 @@ Now we can get divergence information using `POPBAM` (from within the `samples` 
 
 `popbam diverge -o 0 XXX_new.bam chrX -f ../my_monkey_chromosome/chrXXX.fa chrXXX > divergence.txt`
 
-Don't forget to specify the chromosome that you are surveying at the end (`chrXXX`). This will write the output of `POPBAM` to a text file called `divergence.txt`.  The divergence Ben got for PF515 was 0.00524.
+Don't forget to specify the chromosome that you are surveying at the end (`chrXXX`). This will write the output of `POPBAM` to a text file called `divergence.txt`.  The divergence Ben got for PF515 for chrX was 0.00524.
 
 Ben will now collect the data you collected, summarize it, compare it to the diversity and divergence estimates from the X, and discuss what implications it has for social system evolution in our monkeys.
 
