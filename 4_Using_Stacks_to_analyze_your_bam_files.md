@@ -23,7 +23,7 @@ To get started, lets first make a directory within the `samples` directory that 
 
 ## Analysis of population structure
 
-Let's first examine whether population structure is present within our sample by defining two populations.  This can be done in `Stacks` by making a file called a `population_map` in your home directory.  Please switch to the `samples` directory and use your favorite text editor to generate a file called `population_map` that contans this tab delimited information:
+Let's first examine whether population structure is present within our sample by defining two populations.  This can be done in `Stacks` by making a file called a `population_map`.  Please switch to the `samples` directory and use your favorite text editor to generate a file called `population_map` that contans this tab delimited information:
 
 ```
 PF515_chrZZZ_sorted	population_1
