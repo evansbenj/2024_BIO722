@@ -151,16 +151,17 @@ You should see statistics on the number of reads retained or rejected, why they 
 
 Please rename each of these nine files to have the sample name instead of the barcode using the `mv` command.  For example, within the `samples` directory:
 
-`mv sample_CCTCTTATCA.fq PF515.fq`
-`mv sample_TATCGTTAGT.fq PM561.fq`
-`mv sample_TAGTGCGGTC.fq PM565.fq`
-`mv sample_GGCCGGTAAC.fq PM566.fq`
-`mv sample_AGGAACCTCG.fq PM567.fq`
-`mv sample_TTATCCGTAG.fq PM582.fq`
-`mv sample_CGCTATACGG.fq PM584.fq`
-`mv sample_CACGCAACGA.fq PM592.fq`
-`mv sample_ATCCGTCTAC.fq PM602.fq`
-
+```
+mv sample_CCTCTTATCA.fq PF515.fq
+mv sample_TATCGTTAGT.fq PM561.fq
+mv sample_TAGTGCGGTC.fq PM565.fq
+mv sample_GGCCGGTAAC.fq PM566.fq
+mv sample_AGGAACCTCG.fq PM567.fq
+mv sample_TTATCCGTAG.fq PM582.fq
+mv sample_CGCTATACGG.fq PM584.fq
+mv sample_CACGCAACGA.fq PM592.fq
+mv sample_ATCCGTCTAC.fq PM602.fq
+```
 ## Practice problem 1: How many reads do we have for each individual?
 
 As an exercise, please use the [`grep`](http://unixhelp.ed.ac.uk/CGI/man-cgi?grep) command to count how many reads we have for each individual.  A hint is that using `grep`, you can count the number of times an identifier character for each sequence appears in each file for each individual.  Another hint is that you can get the manual for any `Unix` command by typing `man command`.  Which individual has the most reads?  Which has the least reads?  Can you think of a reason that some samples have lots of reads while others have less?  You should be able to confirm your read count with the number in the log file from `process_radtags`.
