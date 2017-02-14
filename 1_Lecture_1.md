@@ -152,21 +152,13 @@ You should see statistics on the number of reads retained or rejected, why they 
 Please rename each of these nine files to have the sample name instead of the barcode using the `mv` command.  For example, within the `samples` directory:
 
 `mv sample_CCTCTTATCA.fq PF515.fq`
-
 `mv sample_TATCGTTAGT.fq PM561.fq`
-
 `mv sample_TAGTGCGGTC.fq PM565.fq`
-
 `mv sample_GGCCGGTAAC.fq PM566.fq`
-
 `mv sample_AGGAACCTCG.fq PM567.fq`
-
 `mv sample_TTATCCGTAG.fq PM582.fq`
-
 `mv sample_CGCTATACGG.fq PM584.fq`
-
 `mv sample_CACGCAACGA.fq PM592.fq`
-
 `mv sample_ATCCGTCTAC.fq PM602.fq`
 
 ## Practice problem 1: How many reads do we have for each individual?
