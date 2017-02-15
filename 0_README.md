@@ -1,11 +1,11 @@
-# BIO720
+# BIO709
 This is the BJE portion of the BIO709 (formerly BIO720) graduate course in Bioinformatics.  This section will be divided into three 1-2 hour interactive lectures that are designed around a group project on macaque genomics that uses reduced representation genome sequence data and a reference genome.  
 
 ## Background
 Many interesting organisms have big genomes, making complete genome sequencing infeasible, especially for multiple individuals.  A relatively cost-efficient solution has been developed recently called "reduced representation genome sequencing" (RRGS).  This approach enables deep sequencing of multiple genetic samples from the same (homologous) genomic regions.  It takes advantage of next generation (Illumina) sequencing technology and requires relatively simple laboratory preparation (DNA extraction), which can be accomplished with a centrifuge and a heat block.  Other laboratory steps (library construction) can be outsourced or done in house, depending on the equipment and funds that are available. This approach has many applications, including phylogenomics, population genomics, linkage mapping, and analysis of gene flow.
 
 ## Goals
-The goal of this section of the course is to introduce students to some basic aspects of bioinformatic analysis of genomic data. Ideally this  will provide a sufficient level of exposure to students that they will be able to figure out how to learn more and generate and analyze their own datasets. Many of the approaches to analyze RRGS data are identical to WGS data (e.g., demultiplexing, trimming, mapping to a reference, genotyping, etc).
+The goal of this section of the course is to introduce students to some basic aspects of bioinformatic analysis of genomic data. Ideally this  will provide a sufficient level of exposure to students that they will be able to figure out how to learn more and generate and analyze their own datasets. Many of the approaches to analyze RRGS data are identical to WGS data (e.g., demultiplexing, trimming, mapping to a reference, read filtering, genotyping, etc).
 
 ## Specific Topics
 The first lecture  will begin with an introduction to reduced representation genome sequencing (e.g. RADseq, GBS) and an introduction to the class project. The remainder of this and subsequent lectures will be interactive, and will include (a) exploration of the example Illumina data, including an explanation of fastq format and de-multiplexing of multiplexed samples, (b) reference genomes, and aligning sequence data to a reference genomes, (c) base recalibration and genotype calling, and (d) applications to phylogenomics and population genomics.  
