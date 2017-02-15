@@ -10,7 +10,7 @@ The program `Structure` can not handle all of our data from the complete dataset
 
 This uses a `unix` command called `shuf`.  `shuf` combined with `awk` tells the computer to print a randomly selected value from column 3 1000 times to a file called `1000_randoms`.
 
-Now we are ready to generate an input file for `Structure`.  Please type this command:
+Now we are ready to generate an input file for `Structure`.  From within the `Stacks_Results` directory, please type this command:
 
 `/usr/local/stacks/bin/populations -P ./ -b 1 -r 1 -t 36 --structure --write_single_snp -W ./1000_randoms`
 
