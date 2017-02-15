@@ -87,7 +87,7 @@ and now exit the `R` environment:
 
 We can now dowload and view this file.  
 
-## Problem 6
+## Problem 6 (for home)
 
 OK, now please generate a plot from Structure with *k* equal to 2 and then another plot with *k* equal to 4.  When can you conclude by comparing these plots? If you are feeling ambitions, you could write a script to automate `Structure` analysis for values of k=2 to 9, or you could improve the R plot to display the results of multiple analyses on one graph (or both!).
 
