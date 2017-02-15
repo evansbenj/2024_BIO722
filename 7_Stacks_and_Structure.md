@@ -8,7 +8,7 @@ The program `Structure` can not handle all of our data from the complete dataset
 
 `shuf -n 1000 batch_1.catalog.tags.tsv | awk '{print $3}'  > 1000_randoms`
 
-This uses a `unix` command called `shuf`.  This tells the computer to print a randomly selected value from column 3 1000 times to a file called `1000_randoms`.
+This uses a `unix` command called `shuf`.  `shuf` combined with `awk` tells the computer to print a randomly selected value from column 3 1000 times to a file called `1000_randoms`.
 
 Now we are ready to generate an input file for `Structure`.  Please type this command:
 
