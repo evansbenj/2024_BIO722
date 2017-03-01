@@ -12,7 +12,7 @@ From within the `Stacks_Results` directory, we can view the pairwise nucleotide 
 
 `more batch_1.sumstats_summary.tsv`
 
-As indicated in the header, pairwise nucleotide diversity should be listed in the sixth to last column on the bottom row. For autosomes this statistic is accurate but there are problems with this calculation using only the X chromosome because some of the individuals are males; Ben will discuss these problems and a workaround he did with a perl script. The estimate of pairwise nucleotide diversity he recovered from the Stacks analysis of the bam files is 0.00108 substutitons per site.
+As indicated in the header, pairwise nucleotide diversity should be listed in the sixth to last column on the bottom row. For autosomes this statistic is accurate but there are problems with this calculation using only the X chromosome because some of the individuals are males; Ben will discuss these problems and a workaround he did with a perl script. The estimate of pairwise nucleotide diversity he recovered from the Stacks analysis of the bam files from the X chromosome is 0.00108 substutitons per site.
 
 Now lets take some time for you to all analyze your bam files. Please let Ben know what your calculation of pi is for each of your chromosomes.
 
