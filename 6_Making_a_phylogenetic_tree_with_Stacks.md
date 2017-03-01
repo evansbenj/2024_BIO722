@@ -40,7 +40,7 @@ To make a phylogenetic tree with `Phylip`, we first need to make a matrix of pai
 
 `dnadist`
 
-This will open up a menu of options.  You can enter `batch_1.phylip` for your input file.  I suggest naming your output file, which is the matrix of pairwise distances, something useful such as `batch_1.phylip.dist`.  You will use this as your input for the `Phylip` program called `neighbor`.
+This will open up a menu of options.  You can enter `batch_1.phylip` for your input file.  Accept the default options and the program will generate a file called `outfile`. This file will be your input for the `Phylip` program called `neighbor`.
 
 To run `neighbor` please type this (using the US spelling of neighbour):
 
