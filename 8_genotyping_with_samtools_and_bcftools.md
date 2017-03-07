@@ -29,3 +29,9 @@ do
 done
 ```
 
+Let's make some symbolic links to some recently updated software:
+
+```
+ln -s /home/ben/samtools_2016/bin/samtools
+ln -s /home/ben/samtools_2016/bcftools-1.3.1/bcftools
+```
