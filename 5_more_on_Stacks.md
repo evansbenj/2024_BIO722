@@ -73,7 +73,7 @@ ln -s /1/scratch/ben/PM584_chr9_sorted.bam
 ln -s /1/scratch/ben/PM592_chr9_sorted.bam
 ln -s /1/scratch/ben/PM602_chr9_sorted.bam
 ```
-Then, please make a new Stacks directory within the `/2/scratch/ZZZ/full_data_mapped_to_chr9` directory, and execute the Stacks pipeline for these data as described above. Because this takes a while, lets use screen to run this job in the background.
+Then, please make a new `Stacks_Results` directory within the `/2/scratch/ZZZ/full_data_mapped_to_chr9` directory, and execute the Stacks pipeline for these data as described above. Because this takes a while, lets use screen to run this job in the background.
 
 Please type `screen -S Stacks_for_chromosome9`
 
