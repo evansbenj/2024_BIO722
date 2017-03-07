@@ -35,6 +35,12 @@ Let's make some symbolic links to some recently updated software:
 ln -s /home/ben/samtools_2016/bin/samtools
 ln -s /home/ben/samtools_2016/bcftools-1.3.1/bcftools
 ```
+and to the chr9 reference files:
+
+```
+ln -s XXXX
+```
+
 
 Now, using these recently updated versions, we can make a genotype (vcf) file with all of the samples like this:
 
