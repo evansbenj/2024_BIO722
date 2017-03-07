@@ -4,7 +4,7 @@
 
 Now lets make a genotype (vcf) file from our bam files.
 
-First, from within this directory: `/2/scratch/XXXXX/full_data_mapped_to_chr9`, please index all of the chr9 files with this script (don't forget to update the `XXXXX` in the path with your username):
+First, please index all of the chr9 files with this script. You will need to copy and paste this script into a text editor, save it under some name, and don't forget to update the `XXXXX` in the path with your username.  Then you can execute it.
 
 ```
 #!/bin/bash                                                                                            
@@ -24,8 +24,7 @@ PM602"
 
 for each_individual in $individuals
 do
-
-echo ${each_individual}
+    echo ${each_individual}
     samtools index $path_to_data/${each_individual}_${chromosome}_sorted.bam
 done
 ```
