@@ -38,7 +38,14 @@ ln -s /home/ben/samtools_2016/bcftools-1.3.1/bcftools
 and to the chr9 reference files:
 
 ```
-ln -s XXXX
+ln -s /1/scratch/ben/chr9_reference_genome/chr9.dict
+ln -s /1/scratch/ben/chr9_reference_genome/chr9.fa
+ln -s /1/scratch/ben/chr9_reference_genome/chr9.fa.amb
+ln -s /1/scratch/ben/chr9_reference_genome/chr9.fa.ann
+ln -s /1/scratch/ben/chr9_reference_genome/chr9.fa.bwt
+ln -s /1/scratch/ben/chr9_reference_genome/chr9.fa.fai
+ln -s /1/scratch/ben/chr9_reference_genome/chr9.fa.pac
+ln -s /1/scratch/ben/chr9_reference_genome/chr9.fa.sa
 ```
 
 
