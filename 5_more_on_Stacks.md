@@ -73,13 +73,17 @@ ln -s /1/scratch/ben/PM584_chr9_sorted.bam
 ln -s /1/scratch/ben/PM592_chr9_sorted.bam
 ln -s /1/scratch/ben/PM602_chr9_sorted.bam
 ```
-Then, please make a new `Stacks_Results` directory within the `/2/scratch/ZZZ/full_data_mapped_to_chr9` directory, and execute the Stacks pipeline for these data as described above. Because this takes a while, lets use screen to run this job in the background.
+Then, please make a new `Stacks_Results` directory within the `/2/scratch/ZZZ/full_data_mapped_to_chr9` directory like this:
+```
+mkdir Stacks_Results
+```
+
+And now we will execute the Stacks pipeline for these data as described above. Because this takes a while, lets use screen to run this job in the background.
 
 Please type `screen -S Stacks_for_chromosome9`
 
 And then in the screen type this:
 ```
-mkdir Stacks_Results
 /usr/local/stacks/bin/ref_map.pl -S -b 1 -n 2 \
     -O ../samples/population_map \
     -o ./Stacks_Results \
@@ -99,7 +103,7 @@ To exit the screen type `ctrl-a` and `ctrl-d`
 
 ## Making a whitelist from the bed file for use with `Stacks`
 
-The `populations` module of `Stacks` can be fed a list of RAD loci to include (a whitelist) or exclude (a blacklist) from the analysis. The RADloci are listed in the file called `batch_1.catalog.tags.tsv`. Please unzip this file like this:
+The `populations` module of `Stacks` can be fed a list of RAD loci to include (a whitelist) or exclude (a blacklist) from the analysis. When the analysis om the screen is done, RADloci will be listed in a file called `batch_1.catalog.tags.tsv` that is located within the `Stacks_Results` directory. Please unzip this file like this:
 
 `gunzip batch_1.catalog.tags.tsv.gz`
 
