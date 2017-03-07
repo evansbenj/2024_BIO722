@@ -35,7 +35,7 @@ The first line uses samtools to make a text file called `header.sam` that contai
 
 Now we can get divergence information using `POPBAM` (from within the `samples` directory) like this:
 
-`popbam diverge -o 0 XXX_new.bam chrX -f ../my_monkey_chromosome/chrXXX.fa chrXXX > divergence.txt`
+`popbam diverge -o 0 XXX_new.bam chrXXX -f ../my_monkey_chromosome/chrXXX.fa chrXXX > divergence.txt`
 
 Don't forget to specify the chromosome that you are surveying at the end (`chrXXX`). This will write the output of `POPBAM` to a text file called `divergence.txt`.  The divergence Ben got for PF515 for chrX was 0.00524.
 
