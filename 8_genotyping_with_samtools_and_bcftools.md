@@ -35,7 +35,7 @@ Let's make some symbolic links to some recently updated software:
 ln -s /home/ben/samtools_2016/bin/samtools
 ln -s /home/ben/samtools_2016/bcftools-1.3.1/bcftools
 ```
-and to the chr9 reference files:
+and then make a directory called `my_chr9`, enter this directory, and make symbolic links to the chr9 reference files:
 
 ```
 ln -s /1/scratch/ben/chr9_reference_genome/chr9.dict
@@ -52,7 +52,7 @@ ln -s /1/scratch/ben/chr9_reference_genome/chr9.fa.sa
 Now, using these recently updated versions, we can make a genotype (vcf) file with all of the samples like this:
 
 ```
-./samtools mpileup -d8000 -ugf REFERENCE.fa -t DP,AD PF515_chr9_sorted.bam PM561_chr9_sorted.bam PM565_chr9_sorted.bam PM566_chr9_sorted.bam PM567_chr9_sorted.bam PM582_chr9_sorted.bam PM584_chr9_sorted.bam PM592_chr9_sorted.bam PM602_chr9_sorted.bam | ./bcftools call -V indels --format-fields GQ -m -O z -O z -o allsamples_chr9_merged_sorted.bam.vcf.gz
+./samtools mpileup -d8000 -ugf ./my_chr9/chr9.fa -t DP,AD PF515_chr9_sorted.bam PM561_chr9_sorted.bam PM565_chr9_sorted.bam PM566_chr9_sorted.bam PM567_chr9_sorted.bam PM582_chr9_sorted.bam PM584_chr9_sorted.bam PM592_chr9_sorted.bam PM602_chr9_sorted.bam | ./bcftools call -V indels --format-fields GQ -m -O z -O z -o allsamples_chr9_merged_sorted.bam.vcf.gz
 
 ```
 
