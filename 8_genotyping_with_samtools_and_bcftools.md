@@ -2,6 +2,18 @@
 
 (Or you can go back to using `Stacks` to make a Structure files [here](https://github.com/evansbenj/BIO720/blob/master/7_Stacks_and_Structure.md)).
 
+Remember previously we made some symbolic links to some sorted bam files I made to chr9 in a directory `/2/scratch/ZZZ/full_data_mapped_to_chr9`.  Please enter this directory, and check that they are there.  If not, please make them again like this:
+```
+ln -s /1/scratch/ben/PF515_chr9_sorted.bam
+ln -s /1/scratch/ben/PM561_chr9_sorted.bam
+ln -s /1/scratch/ben/PM565_chr9_sorted.bam
+ln -s /1/scratch/ben/PM566_chr9_sorted.bam
+ln -s /1/scratch/ben/PM567_chr9_sorted.bam
+ln -s /1/scratch/ben/PM582_chr9_sorted.bam
+ln -s /1/scratch/ben/PM584_chr9_sorted.bam
+ln -s /1/scratch/ben/PM592_chr9_sorted.bam
+ln -s /1/scratch/ben/PM602_chr9_sorted.bam
+```
 Now lets make a genotype (vcf) file from our bam files.
 
 First, please index all of the chr9 files with this script. You will need to copy and paste this script into a text editor, save it under some name, and don't forget to update the `XXXXX` in the path with your username.  Then you can execute it.
