@@ -77,3 +77,17 @@ Please start a screen and type this command:
 ```
 This will take a while so please exit the screen by typing `ctrl-a` and `ctrl-d`
 
+Eventually this will finish.  In the meantime, we can check out a file I made earlier.  Please make a symbolic link to this file like this:
+
+```
+ln -s /1/scratch/ben/allsamples_chr9_merged_sorted.bam.vcf.gz
+```
+
+And now check out this file like this:
+
+```
+more allsamples_chr9_merged_sorted.bam.vcf.gz
+
+```
+
+
