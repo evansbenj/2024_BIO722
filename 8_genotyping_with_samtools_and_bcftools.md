@@ -2,7 +2,7 @@
 
 (Or you can go back to using `Stacks` to make a Structure files [here](https://github.com/evansbenj/BIO720/blob/master/7_Stacks_and_Structure.md)).
 
-Remember previously we made some symbolic links to some sorted bam files I made to chr9 in a directory `/2/scratch/ZZZ/full_data_mapped_to_chr9`.  Please enter this directory, and check that they are there.  If not, please make them again like this:
+Remember previously we made some symbolic links to some sorted bam files I made to chr9 in a directory `/2/scratch/ZZZ/full_data_mapped_to_chr9`.  I made these so we could work with them in class (they take a while to generate). Please enter this directory, and check that they are there.  If not, please make them again like this:
 ```
 ln -s /1/scratch/ben/PF515_chr9_sorted.bam
 ln -s /1/scratch/ben/PM561_chr9_sorted.bam
@@ -14,7 +14,10 @@ ln -s /1/scratch/ben/PM584_chr9_sorted.bam
 ln -s /1/scratch/ben/PM592_chr9_sorted.bam
 ln -s /1/scratch/ben/PM602_chr9_sorted.bam
 ```
-Now lets make a genotype (vcf) file from our bam files.
+
+A common way that genotype information is conveyed is the `variant call format`, which is is described [here](https://en.wikipedia.org/wiki/Variant_Call_Format). Another new format introduced by the [`Genome Analysis Toolkit`](https://software.broadinstitute.org/gatk/) of the Broad Institute is called the genomic variant call format; this is described [here](http://gatkforums.broadinstitute.org/gatk/discussion/4017/what-is-a-gvcf-and-how-is-it-different-from-a-regular-vcf).
+
+Now lets make a vcf file from out bam files.
 
 First, please index all of the chr9 files with this script. You will need to copy and paste this script into a text editor, save it under some name, and don't forget to update the `XXXXX` in the path with your username.  Then you can execute it.
 
