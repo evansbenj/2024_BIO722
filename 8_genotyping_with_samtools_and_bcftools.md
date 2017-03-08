@@ -50,7 +50,7 @@ Now let's make some symbolic links to some recently updated software. The reason
 ln -s /home/ben/samtools_2016/bin/samtools
 ln -s /home/ben/samtools_2016/bcftools-1.3.1/bcftools
 ```
-and then make a directory called `my_chr9`, enter this directory, and make symbolic links to the chr9 reference files:
+and then make a directory called `my_chr9`, enter this directory, and make symbolic links to the chr9 reference files. We previously made these for a different chromosome using commands we went through earlier.  We're making links to these files now to save some time:
 
 ```
 ln -s /1/scratch/ben/chr9_reference_genome/chr9.dict
