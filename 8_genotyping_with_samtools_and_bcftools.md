@@ -72,12 +72,16 @@ Now, we have everything we need to make a genotype (vcf) file with all of the sa
 Please start a screen and type this command:
 
 ```
-./samtools mpileup -d8000 -ugf ./my_chr9/chr9.fa -t DP,AD PF515_chr9_sorted.bam PM561_chr9_sorted.bam PM565_chr9_sorted.bam PM566_chr9_sorted.bam PM567_chr9_sorted.bam PM582_chr9_sorted.bam PM584_chr9_sorted.bam PM592_chr9_sorted.bam PM602_chr9_sorted.bam | ./bcftools call -V indels --format-fields GQ -m -O z -O z -o allsamples_chr9_merged_sorted.bam.vcf.gz
+./samtools mpileup -d8000 -ugf ./my_chr9/chr9.fa -t DP,AD PF515_chr9_sorted.bam PM561_chr9_sorted.bam PM565_chr9_sorted.bam PM566_chr9_sorted.bam PM567_chr9_sorted.bam PM582_chr9_sorted.bam PM584_chr9_sorted.bam PM592_chr9_sorted.bam PM602_chr9_sorted.bam | ./bcftools call -V indels --format-fields GQ -m -O z -o allsamples_chr9_merged_sorted.bam.vcf.gz
 
 ```
 This will take a while so please exit the screen by typing `ctrl-a` and `ctrl-d`
 
-Eventually this will finish.  In the meantime, we can check out a file I made earlier.  Please make a symbolic link to this file like this:
+The control above first uses the samtools mpileup command. You can check out what the options are by typing `./samtools mpileup`.  You will see that the -d command asks `samtools` to allow very deep depth of covergae for each position (this is probably overkill). The `-ugf` commands tell `samtools` respectively to generate uncompressed VCF/BCF output, generate genotype likelihoods in BCF format, and that the reference file is in fasta format and that it has a faidx index. The `-t` flag tells `samtools` what information to output for each genotype (total depth and per allele depth in this case). Then the sorted bam files to genotype are listed. `samtools` will compute the likelihood of the data given each possible genotype for each position for each sample.  It does not call the variants though. 
+
+This is piped to a program called `bcftools` which applies a prior probability to each genotype for each position across all individuals and does the genotype calling. The flags tell `bcftools` to skip indels, output a compressed file, and include genotype qualities in the output. 
+
+Eventually this will finish. In the meantime, we can check out a file I made earlier.  Please make a symbolic link to this file like this:
 
 ```
 ln -s /1/scratch/ben/allsamples_chr9_merged_sorted.bam.vcf.gz
@@ -86,8 +90,9 @@ ln -s /1/scratch/ben/allsamples_chr9_merged_sorted.bam.vcf.gz
 And now check out this file like this:
 
 ```
-more allsamples_chr9_merged_sorted.bam.vcf.gz
+zmore allsamples_chr9_merged_sorted.bam.vcf.gz
 
 ```
 
+Here you need to use `zmore` instead of `more` because the file is compressed (gzipped).
 
