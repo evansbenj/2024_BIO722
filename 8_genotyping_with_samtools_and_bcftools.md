@@ -113,4 +113,4 @@ zcat allsamples_chr9_merged_sorted.bam.vcf.gz | /usr/local/vcftools/src/perl/vcf
  more allsamples_chr9_merged_sorted.bam.vcf.gz.tab
  ```
 
-Depending on time, Ben will discuss other genotyping approaches using GATK, and also some other useful tasks you can perform using vcf files - such as principal components analysis.
+Depending on time, Ben will discuss other genotyping approaches using GATK, base recalibration, genotype filtering steps, and also some other useful tasks you can perform using vcf files - such as principal components analysis.
