@@ -44,7 +44,7 @@ do
 done
 ```
 
-Let's make some symbolic links to some recently updated software:
+Now let's make some symbolic links to some recently updated software. The reason we are doing is is that the newest release of samtools has some new functionality that we will use:
 
 ```
 ln -s /home/ben/samtools_2016/bin/samtools
