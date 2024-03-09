@@ -1,5 +1,11 @@
 # BIO720
-This is the BJE portion of the BIO722 graduate course in Advanced Bioinformatics.  This section be squeezed into one 2-hour interactive lecture where the class will explore genomic data, including mapping data to a reference genome, genotyping, and doing a genome wide association study (GWAS).  
+This is the BJE portion of the BIO722 graduate course in Advanced Bioinformatics.  Perhaps overly optimistically, this section will be squeezed into one 2-hour interactive lecture where the class will explore genomic data, including:
+* trimming fastq files
+* preparing a reference genome
+* mapping data to a reference genome
+* genotyping
+* genotype filtering
+* doing a genome wide association study (GWAS)  
 
 ## Background on Reduced Representation Genome Sequencing
 Many interesting organisms have big genomes, making complete genome sequencing infeasible, especially for multiple individuals.  A relatively cost-efficient solution has been developed recently called "reduced representation genome sequencing" (RRGS).  This approach enables deep sequencing of multiple genetic samples from the same (homologous) genomic regions.  It takes advantage of next generation (Illumina) sequencing technology and requires relatively simple laboratory preparation (DNA extraction), which can be accomplished with a centrifuge and a heat block.  Other laboratory steps (library construction) can be outsourced or done in house, depending on the equipment and funds that are available. This approach has many applications, including phylogenomics, population genomics, linkage mapping, and analysis of gene flow.
@@ -7,10 +13,7 @@ Many interesting organisms have big genomes, making complete genome sequencing i
 ## Goals
 The goal of this section of the course is to introduce students to some basic aspects of bioinformatic analysis of genomic data. Ideally this  will provide a sufficient level of exposure to students that they will be able to figure out how to learn more and generate and analyze their own datasets. Many of the approaches to analyze RRGS data are identical to WGS data (e.g., demultiplexing, trimming, mapping to a reference, read filtering, genotyping, etc).
 
-## Specific Topics
-We will begin with an interactive exploration of Illumina data, including brief explanations of fastq format and de-multiplexing of multiplexed samples, (b) reference genomes, and (c) aligning sequence data to a reference genomes. Then using previously generated bam files, we will set up a GWAS analysis and plot the results using R.
-
 ## Interactive session 
-To illustrate how to work with and map genomic data to a reference genome, we will first work with a RRGS dataset from the Tonkean macaque monkey (*Macaca tonkeana*).  Tonkean macaques inhabit the central Indonesian island of Sulawesi and, like other papionin monkeys, have a social system characterized by strong female philopatry and obligate male migration.  Reproductive success is thought to be more variable among males than females.  If this is true, we  expect  molecular polymorphism on the X chromosome to be elevated relative to an expectation with equal variance in reproductive success among the sexes (sounds complicated, but Ben will explain this). To test this hypothesis, each student will map RRGS data from the Tonkean macaque to one of the chromosomes of a closely related species – the rhesus macaque (*Macaca mulatta*), whose genome has been completely sequenced.  We will then evaluate diversity and polymorphism of the sex chromosomes and the autosomes of the Tonkean macaque and explore what this can tell us about the social system of these fantastic monkeys.  
+To illustrate how to work with and map genomic data to a reference genome, we will first work with a RRGS dataset from the Bouchia clawed frog (*Xenopus pygmaeus*).  This frog occurs in central Africa, mostly in the Democratic Republic of the Congo. Using reduced representation genome sequencing, we will map the sex determining region of this species, and explore what it can tell us about how important things evolve in general.  
  
 ## OK, lets begin by clicking [here](https://github.com/evansbenj/BIO720/blob/master/1_Lecture_1.md).
