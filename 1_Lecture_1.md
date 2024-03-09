@@ -5,14 +5,15 @@
 ## A quick note about genetic samples
 
 Your statistical power, precision, and accuracy will depend on the quantity and quality of your data.  These factors, of course, depend on the starting material you use for sequencing.  Excitingly, a bunch of recent studies suggest that whole genome sequencing and reduced representation genome sequencing can be used on sub-optimal samples, for example from museum specimens, fecal extractions, and the like.  Nonetheless, it is in your interest to use as high quality DNA as possible.  
-- For animal tissue, I recommend using ethanol or RNAlater to preserve your tissues and I suggest chilling your samples (at -20 or -80 degrees) as soon as possible after collection.
+- For animal tissue, I recommend using ethanol (preferable for DNA) or RNAlater to preserve your tissues and I suggest chilling your samples (at -20 or -80 degrees) as soon as possible after collection.
 - For DNA extraction, I've had success using Qiagen DNEasy extraction kits.  These kits can be used in any lab that has a heat block and a centrifuge.  When a small amount of starting material is being used I recommend reducing the volume of elution buffer you use in order to concentrate the DNA.  You can always dilute it later, and it is harder and less efficient to make a sample more concentrated.
 - If you want to outsource the library preparation (I always have), I recommend using an agarose gel to normalize the concentration of your samples and ensure that the quality is as good as possible.  Different methods have different requirements in terms of the volume and concentration of gDNA, but most expect these parameters to be uniform across the samples you submit.
-- If you have many samples, I suggest extracting and comparing more than you plan to run so you can choose the best ones. 
+- If you have many samples, I suggest extracting and comparing more than you plan to run so you can choose the best ones.
+- Normalization is important before RRGS. I prefer outsourcing normalization to a sequencing center because I've gotten better results compared to when I do it.
 
 ## How much does this cost and where can I do it?
 
-I've done RADseq multiple times at [Floragenix](http://www.floragenex.com/), which is located in Oregon, USA.  I've also done Genotype by Sequencing at [Cornell University](http://www.biotech.cornell.edu/brc/genomic-diversity-facility) in New York, USA.  In 2017, the prices for a 95 RADseq sample run, including library preparation but no bioinformatics is  US$3325. 150bp single end reads on one lane of a HiSeq4000 machine will cost around US$1670. I anticipate that the cost of these services will decline considerably over the next few years and that more sequencing centers will offer this service.
+I've recently had ddRADseq libraries made at [Ibis]([http://www.floragenex.com/](https://www.ibis.ulaval.ca/en/services-2/genomic-analysis-platform/)), which is located at Laval University in Quebec City. I've had sequencing done at [Genome Quebec](https://genomequebec.com/en/) in Montreal.  In 2024, the prices for a 96 RADseq sample run, including library preparation and normalization was ~CAD$4500. Sequencing with Illumina 150bp paired end reads costs around CAD$2400. I anticipate that the cost of these services will decline over the next few years and that more sequencing centers will offer this service.
 
 ## A quick note about Markdown and Github
 
