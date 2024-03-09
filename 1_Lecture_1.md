@@ -26,7 +26,7 @@ This website is written in a markup language called [Markdown](https://en.wikipe
 Illumina sequence data is provided in a text file that is in a format called `fastq`.  This is a modification of another format called `fasta` in which each sequence has a header that begins with a `>` sign.  This is followed by the sequences.  Here is an example:
 
 ```
->example_sequence_in_fasta_format`
+>example_sequence_in_fasta_format
 ATGCGCGCGCTAGGCTCGCGATCGGGGAGCGCGAGCTGAGCTAGCGCGATGCGCCCCGAC
 ```
 
