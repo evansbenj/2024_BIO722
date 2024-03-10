@@ -100,9 +100,7 @@ bwa mem ../reference/XENLA_10.1_genome.fa.gz ../fq/Z23337_CTCG_R1_subset.fq ../f
 samtools index Z23337_sorted.bam
 ```
 
-(but with the `chr`ZZZ parts changed to match the chromosome you are working on.)
-
-As you can see in the [`bwa` manual] (http://bio-bwa.sourceforge.net/bwa.shtml), the `aln` flag tells `bwa` to align the reads to the reference genome (or, using the `bwa` jargon, find the coordinates of the reference genome that map each read. There are several additional options you could specify if you want.  For example, you could use the `-M` flag to set a limit on the number of mismatches between a read and the reference genome.  Because we are mapping data from one species to a reference genome from another, we will not do this.
+As you can see in the [`bwa` manual] (http://bio-bwa.sourceforge.net/bwa.shtml), the `mem` flag tells `bwa` to align the reads to the reference genome (or, using the `bwa` jargon, find the coordinates of the reference genome that map each read) using the BWA_MEM algorithm. There are several additional options you could specify if you want.  For example, you could use the `-M` flag to set a limit on the number of mismatches between a read and the reference genome or the `-t` flag to set the number of threads for the mapping.  Because we are mapping data from one species to a reference genome from another, we will not do this.
 
 This command generates an intermediate file with the `.sai` suffix (which stands for `suffix array index`). Now we need to generate a binary `.bam` formatted file from our `.sai` files.  We will bypass writing a non-binary `.sam` file, which is a tab delimited text file that contains the alignment data, using a pipe.  We also need to add a header while we do this, so we can type this command:
 
