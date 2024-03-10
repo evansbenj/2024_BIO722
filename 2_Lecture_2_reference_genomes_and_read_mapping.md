@@ -76,7 +76,7 @@ screen -X -S make_an_index_file kill
 
 OK, now run picard like this:
 
-  `java -jar /usr/local/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=my_monkey_chromosome/chr`ZZZ`.fa OUTPUT=my_monkey_chromosome/chr`ZZZ`.dict`
+  `java -jar /usr/local-centos6/picard-tools/picard.jar CreateSequenceDictionary REFERENCE=XENLA_10.1_genome.fa.gz OUTPUT=XENLA_10.1_genome.fa.gz.dict`
 
   As before, you will need to change the `chr`ZZZ in this command to match the chromosome you are working with.  This should generate a file called `my_monkey_chromosome/chr`ZZZ`.dict`
 
