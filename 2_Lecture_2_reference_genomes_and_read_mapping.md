@@ -35,9 +35,11 @@ Before we map our data to this reference genome, we need to generate some files 
 
 1. Make an index file.   
 
-    The `bwa` command tells the computer to execute the bwa program.  The `index` command tells `bwa` to generate index files from the rhesus genome file that is indicated by the `my_monkey_chromosome/chr`ZZZ`.fa`. The `-a bwtsw` flag specifies the indexing algorithm for `bwa` to use.  
-  
-  This step will take a few minutes.
+    The `bwa` command tells the computer to execute the bwa program.  The `index` command tells `bwa` to generate index files from the *X. laevis* genome file:
+```
+bwa index XENLA_10.1_genome.fa.gz
+```  
+This step will take a few minutes so let's do it in the background using `screen`.
   
   `screen -S make_an_index_file`
   
