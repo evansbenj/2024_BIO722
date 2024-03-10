@@ -2,7 +2,7 @@
 
 (or you can go back to the Quality Control and Trimming page [here](https://github.com/evansbenj/BIO720/blob/master/1_Lecture_1.md)).
 
-Depending on your organism of study, there may or may not be a relatively closely related genome sequence to work with.  Depending on your research question, this may or may not be useful.  In our example study on the frog *Xenopus pygmaeus*, we are  interested in ultimately doing a genome-wide association study to identify the sex determining region.  For this reason, the genomic location of the data is crucial and we can benefit from the complete genome sequence of a closely related species of African clawed frog (*Xenopus laevis*).  We will use a program called [`bwa`](http://sourceforge.net/projects/bio-bwa/files) and also [`samtools`](http://samtools.sourceforge.net/), to map our data to individual chromosomes of *Xenopus laevis*. 
+Depending on your organism of study, there may or may not be a relatively closely related genome sequence to work with.  Depending on your research question, this may or may not be useful.  In our example study on the frog *Xenopus pygmaeus*, we are  interested in ultimately doing a genome-wide association study to identify the sex determining region.  For this reason, the genomic location of the data is crucial and we can benefit from the complete genome sequence of a closely related species of African clawed frog (*Xenopus laevis*).  We will use a program called [`bwa`]([http://sourceforge.net/projects/bio-bwa/files](https://bio-bwa.sourceforge.net/) and also [`samtools`](http://samtools.sourceforge.net/), to map our data to individual chromosomes of *Xenopus laevis*. 
 
 ## A note about "completely" sequenced genomes
 
