@@ -70,15 +70,16 @@ screen -X -S make_an_index_file kill
 
   Here, the `samtools` command tells the computer to execute the `samtools` program.  The `faidx` option tells samtools to generate a file called `XENLA_10.1_genome.fa.gz.fai` in which each line has information for one the contigs within the reference genome, including the contig name, size, location and other information.  Our reference genome has a contig for each chromosome.
 
-3.  The third thing we need to do is to generate a `.dict` file with a program called [`picard`](http://broadinstitute.github.io/picard/).  To do this, we need to use the latest version of java.  Please type this command to make a symbolic link to this version:
-
-`ln -s /home/ben/jre1.8.0_111/bin/java`
-
-OK, now run picard like this:
+3.  The third thing we need to do is to generate a `.dict` file with a program called [`picard`](http://broadinstitute.github.io/picard/). You can run picard like this:
 
   `java -jar /usr/local-centos6/picard-tools/picard.jar CreateSequenceDictionary REFERENCE=XENLA_10.1_genome.fa.gz OUTPUT=XENLA_10.1_genome.fa.gz.dict`
 
-  As before, you will need to change the `chr`ZZZ in this command to match the chromosome you are working with.  This should generate a file called `my_monkey_chromosome/chr`ZZZ`.dict`
+This should generate a file called `XENLA_10.1_genome.fa.gz.dict`
+
+Because these steps all take time, let's just make symbolic links to the files I already generated:
+```
+ln -s /home/ben/2024_BIO722/2022_pygmaeus/2021_XL_v10_refgenome/XENLA_10.1_genome.fa.gz.* .
+```
 
 ## Mapping the data to the reference genome
 
