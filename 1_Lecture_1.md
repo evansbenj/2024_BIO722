@@ -43,15 +43,24 @@ In this sequence the number signs indicate low quality reads at the end (right s
 
 ## Set up a directory on scratch and make symbolic links
 
-Please login to info, connect to info115 (rsh info115) and navigate to the scratch directory as follows:
+Please login to info, connect to info2020 (ssh info2020) and then navigate to the scratch directory as follows:
 
-`cd /2/scratch/`
+`cd /scratch/USERNAME/`
 
-And make a directory for yourself
+Where USERNAME is your username (e.g. gradstud12). Now make a directory for you to work in:
 
-`mkdir ZZZ`, where `ZZZ` is your username.
+`mkdir Froggies`
 
-Next, please switch to that directory (`cd ZZZ`) and make a symbolic link to a subsetted dataset (`ln -s /1/scratch/monkey_data2/forward_subset.fastq`) and to the full dataset (`ln -s /1/scratch/monkey_data2/forward.fastq`)
+Next, please switch to that directory (`cd ZZZ`) and make another directory for the fastq files:
+`mkdir fq'
+
+Enter this directory (`cd fq`).
+
+Now let's makes symbolic links the full dataset: 
+`ln -s /home/ben/2024_BIO722/2022_pygmaeus/fq/*fq.gz .`
+
+and to the full dataset:
+(`ln -s /1/scratch/monkey_data2/forward.fastq`)
 
 OK, now we have the data set up for us to work with.
 
