@@ -83,13 +83,21 @@ ln -s /home/ben/2024_BIO722/2022_pygmaeus/2021_XL_v10_refgenome/XENLA_10.1_genom
 
 ## Mapping the data to the reference genome
 
-Now we can align the data from each individual to the reference genome using [`bwa`] (http://sourceforge.net/projects/bio-bwa/files). 
+Please make a directory called `bam_files` and enter this directory. 
 
-`bwa aln reference_genome data.fastq > data.sai`
+Now we can align the data from each individual to the reference genome using [`bwa`](https://bio-bwa.sourceforge.net/). 
+
+`bwa mem reference forward.R1.fq.gz reverse.R2.fq.gz | samtools view -Shu - | samtools sort - -
+o sampleID_sorted.bam`
+`samtools index sampleID_sorted.bam`
 
 For example, for individual PF515 you could type this
 
-`bwa aln my_monkey_chromosome/chr`ZZZ`.fa samples/PF515.fq > samples/PF515_chr`ZZZ`.sai`
+```
+bwa mem ../reference/XENLA_10.1_genome.fa.gz ../fq/Z23337_CTCG_R1_subset.fq ../fq/Z23337_CTCG_R2_subset.fq | samtools view -Shu - | samtools sort - -
+o Z23337_sorted.bam
+samtools index Z23337_sorted.bam
+```
 
 (but with the `chr`ZZZ parts changed to match the chromosome you are working on.)
 
