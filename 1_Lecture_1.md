@@ -81,67 +81,14 @@ tail -n4 Z23337_CTCG_R2_subset.fq
 ```
 OK, now we have the data set up for us to work with.
 
-## Example data
-The data we will be working witb are single end 100 bp reads from one Illumina lane. The data are from 9 individuals that were barcoded and multiplexed on this lane (see below for more explanation). The path to the complete dataset is:
-
-Please use the `ls` command to find out how large the full dataset is.
-`ls -lh /1/scratch/monkey_data2/forward.fastq`
-
-As you (hopefully) can see, this is a large file (~32 Gb).  Because the tasks we will perform take a while with this much data, I made a smaller dataset (32Mb) to work with here:
-
-`ls -lh /1/scratch/monkey_data2/forward_subset.fastq`
-
-In case you are interested, I made this using the unix `cat` and `awk` commands as follows:
-
-`cat forward.fastq | awk 'NR >= 0  && NR <= 500000 { print }' > forward_subset.fastq`
-
-Here the `cat` command pipes the file called 'forward.fastq` to the `awk command. Then the `awk` command searches the number of records `NR` (i.e. the line numbers) from 0-500,000 and prints them to a file called `forward_subset.fastq`.  
-
-**FYI, as with most things, I did not figure this out myself, I found it on the internet somewhere.**
-
 ## Quality Control
 Before we do anything with individual sequences, it is a good idea to survey the overall quality of the data.  We can do this with many free tools; for this class we will use a program called [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/).  To run this program please type this:
 
-`fastqc forward_subset.fastq`
+`fastqc Z23337_CTCG_R1_subset.fq`
 
-This should give you some feedback about the analysis as it runs and generate an html file called `forward_subset_fastqc.html`.
+This should give you some feedback about the analysis as it runs and generate an html file called `Z23337_CTCG_R1_subset_subset_fastqc.html`.
 
-Please download the `html` file to your local computer and open it in a browser (or watch Ben do this).
-
-## De-Multiplexing
-Most RRGS methods rely on the Illumina sequencing platform.  These machines generate data using something called a "flowcell" that is divided up into eight "lanes". Small scale projects typically would run multiple samples (from different species or different individuals within a species) on one lane. Because the sequence methodology requires the ligation (attachment) of a linker (a bit of DNA) to each side of bits of DNA that will be sequenced, it is straightforward to combine multiple samples (multiplex) from different individuals in a single lane. This is done by adding a unique identifier sequence (a barcode) to the linker that is used on each sample.  
-
-Note that this barcode is different from "DNA barcoding", the latter of which generally refers to the use of a small variable genomic region (such as the COI gene for animals) for species and population identification.
-
-A first step in our analysis pipeline is to organize data from each of our samples that were run together on an Illumina lane (De-multiplexing our data) and also to filter our data and trim off bits that have lots of errors or that have sequences from the laboratory procedures that were used to generate the data (Trimming/Quality control; next section).  
-
-When samples are run on an Illumina machine, DNA is broken up into many small fragments and a small bit of DNA called an adaptor is then added on each of the fragments. This adaptor allows the sequencing process to occur, essentially by making possible high-throughput put polymerase chain reaction (ask Ben about this if you are unfamiliar). To make possible the multiplexing of samples on one Illumina lane, each sample is linked to a unique adaptor that contains a "barcode" sequence that allows us to sort out which samples each sequence came from.  For our dataset, we have nine individuals from one species (the Tonkean macaque). Each of the samples received the following barcodes:
-
-```
-CCTCTTATCA
-TATCGTTAGT
-TAGTGCGGTC
-GGCCGGTAAC
-AGGAACCTCG
-TTATCCGTAG
-CGCTATACGG
-CACGCAACGA
-ATCCGTCTAC
-```
-
-These barcode correspond with the following sample names:
-```
-CCTCTTATCA	PF515
-TATCGTTAGT	PM561
-TAGTGCGGTC	PM565
-GGCCGGTAAC	PM566
-AGGAACCTCG	PM567
-TTATCCGTAG	PM582
-CGCTATACGG	PM584
-CACGCAACGA	PM592
-ATCCGTCTAC	PM602
-```
-We will use this information in a moment to de-multiplex our data. Please use your favourite text editor to generate a file in your home directory (`/2/scratch/ZZZ/`) called `monkey.barcodes` and paste in only the barcode sequences (without the sample names). 
+Please download the `html` file to your local computer later and open it in a browser.
 
 ## Quality control and trimming
 
