@@ -94,8 +94,7 @@ o sampleID_sorted.bam`
 For example, for individual PF515 you could type this
 
 ```
-bwa mem ../reference/XENLA_10.1_genome.fa.gz ../fq/Z23337_CTCG_R1_subset.fq ../fq/Z23337_CTCG_R2_subset.fq | samtools view -Shu - | samtools sort - -
-o Z23337_sorted.bam
+bwa mem ../reference/XENLA_10.1_genome.fa.gz ../fq/Z23337_CTCG_R1_subset.fq ../fq/Z23337_CTCG_R2_subset.fq | samtools view -Shu - | samtools sort - -o Z23337_sorted.bam
 samtools index Z23337_sorted.bam
 ```
 
