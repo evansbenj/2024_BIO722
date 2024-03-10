@@ -57,11 +57,28 @@ Next, please switch to that directory (`cd ZZZ`) and make another directory for 
 Enter this directory (`cd fq`).
 
 Now let's makes symbolic links the full dataset: 
-`ln -s /home/ben/2024_BIO722/2022_pygmaeus/fq/*fq.gz .`
+```
+ln -s /home/ben/2024_BIO722/2022_pygmaeus/fq/*fq.gz .
+```
 
-and to the full dataset:
-(`ln -s /1/scratch/monkey_data2/forward.fastq`)
+Let's see how many lines one of the files is:
+```
+zcat Z23337_CTCG_R1.fq.gz | wc -l
+```
+There is a lot of data! (The number of lines divided by 4 is the number of reads)
 
+Make a subset of a forward and reverse read that you can use to map against a reference genome:
+```
+zcat Z23337_CTCG_R1.fq.gz | head -n 100000 > Z23337_CTCG_R1_subset.fq
+zcat Z23337_CTCG_R2.fq.gz | head -n 100000 > Z23337_CTCG_R2_subset.fq
+```
+(Note here that the number of lines (`-n 100000`) must be divisible by 4 to prevent truncating the information for the last read.
+
+Check out the last four lines of these two files:
+```
+tail -n4 Z23337_CTCG_R1_subset.fq
+tail -n4 Z23337_CTCG_R2_subset.fq
+```
 OK, now we have the data set up for us to work with.
 
 ## Example data
