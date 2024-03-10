@@ -83,9 +83,9 @@ OK, now we have the data set up for us to work with.
 ## Quality Control
 Before we do anything with individual sequences, it is a good idea to survey the overall quality of the data.  We can do this with many free tools; for this class we will use a program called [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/).  To run this program please type this:
 
-`fastqc Z23337_CTCG_R1_subset.fq`
+`/usr/local-centos6/fastqc/fastqc Z23337_CTCG_R1_subset.fq`
 
-This should give you some feedback about the analysis as it runs and generate an `.html` file called `Z23337_CTCG_R1_subset_subset_fastqc.html`.
+This should give you some feedback about the analysis as it runs and generate an `.html` file called `Z23337_CTCG_R1_subset_fastqc.html`.
 
 Please download the `html` file to your local computer later and open it in a browser.
 
