@@ -24,21 +24,12 @@ wget https://download.xenbase.org/xenbase/Genomics/JGI/Xenla10.1/XENLA_10.1_geno
 ```
 The whole genome comes as a fasta-formatted file. I did this earlier because it takes a while.  Instead of downloading it, please just make a symbolic link to the file I have:
 
-`ln -s XXX`
+`ln -s /home/ben/2024_BIO722/2022_pygmaeus/2021_XL_v10_refgenome/XENLA_10.1_genome.fa.gz .`
 
-Now check out what is in this directory by typing this:
+Now check out the first few lines:
 
-`ls /1/scratch/ben/rhesus_chromosomes/`
+`zcat XENLA_10.1_genome.fa.gz | more`
 
-Ben will assign you a chromosome to work with.  From the `/2/scratch/YOUR_USERNAME/` directory, please make a symbolic link to this chromosome reference sequence in a new directory that you make like this:
-
-`mkdir my_monkey_chromosome`
-
-`ln -s /1/scratch/ben/rhesus_chromosomes/chr`ZZZ`.fa my_monkey_chromosome/` 
-
-Here and henceforth, you will need to change the `chrZZZ.fa` part to match whatever chromosome Ben assigned to you.  For example, if you are working on chromosome 9, you should type this:
-
-`ln -s /1/scratch/ben/rhesus_chromosomes/chr9.fa my_monkey_chromosome/` 
 
 Before we map our data to this reference genome, we need to generate some files that will be used in the mapping process.  This can be done in three steps:
 
