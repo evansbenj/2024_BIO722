@@ -87,11 +87,13 @@ Please make a directory called `bam_files` and enter this directory.
 
 Now we can align the data from each individual to the reference genome using [`bwa`](https://bio-bwa.sourceforge.net/). 
 
-`bwa mem reference forward.R1.fq.gz reverse.R2.fq.gz | samtools view -Shu - | samtools sort - -
+```
+bwa mem reference forward.R1.fq.gz reverse.R2.fq.gz | samtools view -Shu - | samtools sort - -
 o sampleID_sorted.bam`
-`samtools index sampleID_sorted.bam`
+samtools index sampleID_sorted.bam
+```
 
-For example, for individual PF515 you could type this
+For example, you could map our subsetted files for individual Z23337 to the *X. laevis* genome like this:
 
 ```
 bwa mem ../reference/XENLA_10.1_genome.fa.gz ../fq/Z23337_CTCG_R1_subset.fq ../fq/Z23337_CTCG_R2_subset.fq | samtools view -Shu - | samtools sort - -o Z23337_sorted.bam
