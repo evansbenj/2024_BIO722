@@ -1,4 +1,4 @@
-# BJE Lecture 2
+# Aligning to a Reference Genome
 
 (or you can go back to the de-multipexing page [here](https://github.com/evansbenj/BIO720/blob/master/1_Lecture_1.md)).
 
