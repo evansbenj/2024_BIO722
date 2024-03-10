@@ -85,69 +85,22 @@ Before we do anything with individual sequences, it is a good idea to survey the
 
 `fastqc Z23337_CTCG_R1_subset.fq`
 
-This should give you some feedback about the analysis as it runs and generate an html file called `Z23337_CTCG_R1_subset_subset_fastqc.html`.
+This should give you some feedback about the analysis as it runs and generate an `.html` file called `Z23337_CTCG_R1_subset_subset_fastqc.html`.
 
 Please download the `html` file to your local computer later and open it in a browser.
 
 ## Quality control and trimming
 
-A first step in analysis of Illumina data is to identify adaptor and barcode sequences in our data, sort sequences by the barcode, and remove adaptor and barcode sequences from the data.  We can also get rid of sequences that have ambiguous barcodes due to sequencing errors. We additionally can get rid of sequences with low quality scores and trim them all so they have the same length (this last step would not normally be done for RNAseq data but it is a reasonable thing to do for RADseq data).
 
-Illumina generates sequences that have errors in base calls.  Errors typically become more common towards the end of the sequence read, and sometimes (but not always) an "N" is inserted in positions where the base pair is difficult to call.  But sometimes it makes an incorrect call as well. 
+## Practice problem 1 (for home): How many reads do we have for each individual?
 
-We will use software package called `Stacks` to de-multiplex and trim our data.  This is actually a suite of programs and we will be using the application called `process_radtags` within `Stacks`.  `Stacks` has a very nice online manual [here](http://catchenlab.life.illinois.edu/stacks/manual). FYI, other software that does trimming of RADseq data is available [here](https://github.com/johnomics/RADtools/blob/master/RADpools).
-
-Brian has installed most of the software we need in a directory called `/usr/local/bin`. Before we de-multiplex our data subset, we need to make a directory for the de-multiplexed data to be stored in. From your current directory  (`/2/scratch/your_usrname`), please type this:
-
-`mkdir samples`
-
-The command to execute this program on our data is:
-
-`/usr/local/bin/process_radtags -f <inputfile> -b <barcode_file> -o ./samples/ -e sbfI -t 75 -r -c -q --adapter_1 GATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG --adapter_2 AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT --adapter_mm 2 --filter_illumina`
-
-As detailed in the online manual, the first part (`/usr/local/bin/process_radtags`) directs the computer to run the program process_radtags, which is in the director called `/usr/local/bin/`.  The `-f` flag specifies where the data are and <inputfile> provides the path and filename of the data. The `-b` flag specifies where the barcode file is that we made eariler and <barcode_file> provides the path and name for this file.  The `-o` flag tells `process_radtags` to put the demultiplexed data in a folder called `./samples`, which we should make in advance using the unix `mkdir` command.  The `-e` flag tells `process_radtags` that the restriction enzyme called sbfI was used to generate the data. The `-t` flag tells `process_radtags` to trim all sequences to be 75 base pairs long. The `-r`, `-c`, and `-q` flags directs `process_radtags` to respectively
-- rescue barcodes and RADtags when possible allowing upto a default value of 2 mismatches (this number can be changed too if you want)
-- clean the data and remove reads with any uncalled bases, and 
-- discard reads with low quality scores.  
-
-The other flags tell `process_radtags` to remove adapter sequences that are specified and to remove bad reads recognized by the Illumina sequencing software.  Other details, such as the type of quality scores are set at default values. All of this information is available, of course, in the manual that comes with the program. 
-
-Here is an example of the commandline I used to de-multiplex the subset of the data:
-
-`/usr/local/bin/process_radtags -f forward_subset.fastq -b monkey.barcodes -o ./samples/ -e sbfI -t 75 -r -c -q --adapter_1 GATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCTCGTATGCCGTCTTCTGCTTG --adapter_2 AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT --adapter_mm 2 --filter_illumina`
-
-If you enter the `samples` directory, you should see your de-multiplexed files, each named by the barcode. Let's check the log file:
-
-`more samples/process_radtags.log`
-
-You should see statistics on the number of reads retained or rejected, why they were rejected, and how many reads per individual were retained. Rejection of reads happens if the software cannot find a SbfI restriction enzyme site (ambiguous RADtag), or cannot place the barcode (ambiguous barcode), if it is low quality (lots of Ns), or if it contains Illumina adaptor sequences.
-
-Please rename each of these nine files to have the sample name instead of the barcode using the `mv` command.  For example, within the `samples` directory:
-
-```
-mv sample_CCTCTTATCA.fq PF515.fq
-mv sample_TATCGTTAGT.fq PM561.fq
-mv sample_TAGTGCGGTC.fq PM565.fq
-mv sample_GGCCGGTAAC.fq PM566.fq
-mv sample_AGGAACCTCG.fq PM567.fq
-mv sample_TTATCCGTAG.fq PM582.fq
-mv sample_CGCTATACGG.fq PM584.fq
-mv sample_CACGCAACGA.fq PM592.fq
-mv sample_ATCCGTCTAC.fq PM602.fq
-```
-## Practice problem 1: How many reads do we have for each individual?
-
-As an exercise, please use the [`grep`](http://unixhelp.ed.ac.uk/CGI/man-cgi?grep) command to count how many reads we have for each individual.  A hint is that using `grep`, you can count the number of times an identifier character for each sequence appears in each file for each individual.  Another hint is that you can get the manual for any `Unix` command by typing `man command`.  Which individual has the most reads?  Which has the least reads?  Can you think of a reason that some samples have lots of reads while others have less?  You should be able to confirm your read count with the number in the log file from `process_radtags`.
+As an exercise, please use the [`zgrep`](http://unixhelp.ed.ac.uk/CGI/man-cgi?zgrep) command to count how many reads we have for each of the .fq.gz files.  A hint is that using `zgrep`, you can count the number of times an identifier character for each sequence appears in each file for each individual.  Another hint is that you can get the manual for any `Unix` command by typing `man command`.  Which individual has the most reads?  Which has the least reads?  Can you think of a reason that some samples have lots of reads while others have less?  
 
 How would your `grep` command differ for a `fasta` file compared to a `fastq` file?
 
 ## Practice problem 2: How did trimming affect the quality assay?
 
 Please use FastQC to evaluate read quality of your trimmed sequences.  How do the trimmed reads differ from the untrimmed reads?
-
-## Practice problem 3 (for home): Please do this with the full dataset (`forward.fastq`)
-
-After class, please use `process_radtags` to demultiplex the full dataset located here:
 
 ## OK, now we are ready to move on to mapping reads to a reference genome.  Please click [here](https://github.com/evansbenj/BIO720/blob/master/2_Lecture_2_reference_genomes_and_read_mapping.md).
 
