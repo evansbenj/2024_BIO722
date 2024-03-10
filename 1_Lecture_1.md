@@ -1,4 +1,4 @@
-# BJE Lecture 1
+# Quality control and trimming
 
 (Or you can go back to the Readme page [here](https://github.com/evansbenj/BIO720/blob/master/0_README.md)).
 
