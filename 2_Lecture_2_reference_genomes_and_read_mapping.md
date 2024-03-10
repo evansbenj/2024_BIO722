@@ -39,36 +39,36 @@ Before we map our data to this reference genome, we need to generate some files 
 ```
 bwa index XENLA_10.1_genome.fa.gz
 ```  
-This step will take a few minutes so let's do it in the background using `screen`.
-  
-  `screen -S make_an_index_file`
-  
-  then type this:
-  
-  `bwa index -a bwtsw my_monkey_chromosome/chr`ZZZ`.fa`
-  
-  Then exit the screen by typing `ctrl-a` then `ctrl-d`
-  
-  You can list the screens you have like this:
-  
-  `screen -ls`
+This step will take a while, and we could do it in the background using `screen`. Ben will do a demo of how to use screen (just watch, no need to do this):
 
-  and you can return to the screen you started like this:
+`screen -S make_an_index_file`
   
-  `screen -r make_an_index_file`
+then type this:
   
-  when it is done, you can exit and then kill the screen like this:
+`bwa index XENLA_10.1_genome.fa.gz`
   
-  `ctrl-a` then `ctrl-d` and then
+Then exit the screen by typing `ctrl-a` then `ctrl-d`
   
-  screen -X -S make_an_index_file kill
+You can list the screens you have like this:
+  
+`screen -ls`
+
+and you can return to the screen you started like this:
+  
+`screen -r make_an_index_file`
+  
+when it is done, you can exit and then kill the screen like this:
+  
+`ctrl-a` then `ctrl-d` and then
+  
+screen -X -S make_an_index_file kill
 
 
-2. We now need to to generate another file using `samtools`.  Please type this:
+2. For some downstram applications, we need to to generate another file using `samtools`.  Please type this:
 
-  `samtools faidx my_monkey_chromosome/chr`ZZZ`.fa`
+  `samtools faidx XENLA_10.1_genome.fa.gz`
 
-  Here, the `samtools` command tells the computer to execute the `samtools` program.  The `faidx` option tells samtools to generate a file called `chr`ZZZ`.fai` in which each line has information for one the contigs within the reference genome, including the contig name, size, location and other information.  Our reference genome has a contig for each chromosome.
+  Here, the `samtools` command tells the computer to execute the `samtools` program.  The `faidx` option tells samtools to generate a file called `XENLA_10.1_genome.fa.gz.fai` in which each line has information for one the contigs within the reference genome, including the contig name, size, location and other information.  Our reference genome has a contig for each chromosome.
 
 3.  The third thing we need to do is to generate a `.dict` file with a program called [`picard`](http://broadinstitute.github.io/picard/).  To do this, we need to use the latest version of java.  Please type this command to make a symbolic link to this version:
 
