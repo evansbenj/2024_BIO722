@@ -87,10 +87,15 @@ Before we do anything with individual sequences, it is a good idea to survey the
 
 This should give you some feedback about the analysis as it runs and generate an `.html` file called `Z23337_CTCG_R1_subset_fastqc.html`.
 
-Please download the `html` file to your local computer later and open it in a browser.
+Please download the `html` file to your local computer (later) and open it in a browser to view the quality metrics.
 
-## Quality control and trimming
+## Trimming
 
+Let's use [`trimmomatic`](http://www.usadellab.org/cms/?page=trimmomatic) to remove poor quality positions in our data.
+
+```
+java -jar /usr/local-centos6/trimmomatic/trimmomatic-0.36.jar PE Z23337_CTCG_R1_subset.fq Z23337_CTCG_R2_subset.fq output_forward_paired.fq.gz output_forward_unpaired.fq.gz output_reverse_paired.fq.gz output_reverse_unpaired.fq.gz ILLUMINACLIP:/usr/local-centos6/trimmomatic/adapters/TruSeq3-PE.fa:2:30:10:2:True LEADING:3 TRAILING:3 MINLEN:36
+```
 
 ## Practice problem 1 (for home): How many reads do we have for each individual?
 
