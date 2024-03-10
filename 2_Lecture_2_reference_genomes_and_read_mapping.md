@@ -1,6 +1,6 @@
 # Aligning to a Reference Genome
 
-(or you can go back to the de-multipexing page [here](https://github.com/evansbenj/BIO720/blob/master/1_Lecture_1.md)).
+(or you can go back to the Quality Control and Trimming page [here](https://github.com/evansbenj/BIO720/blob/master/1_Lecture_1.md)).
 
 Depending on your organism of study, there may or may not be a relatively closely related genome sequence to work with.  Depending on your research question, this may or may not be useful.  In our example study on Tonkean macaques, we are  interested in quantifying molecular polymorphism on the X chromosome and comparing it to polymorphism on the autosomes.  For this reason, the genomic location of the data is crucial and we can benefit from the complete genome sequence of a closely related species of macaque monkey, the rhesus macaque (*Macaca mulatta*).  We will use a program called [`bwa`] (http://sourceforge.net/projects/bio-bwa/files) and also [`samtools`](http://samtools.sourceforge.net/), to map our data to individual chromosomes of the rhesus macaque.  Normally one would map reads to an entire genome because the data were generated from a complete genome, but in our case we are doing only an example analysis and we will each work on an individual chromosome. Ben will assign each of you a chromosome to work on.
 
