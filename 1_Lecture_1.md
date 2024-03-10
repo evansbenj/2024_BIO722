@@ -10,7 +10,6 @@ Your statistical power, precision, and accuracy will depend on the quantity and 
 - If you want to outsource the library preparation (a good idea if you can afford it), I recommend using an agarose gel to first roughly normalize the concentration of your samples and ensure that the quality is as good as possible (high molecular weight).  Different library preparation methods have different requirements in terms of the volume and concentration of gDNA.
 - If you have many samples, I suggest extracting and comparing more than you plan to run so you can choose the best ones.
 
-
 ## How much does this cost and where can I do it?
 
 I've recently had ddRADseq libraries made at [Ibis]([http://www.floragenex.com/](https://www.ibis.ulaval.ca/en/services-2/genomic-analysis-platform/)), which is located at Laval University in Quebec City. I've had sequencing done at [Genome Quebec](https://genomequebec.com/en/) in Montreal.  In 2024, the prices for a 96 RADseq sample run, including library preparation and normalization was ~CAD$4500. Sequencing with Illumina 150bp paired end reads costs around CAD$2400. I anticipate that the cost of these services will decline over the next few years and that more sequencing centers will offer this service.
