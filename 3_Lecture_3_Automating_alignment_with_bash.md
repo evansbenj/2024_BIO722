@@ -2,24 +2,19 @@
 
 (Or you can go back to [mapping reads to a reference genome](https://github.com/evansbenj/BIO720/blob/master/2_Lecture_2_reference_genomes_and_read_mapping.md)).
 
-Now that you have seen how to align data from one individual to a reference genome, we can automate the alignment of all individuals to the reference genome using a bash script. This is easier than going through all that stuff independently for each individual. We can accomplish this with a `bash` script by defining an `array` that contains the names of all of the individuals in the analysis, and then loop through this array and execute each of the commands for each individual.
+Now that you have seen how to align data from one individual to a reference genome, we can automate the alignment of all individuals to the reference genome using a bash script. This is easier than going through all that stuff independently for each individual. We can accomplish this with a `bash` script that loops through the names of our fq files and executes each of the commands for each individual and names our bam files with information that is in the names of the fq files.
 
-Below is an example `bash` script that can run all of our analyses for each individual.  Please use a text editor to make this program.  In the beginning of the script 5 variables are defined that specify, respectively, the path for the bwa and samtools programs, the path to the data, the path to the reference chromosome, and the name of the chromosome you are working on. You will need to modify the variables somewhat to match the chromosome you are working on and the directory. For example you should use the arrow keys to scroll up to the line that says `chromosome="chrXXX.fa"` and change the part that says `chrXXX.fa` to correspond with whatever chromosome you are working on.  For example, if youa re working on chromosome 10, please change this to instead read `chr10.fa`. Also, in the `path_to_chromosome` variable, you will need to change the part that says `YYY` to match your home directory name.
+Below is an example `bash` script that can run all of our analyses for each individual.  Please use a text editor to make this program.  In the beginning of the script there is a "shebang" that tells the computer that this is a bash script. Then there is a loop (beginning with `for`) that asks the computer to read in all files from a directory that we passed in as an argument ($1) that have the suffix `_R1.fq.gz`. It then will output commands to the screen using echo. I have intentionally only output the commands to prevent you from accidentally running these commands. If you really wanted to run this, then just remove both `echo` commands.
 
 ```
-#!/bin/bash                                                                                           path_to_data="../fq/"
-path_to_reference="../reference/XENLA_10.1_genome.fa.gz"
+#!/bin/bash                                                                    
 
-for each_individual in $individuals
-do
-
-echo ${each_individual}
-    bwa mem ../reference/XENLA_10.1_genome.fa.gz ../fq/Z23337_CTCG_R1_subset.fq ../fq/Z23337_CTCG_R2_subset.fq -R "@RG\tID:FLOWCELL1.LANE6\tSM:Z23337" | samtools view -Shu - | samtools sort - -o Z23337_sorted.bam
-    samtools index Z23337_sorted.bam
+for file in $1/*_R1.fq.gz ; do
+    echo bwa mem ../reference/XENLA_10.1_genome.fa.gz $1/${file::-9}_R1.fq.gz $1/${file::-9}_R2.fq.gz -R "@RG\tID:FLOWCELL1.LANE6\tSM:${file::-9}" | samtools view -Shu - | samtools sort - -o ${file::-9}_sorted.bam
+    echo samtools index ${file::-9}_sorted.bam
 done
 
 ```
-
 
 
 Now we need to make the file executable, so type this:
