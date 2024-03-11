@@ -27,26 +27,16 @@ And now we should be able to execute the file.  Type this:
 
 Here we needed to preceed the name of our `bash` script by `./` to tell the computer where to find our script (i.e. in the current working directory).
 
-Now please check whether this worked by checking out the file size of the files in your `~/samples` directory like this:
-
-`ls -l samples`
-
-You should see lots of file including, for each sample a `_sorted.bam` file that is not of file size zero.
-
-If this worked, you can now delete the intermediate files like this:
-
-```
-rm -f samples/*_chrZZZ.bam
-rm -f samples/*.sai
-```
+You should see some errors, but this is because the second command is expecting the output of the first command, but the `echo` prevented this file from being made.
 
 
-##  Practice Problem 6 (for home): Using a bash script to mapping the complete data from all individuals
 
-Imagine you were using the script above to work with a complete genome alignment.  This could take some time and you want to have some idea of how much progress the script has made.  Can you please use the Unix `echo` command to the bash script to keep you informed about which command is executing.  You could (for example) ask the script to tell you when command 1, 2...5 is done and for which individual it has been completed.
+##  Practice Problem 6 (for home): Modify this bash script to batch process other operations
+
+Can you modify the bash script above to work with the subsetted fastq file you made?  Or with a different reference genome that you pass in as an argument?
 
 ## Practice Problem 7 (for home): Using a bash script to get coverage statistics from all individuals
 
-Please write a bash script that will provide the coverage statistic for all bam files in a folder that have the suffix "_sorted.bam".  You can (and should) use the internet for tips.
+Can you make a bash command to run trimmomatic on all of the paired-end data?
 
-## Please click [here](https://github.com/evansbenj/BIO720/blob/master/4_Using_Stacks_to_analyze_your_bam_files.md) to go to the next page on using Stacks.
+## Please click [here](https://github.com/evansbenj/BIO720/blob/master/4_Using_angsd_to_analyze_your_bam_files.md) to go to the next page on using Stacks.
