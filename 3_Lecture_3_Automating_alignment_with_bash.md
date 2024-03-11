@@ -31,12 +31,12 @@ You should see some errors, but this is because the second command is expecting 
 
 
 
-##  Practice Problem 6 (for home): Modify this bash script to batch process other operations
+##  Practice Problem 6 (for home): Modify this bash script to work with fastq files with different names
 
 Can you modify the bash script above to work with the subsetted fastq file you made?  Or with a different reference genome that you pass in as an argument?
 
-## Practice Problem 7 (for home): Using a bash script to get coverage statistics from all individuals
+## Practice Problem 7 (for home): Using a bash script to batch process trimming operations
 
 Can you make a bash command to run trimmomatic on all of the paired-end data?
 
-## Please click [here](https://github.com/evansbenj/BIO720/blob/master/4_Using_angsd_to_analyze_your_bam_files.md) to go to the next page on using Stacks.
+## Please click [here](https://github.com/evansbenj/BIO720/blob/master/4_Using_angsd_to_analyze_your_bam_files.md) to go to the next page on using angsd.
