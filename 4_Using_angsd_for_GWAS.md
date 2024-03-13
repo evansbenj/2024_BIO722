@@ -13,6 +13,7 @@ There are three things we need to do this analysis:
 With this information in hand, ...
 
 
+Now lets quickly look into how to generate genotypes from our bam files by clicking [here](https://github.com/evansbenj/2024_BIO722/blob/master/5_genotyping_with_samtools_and_bcftools.md)
 
 
 
