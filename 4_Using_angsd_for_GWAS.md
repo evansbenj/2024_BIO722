@@ -27,10 +27,16 @@ Now we can execute angsd like this:
 angsd -yBin bin_sex.ybin -doAsso 1 -GL 1 -out out_additive_F1 -doMajorMinor 1 -doMaf 1 -SNP_pval 1e-6 -minInd 4 -bam bam.filelist -P 5 -doCounts 1 -setMinDepthInd 2 -setMaxDepthInd 100 -Pvalue 1
 ```
 
+This also takes too long to run during class, so let's look at an output file I made earlier:
+```
+ln -s /home/ben/2024_BIO722/2022_pygmaeus/angsd/pygm_out_additive_F1.lrt0.gz .
+zmore pygm_out_additive_F1.lrt0.gz 
+```
+
 
 ## Problem 5
 
-With this information in hand, ...
+With this information in hand, you should be able to make a [Manhattan plot](https://en.wikipedia.org/wiki/Manhattan_plot). Ben will show you some he made.
 
 
 Now lets quickly look into how to generate genotypes from our bam files by clicking [here](https://github.com/evansbenj/2024_BIO722/blob/master/5_genotyping_with_samtools_and_bcftools.md)
