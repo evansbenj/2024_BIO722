@@ -6,7 +6,9 @@ Remember previously we made some symbolic links to some sorted bam files with re
 
 A common way that genotype information is conveyed is the `variant call format` – vcf, which is is described [here](https://en.wikipedia.org/wiki/Variant_Call_Format). Another new format introduced by the [`Genome Analysis Toolkit`](https://software.broadinstitute.org/gatk/) of the Broad Institute is called the genomic variant call format – gvcf; this is described [here](http://gatkforums.broadinstitute.org/gatk/discussion/4017/what-is-a-gvcf-and-how-is-it-different-from-a-regular-vcf).
 
-Now lets make a vcf file from our bam files. Below is a command that you can use to make a vcf file for one chromosome for one sample. For fun (if you and some free time) you can write a bash script to make a vcf file for all chromosomes and for all samples using a nested loop.
+Now talk about how to make a vcf file from our bam files. 
+
+Below is a command that you can use to make a vcf file for one chromosome for one sample. For fun (if you and some free time) you can write a bash script to make a vcf file for all chromosomes and for all samples using a nested loop.
 
 Don't run this now because it will take too long to finish in class.  But here is an example
 ```
@@ -19,19 +21,19 @@ The control above first uses the samtools mpileup command. You can check out wha
 
 This information is then piped to a program called `bcftools` which applies a prior probability to each genotype for each position across all individuals and does the genotype calling. The flags tell `bcftools` to skip indels, output a compressed file, and include genotype qualities in the output. 
 
-Eventually this will finish. In the meantime, we can check out a file I made earlier.  Please make a symbolic link to this file like this:
+Eventually this will finish. In the meantime, we can check out some files that I made earlier. Please make a directory called `vcf_files` and enter this directory. Now please make a symbolic link to this file like this:
 
 ```
-ln -s /1/scratch/ben/allsamples_chr9_merged_sorted.bam.vcf.gz
+ln -s /home/ben/2024_BIO722/2022_pygmaeus/vcfs_mapped_to_XLv10_concatscaf/* .
 ```
 
 And now check out this file like this:
 
 ```
-zmore allsamples_chr9_merged_sorted.bam.vcf.gz
+more pyg_mal_Z23376_CTTCCA_sorted.bam_rg.bam_Chr9_10S.g.vcf
 
 ```
 
-Here you need to use `zmore` instead of `more` because the file is compressed (gzipped).
+If the vcf files were compressed (.g.vcf.gz) thatn you would need to use `zmore` instead of `more`.
 
-Depending on time, Ben will discuss other genotyping approaches using GATK, base recalibration, genotype filtering steps, and also some other useful tasks you can perform using vcf files - such as principal components analysis.
+This file was actually made with GATK instead of samtools, but the overall format is similar (GATK gives more information and you can ask bcftools to do this if you want). Depending on time, Ben will discuss other genotyping approaches using GATK, base recalibration, genotype filtering steps, and also some other useful tasks you can perform using vcf files - such as principal components analysis.
