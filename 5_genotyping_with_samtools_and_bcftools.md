@@ -12,11 +12,11 @@ Below is a command that you can use to make a vcf file for one chromosome for on
 
 Don't run this now because it will take too long to finish in class.  But here is an example
 ```
-samtools mpileup -d8000 REFERENCE -t DP,AD sample1.bam sample2.bam .. | bcftools call -V indels --format-fields GQ -m -O z -o allsamples_merged_sorted.bam.vcf.gz
+samtools mpileup -d8000 -ugf REFERENCE -t DP,AD sample1.bam sample2.bam .. | bcftools call -V indels --format-fields GQ -m -O z -o allsamples_merged_sorted.bam.vcf.gz
 ```
 For example:
 ```
-samtools mpileup -d8000 -ugf ../reference/XENLA_10.1_genome.fa.gz -t DP,AD pyg_mal_Z23368_TACAT_sorted.bam pyg_mal_Z23376_CTTCCA_sorted.bam | bcftools call -V indels --format-fields GQ -m -O z -o allsamples_merged_sorted.bam.vcf.gz
+bcftools mpileup -f ../reference/XENLA_10.1_genome.fa.gz pyg_mal_Z23368_TACAT_sorted.bam pyg_mal_Z23376_CTTCCA_sorted.bam | bcftools call -V indels --format-fields GQ -m -O z -o allsamples_merged_sorted.bam.vcf.gz
 ```
 
 If you wanted to run this, you should do it using `screen` as we discussed earlier.
