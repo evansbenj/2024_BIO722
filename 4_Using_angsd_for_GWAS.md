@@ -6,7 +6,11 @@
 
 [Angsd](https://www.popgen.dk/angsd/index.php/ANGSD) is a software suite that can do several analyses, including Genome-wide association studies (GWAS). The goal of a GWAS study is to identify genomic regions where molecular variation (usually single nucleotide polymorphisms, SNPs) are associated with some phenotype of interest. You can learn more about this approach [here](https://en.wikipedia.org/wiki/Genome-wide_association_study).
 
-There are three things we need to do this analysis:
+This software can use bam files as input. So let's make symbolic links to lots of bam files that I made earlier. Please enter your `bam_files` directory and type this:
+```
+ln -s /home/ben/2024_BIO722/2022_pygmaeus/bams_mapped_to_XLv10_concatscaf_readgroups/* .
+```
+
 
 ## Problem 5
 
