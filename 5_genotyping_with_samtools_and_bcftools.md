@@ -1,6 +1,6 @@
 # Genotyping with Samtools and bcftools
 
-(Or you can go back to using `Stacks` to make a Structure files [here](https://github.com/evansbenj/BIO720/blob/master/7_Stacks_and_Structure.md)).
+(Or you can go back to using `angsd` for GWAS analysis [here]([https://github.com/evansbenj/BIO720/blob/master/7_Stacks_and_Structure.md](https://github.com/evansbenj/2024_BIO722/blob/master/4_Using_angsd_for_GWAS.md)).
 
 Remember previously we made some symbolic links to some sorted bam files I made to chr9 in a directory `/2/scratch/ZZZ/full_data_mapped_to_chr9`.  I made these so we could work with them in class (they take a while to generate). Please enter this directory, and check that they are there.  If not, please make them again like this:
 ```
