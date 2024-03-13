@@ -39,4 +39,4 @@ Can you modify the bash script above to work with the subsetted fastq file you m
 
 Can you make a bash command to run trimmomatic on all of the paired-end data?
 
-## Please click [here](https://github.com/evansbenj/BIO720/blob/master/4_Using_angsd_to_analyze_your_bam_files.md) to go to the next page on using angsd.
+## Please click [here](https://github.com/evansbenj/2024_BIO722/blob/master/4_Using_angsd_for_GWAS.md) to go to the next page on using angsd.
