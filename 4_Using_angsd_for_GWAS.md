@@ -10,9 +10,9 @@ This software can use bam files as input. So let's make symbolic links to lots o
 ```
 ln -s /home/ben/2024_BIO722/2022_pygmaeus/bams_mapped_to_XLv10_concatscaf_no_readgroups/* .
 ```
-We also need two more things. The first one is just a list of bam files. You can make one like this:
+We also need two more things. The first one is just a list of bam files. You can use the one I made:
 ```
-ls *bam > bam.filelist
+ln -s /home/ben/2024_BIO722/2022_pygmaeus/angsd/bam.filelist .
 ```
 
 
@@ -20,7 +20,6 @@ The second is a phenotype file that tells the software what the phenotype is for
 
 ```
 ln -s /home/ben/2024_BIO722/2022_pygmaeus/angsd/bin_sex.ybin .
-ln -s /home/ben/2024_BIO722/2022_pygmaeus/angsd/bam.filelist .
 ```
 
 Now we can execute angsd like this:
