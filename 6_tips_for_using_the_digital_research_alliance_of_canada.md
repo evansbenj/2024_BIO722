@@ -1,4 +1,4 @@
-Or you can go back to [Genotyping with bcftools](https://github.com/evansbenj/2024_BIO722/blob/master/5_genotyping_with_samtools_and_bcftools.md)
+Or you can go back to [Genotyping with bcftools](https://github.com/evansbenj/2024_BIO722/blob/master/5_genotyping_with_bcftools.md)
 
 # Tips for using ComputeCanada
 
