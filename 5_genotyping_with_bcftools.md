@@ -1,4 +1,4 @@
-Or you can go back to [using angsd for GWAS](Update 4_Using_angsd_for_GWAS.md)
+Or you can go back to [using angsd for GWAS](4_Using_angsd_for_GWAS.md)
 
 # Genotyping with Bcftools
 
