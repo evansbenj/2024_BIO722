@@ -39,7 +39,7 @@ zmore pygm_out_additive_F1.lrt0.gz
 With this information in hand, you should be able to make a [Manhattan plot](https://en.wikipedia.org/wiki/Manhattan_plot). Ben will show you some he made.
 
 
-Now lets quickly look into how to generate genotypes from our bam files by clicking [here](https://github.com/evansbenj/2024_BIO722/blob/master/5_genotyping_with_samtools_and_bcftools.md)
+Now lets quickly look into one way to generate genotypes from our bam files [using bcftools](https://github.com/evansbenj/2024_BIO722/blob/master/5_genotyping_with_bcftools.md)
 
 
 
