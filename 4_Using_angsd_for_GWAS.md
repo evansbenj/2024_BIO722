@@ -22,7 +22,7 @@ The second is a phenotype file that tells the software what the phenotype is for
 ln -s /home/ben/2024_BIO722/2022_pygmaeus/angsd/bin_sex.ybin .
 ```
 
-Now we can execute angsd like this:
+Now we can execute angsd (in a screen) like this:
 ```
 angsd -yBin bin_sex.ybin -doAsso 1 -GL 1 -out out_additive_F1 -doMajorMinor 1 -doMaf 1 -SNP_pval 1e-6 -minInd 4 -bam bam.filelist -P 5 -doCounts 1 -setMinDepthInd 2 -setMaxDepthInd 100 -Pvalue 1
 ```
