@@ -18,7 +18,7 @@ As an example, let's look at some information on the "completely" sequenced geno
 
 Reference genomes for many sequences are available at multiple publicly available databases.  We can download the complete genome sequence for *Xenopus laevis* from the [Xenbase](https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp). 
 
-Please exit out of your fq directory and make a new directory called `Reference_Genome`. Enter that directory. You can download the *Xenopus laevis* genome assembly using `wget` as follows (please don't do this though):
+Please exit out of your `fq` directory (`cd ..`) and make a new directory called `Reference_Genome` (`mkdir Reference_Genome`). Enter that directory (`cd Reference_Genome`). You can download the *Xenopus laevis* genome assembly using `wget` as follows (please don't do this though):
 ```
 wget https://download.xenbase.org/xenbase/Genomics/JGI/Xenla10.1/XENLA_10.1_genome.fa.gz
 ```
