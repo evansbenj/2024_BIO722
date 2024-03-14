@@ -87,7 +87,11 @@ Before we do anything with individual sequences, it is a good idea to survey the
 
 This should give you some feedback about the analysis as it runs and generate an `.html` file called `Z23337_CTCG_R1_subset_fastqc.html`.
 
-Please download the `html` file to your local computer (later) and open it in a browser to view the quality metrics.
+Please download the `html` file to your local computer (later) and open it in a browser to view the quality metrics. You can do this by opening up a new terminal window (or Mobaxterm window) and typing something similar to this:
+```
+scp USERNAME@info.mcmaster.ca:PATH_TO_FILE/Z23337_CTCG_R1_subset_fastqc.html .
+```
+You can figure out the path by typing 'pwd'. (Note that you should leave out the `/2` in the beginning of your path.)
 
 ## Trimming
 
