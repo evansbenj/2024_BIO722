@@ -101,6 +101,8 @@ Let's use [`trimmomatic`](http://www.usadellab.org/cms/?page=trimmomatic) to rem
 java -jar /usr/local-centos6/trimmomatic/trimmomatic-0.36.jar PE Z23337_CTCG_R1_subset.fq Z23337_CTCG_R2_subset.fq output_forward_paired.fq.gz output_forward_unpaired.fq.gz output_reverse_paired.fq.gz output_reverse_unpaired.fq.gz ILLUMINACLIP:/usr/local-centos6/trimmomatic/adapters/TruSeq3-PE.fa:2:30:10:2:True LEADING:3 TRAILING:3 MINLEN:36
 ```
 
+Please note that the names of the output files in this command are really silly - you should modify them to keep the sampleID (`Z23337` or whatever yours is) in each output file name.
+
 ## Practice problem 1 (for home): How many reads do we have for each individual?
 
 As an exercise, please use the [`zgrep`](http://unixhelp.ed.ac.uk/CGI/man-cgi?zgrep) command to count how many reads we have for each of the .fq.gz files.  A hint is that using `zgrep`, you can count the number of times an identifier character for each sequence appears in each file for each individual.  Another hint is that you can get the manual for any `Unix` command by typing `man command`.  Which individual has the most reads?  Which has the least reads?  Can you think of a reason that some samples have lots of reads while others have less?  
