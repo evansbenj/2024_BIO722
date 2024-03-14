@@ -76,11 +76,6 @@ screen -X -S make_an_index_file kill
 
 This should generate a file called `XENLA_10.1_genome.fa.gz.dict`
 
-Because these steps all take time, let's just make symbolic links to the files I already generated:
-```
-ln -s /home/ben/2024_BIO722/2022_pygmaeus/2021_XL_v10_refgenome/XENLA_10.1_genome.fa.gz.* .
-```
-
 ## Mapping the data to the reference genome
 
 Please make a directory called `bam_files` and enter this directory. 
