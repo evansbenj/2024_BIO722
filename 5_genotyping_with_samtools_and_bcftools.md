@@ -1,4 +1,4 @@
-# Genotyping with Samtools and bcftools
+# Genotyping with Bcftools
 
 (Or you can go back to using `angsd` for GWAS analysis [here]([https://github.com/evansbenj/BIO720/blob/master/7_Stacks_and_Structure.md](https://github.com/evansbenj/2024_BIO722/blob/master/4_Using_angsd_for_GWAS.md)).
 
@@ -12,7 +12,7 @@ Below is a command that you can use to make a vcf file for one chromosome for on
 
 Don't run this now because it will take too long to finish in class.  But here is an example
 ```
-samtools mpileup -d8000 -ugf REFERENCE -t DP,AD sample1.bam sample2.bam .. | bcftools call -V indels --format-fields GQ -m -O z -o allsamples_merged_sorted.bam.vcf.gz
+bcftools mpileup -f REFERENCE sample1.bam sample2.bam .. | bcftools call -V indels --format-fields GQ -m -O z -o OUTPUTFILE.vcf.gz
 ```
 For example:
 ```
