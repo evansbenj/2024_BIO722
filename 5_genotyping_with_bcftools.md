@@ -1,3 +1,5 @@
+Or you can go back to [using angsd for GWAS](Update 4_Using_angsd_for_GWAS.md)
+
 # Genotyping with Bcftools
 
 (Or you can go back to using `angsd` for GWAS analysis [here]([https://github.com/evansbenj/BIO720/blob/master/7_Stacks_and_Structure.md](https://github.com/evansbenj/2024_BIO722/blob/master/4_Using_angsd_for_GWAS.md)).
