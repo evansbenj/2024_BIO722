@@ -23,12 +23,11 @@ Now we need to make the file executable, so type this:
 
 And now we should be able to execute the file.  Type this:
 
-`./alignment_commando`
+`./alignment_commando ../fq`
 
 Here we needed to preceed the name of our `bash` script by `./` to tell the computer where to find our script (i.e. in the current working directory).
 
-You should see some errors, but this is because the second command is expecting the output of the first command, but the `echo` prevented this file from being made.
-
+You will see lots of errors, but this is because the second command is expecting the output of the first command, but the `echo` prevented this file from being made. If you wanted to actually run this analysis, you'd want to delete the echo commands from this file, open up a new screen, and run this in the background (because it takes a long time).
 
 
 ##  Practice Problem 6 (for home): Modify this bash script to work with fastq files with different names
