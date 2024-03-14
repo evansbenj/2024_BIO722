@@ -14,16 +14,16 @@ bcftools mpileup -f REFERENCE sample1.bam sample2.bam .. | bcftools call -V inde
 ```
 For example:
 ```
-bcftools mpileup -f ../reference/XENLA_10.1_genome.fa.gz pyg_mal_Z23368_TACAT_sorted.bam pyg_mal_Z23376_CTTCCA_sorted.bam | bcftools call -V indels --format-fields GQ -m -O z -o allsamples_merged_sorted.bam.vcf.gz
+bcftools mpileup -f ../Reference_Genome/XENLA_10.1_genome.fa.gz pyg_mal_Z23368_TACAT_sorted.bam pyg_mal_Z23376_CTTCCA_sorted.bam | bcftools call -V indels --format-fields GQ -m -O z -o allsamples_merged_sorted.bam.vcf.gz
 ```
 
 If you wanted to run this, you should do it using `screen` as we discussed earlier.
 
-The control above first uses the samtools mpileup command. You can check out what the options are by typing `./samtools mpileup`.  You will see that the -d command asks `samtools` to allow very deep depth of covergae for each position (this is probably overkill). The `-ugf` commands tell `samtools` respectively to generate uncompressed VCF/BCF output, generate genotype likelihoods in BCF format, and that the reference file is in fasta format and that it has a faidx index. The `-t` flag tells `samtools` what information to output for each genotype (total depth and per allele depth in this case). Then the sorted bam files to genotype are listed. `samtools` will compute the likelihood of the data given each possible genotype for each position for each sample.  It does not call the variants though. 
+The control above first uses the samtools mpileup command. You can check out what the options are by typing `bcftools mpileup`.  You will see that the -f command tells `bcftools` where the reference genome is. Then the sorted `.bam` files that you want to genotype are listed. `bcftools mpileup` will compute the likelihood of the data given each possible genotype for each position for each sample.  It does not call the variants though. 
 
-This information is then piped to a program called `bcftools` which applies a prior probability to each genotype for each position across all individuals and does the genotype calling. The flags tell `bcftools` to skip indels, output a compressed file, and include genotype qualities in the output. 
+This information is then piped to the `bcftools call` command, which applies a prior probability to each genotype for each position across all individuals and does the genotype calling. The flags tell `bcftools` to skip indels, output a compressed file, and include genotype qualities in the output. 
 
-Eventually this will finish. In the meantime, we can check out some files that I made earlier. Please make a directory called `vcf_files` and enter this directory. Now please make a symbolic link to this file like this:
+This takes a while to run so please only do this using `screen`. In the meantime, we can check out some files that I made earlier. Please make a directory called `vcf_files` and enter this directory. Now please make a symbolic link to this file like this:
 
 ```
 ln -s /home/ben/2024_BIO722/2022_pygmaeus/vcfs_mapped_to_XLv10_concatscaf/* .
