@@ -38,6 +38,6 @@ more pyg_mal_Z23376_CTTCCA_sorted.bam_rg.bam_Chr9_10S.g.vcf
 
 If the vcf files were compressed (.g.vcf.gz) thatn you would need to use `zmore` instead of `more`.
 
-This file was actually made with GATK instead of samtools, but the overall format is similar (GATK gives more information and you can ask bcftools to do this if you want). Depending on time, Ben will discuss other genotyping approaches using GATK, base recalibration, genotype filtering steps, and also some other useful tasks you can perform using vcf files - such as principal components analysis.
+This file was actually made with GATK instead of samtools, but the overall format is similar (GATK gives more information and you can ask bcftools to do this if you want). Depending on time, Ben will discuss other genotyping approaches using GATK, base recalibration, and genotype filtering steps.
 
 OK now let's discuss some [tips for using the Digital Research Alliance of Canada](https://github.com/evansbenj/2024_BIO722/blob/master/6_tips_for_using_the_digital_research_alliance_of_canada.md)
