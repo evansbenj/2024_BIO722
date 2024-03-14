@@ -76,6 +76,12 @@ screen -X -S make_an_index_file kill
 
 This should generate a file called `XENLA_10.1_genome.fa.gz.dict`
 
+Because the `bwa index` command above takes a while, please kill your screen (`screen -XS JOBID kill`), delete the partially made files, and instead make a symbolic link to index files that I made previously:
+```
+rm -f XENLA_10.1_genome.fa.gz.*
+ln -s /home/ben/2024_BIO722/2022_pygmaeus/2021_XL_v10_refgenome/XENLA_10.1_genome.fa.gz* .`
+```
+
 ## Mapping the data to the reference genome
 
 Please make a directory called `bam_files` and enter this directory. 
