@@ -2,8 +2,6 @@
 
 Or you can go back to [using angsd for GWAS](4_Using_angsd_for_GWAS.md)
 
-(Or you can go back to using `angsd` for GWAS analysis [here]([https://github.com/evansbenj/BIO720/blob/master/7_Stacks_and_Structure.md](https://github.com/evansbenj/2024_BIO722/blob/master/4_Using_angsd_for_GWAS.md)).
-
 Remember previously we made some symbolic links to some sorted bam files with readgroups that I made previously? Let's work with them now.
 
 A common way that genotype information is conveyed is the `variant call format` – vcf, which is is described [here](https://en.wikipedia.org/wiki/Variant_Call_Format). Another new format introduced by the [`Genome Analysis Toolkit`](https://software.broadinstitute.org/gatk/) of the Broad Institute is called the genomic variant call format – gvcf; this is described [here](http://gatkforums.broadinstitute.org/gatk/discussion/4017/what-is-a-gvcf-and-how-is-it-different-from-a-regular-vcf).
