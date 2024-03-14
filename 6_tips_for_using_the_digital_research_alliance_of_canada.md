@@ -45,4 +45,4 @@ There are several convenient features of this bash script. The job will run if y
 
 Some of the job parameters (such as `--time` and `--mem` require some trial and error (or knowledge that I do not have). 
 
-The script also will create two files that have the jobID within the file name. For this script, these files will be called `readgroupsJOBID.err` and  `readgroupsJOBID.out`. The nice thing about including the JOBID in your error and out files is that you can compare these files over multiple runs and assess whether you fixed a problem if there is one.
+The script also will create two files that have the jobID within the file name. For this script, these files will be called `readgroups.JOBID.err` and  `readgroups.JOBID.out`. The JOBID is a unique identifier that is assigned once you run the sbatch command. The nice thing about including the JOBID in your error and out files is that you can compare these files over multiple runs and assess whether you fixed a problem if there is one.
