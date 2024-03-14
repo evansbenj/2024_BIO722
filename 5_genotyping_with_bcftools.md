@@ -4,9 +4,9 @@ Or you can go back to [using angsd for GWAS](4_Using_angsd_for_GWAS.md)
 
 We just made some symbolic links to lots of bam for angsd analysis. We can also use these files as input for genotyping.
 
-A common way that genotype information is conveyed is the `variant call format` – vcf, which is is described [here](https://en.wikipedia.org/wiki/Variant_Call_Format). Another new format introduced by the [`Genome Analysis Toolkit`](https://en.wikipedia.org/wiki/Variant_Call_Format) of the Broad Institute is called the genomic variant call format – gvcf; this is described [here](https://gatk.broadinstitute.org/hc/en-us/articles/360035531812-GVCF-Genomic-Variant-Call-Format).
+A common way that genotype information is conveyed is the `variant call format` – `.vcf`, which is is described [here](https://en.wikipedia.org/wiki/Variant_Call_Format). Another new format introduced by the [`Genome Analysis Toolkit`](https://en.wikipedia.org/wiki/Variant_Call_Format) of the Broad Institute is called the genomic variant call format – `.gvcf`; this is described [here](https://gatk.broadinstitute.org/hc/en-us/articles/360035531812-GVCF-Genomic-Variant-Call-Format).
 
-Below is a command that you can use to make a vcf file for one chromosome for one sample. For fun (if you and some free time) you can write a bash script to make a vcf file for all chromosomes and for all samples using a nested loop.
+Below is a command that you can use to make a `.vcf` file for one chromosome for one sample. For fun (if you and some free time) you can write a bash script to make a `.vcf` file for all chromosomes and for each `.bam` file using a nested loop.
 
 Don't run this now because it will take too long to finish in class.  But here is an example
 ```
