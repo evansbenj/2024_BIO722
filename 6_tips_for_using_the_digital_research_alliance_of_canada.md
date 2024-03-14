@@ -15,5 +15,28 @@ This resource uses a queueing system to run jobs.  The main commands I use are:
 
 Here is an example of a typical bashfile that I would use to run a job
 ```sh
+#!/bin/sh
+#SBATCH --job-name=readgroups
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --time=24:00:00
+#SBATCH --mem=8gb
+#SBATCH --output=readgroups.%J.out
+#SBATCH --error=readgroups.%J.err
+#SBATCH --account=def-XXX
+
+# Here I use comments to remind me how to run the script. I am passing in a path of a directory
+# sbatch ./2024_picard_add_read_groups.sh directory 
+
+# Here I am loading the dependencies and software required for this job; this particular
+# program has no dependencies but I do need to load a specific version which was
+# determined by entering "module spider picard"
+module load picard/2.23.3
+
+# Now I am running the job in a loop. The ${1} refers to the directory I passed in with the sbatch command
+for file in ${1}*_sorted.bam
+do
+    java -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups I=${file} O=${file}_rg.bam RGID=4 RGLB=$(basename $file) RGPL=ILLUMINA RGPU=$(basename $file) RGSM=$(basename $file)
+done
 
 ```
