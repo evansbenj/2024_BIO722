@@ -86,7 +86,7 @@ ln -s /home/ben/2024_BIO722/2022_pygmaeus/2021_XL_v10_refgenome/XENLA_10.1_genom
 
 Please exit the `Reference_Genome` directory, make a new directory called `bam_files`, and enter this directory. 
 
-Now we can align the data from each individual to the reference genome using [`bwa`](https://bio-bwa.sourceforge.net/). 
+Now we can align the data from each individual to the reference genome using [`bwa`](https://bio-bwa.sourceforge.net/). Please open up a new screen before you run this command so we can do other stuff while it is running...
 
 ```
 bwa mem reference forward.R1.fq.gz reverse.R2.fq.gz | samtools view -Shu - | samtools sort - -
