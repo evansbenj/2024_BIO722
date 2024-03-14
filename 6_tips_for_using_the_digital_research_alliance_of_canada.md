@@ -1,3 +1,5 @@
+Or you can go back to [Genotyping with bcftools](https://github.com/evansbenj/2024_BIO722/blob/master/5_genotyping_with_samtools_and_bcftools.md)
+
 # Tips for using ComputeCanada
 
 The [Digital Research Alliance of Canada](https://ccdb.alliancecan.ca/security/login) is an amazing resource!  To access this resource, your supervisor will need to register themself and you. Once you are registered, you have immediate access to hundreds of computer nodes, and hundreds of processing hours. If you need more, your supeprvisor can apply for more.
