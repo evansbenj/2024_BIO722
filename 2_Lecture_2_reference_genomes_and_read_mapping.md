@@ -84,7 +84,7 @@ ln -s /home/ben/2024_BIO722/2022_pygmaeus/2021_XL_v10_refgenome/XENLA_10.1_genom
 
 ## Mapping the data to the reference genome
 
-Please make a directory called `bam_files` and enter this directory. 
+Please exit the `Reference_Genome` directory, make a new directory called `bam_files`, and enter this directory. 
 
 Now we can align the data from each individual to the reference genome using [`bwa`](https://bio-bwa.sourceforge.net/). 
 
