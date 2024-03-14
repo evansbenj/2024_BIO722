@@ -107,6 +107,13 @@ Now please make an index for the bam file, which is a `.bai` file:
 
 `samtools index Z23337_sorted.bam`
 
+# Looking at a bam file
+
+Bam files are in binary format. To check out the content in a human-readable way, you can type this:
+```
+samtools view Z23337_sorted.bam | more
+```
+The format of bam files is explained [here](https://samtools.github.io/hts-specs/SAMv1.pdf).
 
 ## Practice Problem 4: Assessing coverage
 
