@@ -41,6 +41,8 @@ done
 
 ```
 
+The `--account=def-XXX` part needs to be updated with the username of your supervisor
+
 There are several convenient features of this bash script. The job will run if you remember to load the module before you start the job, but it is easier (and more foolproof) to just load the module inside the script. Another nice feature is being able to run the script from any directory because you pass in the directory with your files in it. I usually keep all my sbatch scripts in one folder and then run the `sbatch` command from within the directory that has my files. The output files will be written to the directory from which you launch the `sbatch` command.
 
 Some of the job parameters (such as `--time` and `--mem` require some trial and error (or knowledge that I do not have). 
