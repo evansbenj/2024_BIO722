@@ -4,7 +4,7 @@ Or you can go back to [using angsd for GWAS](4_Using_angsd_for_GWAS.md)
 
 We just made some symbolic links to lots of bam for angsd analysis. We can also use these files as input for genotyping.
 
-A common way that genotype information is conveyed is the `variant call format` – vcf, which is is described [here](https://en.wikipedia.org/wiki/Variant_Call_Format). Another new format introduced by the [`Genome Analysis Toolkit`](https://software.broadinstitute.org/gatk/) of the Broad Institute is called the genomic variant call format – gvcf; this is described [here](http://gatkforums.broadinstitute.org/gatk/discussion/4017/what-is-a-gvcf-and-how-is-it-different-from-a-regular-vcf).
+A common way that genotype information is conveyed is the `variant call format` – vcf, which is is described [here](https://en.wikipedia.org/wiki/Variant_Call_Format). Another new format introduced by the [`Genome Analysis Toolkit`](https://en.wikipedia.org/wiki/Variant_Call_Format) of the Broad Institute is called the genomic variant call format – gvcf; this is described [here](https://gatk.broadinstitute.org/hc/en-us/articles/360035531812-GVCF-Genomic-Variant-Call-Format).
 
 Now talk about how to make a vcf file from our bam files. 
 
