@@ -79,7 +79,7 @@ This should generate a file called `XENLA_10.1_genome.fa.gz.dict`
 Because the `bwa index` command above takes a while, please kill your screen (`screen -XS JOBID kill`), delete the partially made files, and instead make a symbolic link to index files that I made previously:
 ```
 rm -f XENLA_10.1_genome.fa.gz.*
-ln -s /home/ben/2024_BIO722/2022_pygmaeus/2021_XL_v10_refgenome/XENLA_10.1_genome.fa.gz* .`
+ln -s /home/ben/2024_BIO722/2022_pygmaeus/2021_XL_v10_refgenome/XENLA_10.1_genome.fa.gz* .
 ```
 
 ## Mapping the data to the reference genome
@@ -90,14 +90,14 @@ Now we can align the data from each individual to the reference genome using [`b
 
 ```
 bwa mem reference forward.R1.fq.gz reverse.R2.fq.gz | samtools view -Shu - | samtools sort - -
-o sampleID_sorted.bam`
+o sampleID_sorted.bam
 samtools index sampleID_sorted.bam
 ```
 
 For example, you could map our subsetted files for individual Z23337 to the *X. laevis* genome like this:
 
 ```
-bwa mem ../reference/XENLA_10.1_genome.fa.gz ../fq/Z23337_CTCG_R1_subset.fq ../fq/Z23337_CTCG_R2_subset.fq -R "@RG\tID:FLOWCELL1.LANE6\tSM:Z23337" | samtools view -Shu - | samtools sort - -o Z23337_sorted.bam
+bwa mem ../Reference_Genome/XENLA_10.1_genome.fa.gz ../fq/Z23337_CTCG_R1_subset.fq ../fq/Z23337_CTCG_R2_subset.fq -R "@RG\tID:FLOWCELL1.LANE6\tSM:Z23337" | samtools view -Shu - | samtools sort - -o Z23337_sorted.bam
 ```
 
 As you can see in the [`bwa` manual](http://bio-bwa.sourceforge.net/bwa.shtml), the `mem` flag tells `bwa` to align the reads to the reference genome (or, using the `bwa` jargon, find the coordinates of the reference genome that map each read) using the BWA_MEM algorithm. There are several additional options you could specify if you want.  For example, you could use the `-M` flag to set a limit on the number of mismatches between a read and the reference genome or the `-t` flag to set the number of threads for the mapping. 
