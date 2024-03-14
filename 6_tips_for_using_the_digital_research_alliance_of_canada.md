@@ -40,3 +40,9 @@ do
 done
 
 ```
+
+There are several convenient features of this bash script. The job will run if you remember to load the module before you start the job, but it is easier (and more foolproof) to just load the module inside the script. Another nice feature is being able to run the script from any directory because you pass in the directory with your files in it. I usually keep all my sbatch scripts in one folder and then run the `sbatch` command from within the directory that has my files. The output files will be written to the directory from which you launch the `sbatch` command.
+
+Some of the job parameters (such as `--time` and `--mem` require some trial and error (or knowledge that I do not have). 
+
+The script also will create two files that have the jobID within the file name. For this script, these files will be called `readgroupsJOBID.err` and  `readgroupsJOBID.out`. The nice thing about including the JOBID in your error and out files is that you can compare these files over multiple runs and assess whether you fixed a problem if there is one.
