@@ -3,9 +3,11 @@ This is the BJE portion of the BIO722 graduate course in Advanced Bioinformatics
 * trimming fastq files
 * preparing a reference genome
 * mapping data to a reference genome
+* doing a genome wide association study (GWAS)
 * genotyping
-* genotype filtering
-* doing a genome wide association study (GWAS)  
+* some discussion about genotype filtering
+
+ 
 
 ## Background on Reduced Representation Genome Sequencing
 Many interesting organisms have big genomes, making complete genome sequencing infeasible, especially for multiple individuals.  A relatively cost-efficient solution has been developed recently called "reduced representation genome sequencing" (RRGS).  This approach enables deep sequencing of multiple genetic samples from the same (homologous) genomic regions.  It takes advantage of next generation (Illumina) sequencing technology and requires relatively simple laboratory preparation (DNA extraction), which can be accomplished with a centrifuge and a heat block.  Other laboratory steps (library construction) can be outsourced or done in house, depending on the equipment and funds that are available. This approach has many applications, including phylogenomics, population genomics, linkage mapping, and analysis of gene flow.
