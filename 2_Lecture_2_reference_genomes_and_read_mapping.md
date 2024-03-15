@@ -114,7 +114,9 @@ Bam files are in binary format. To check out the content in a human-readable way
 samtools view Z23337_sorted.bam | more
 ```
 The format of bam files is explained [here](https://samtools.github.io/hts-specs/SAMv1.pdf).  Here are some screenshots from this explanation:
-
+![image](alignment.png)
+![image](sam.png)
+![image](cigar.png)
 
 ## Practice Problem 4: Assessing coverage
 
