@@ -32,7 +32,7 @@ This also takes too long to run during class, so let's look at an output file I 
 ln -s /home/ben/2024_BIO722/2022_pygmaeus/angsd/pygm_out_additive_F1.lrt0.gz .
 zmore pygm_out_additive_F1.lrt0.gz 
 ```
-![plot](pygm_lab_manhattan_angsd.pdf)
+![Alt text](pygm_lab_manhattan_angsd.pdf?raw=true "hello")
 
 ## Problem 5
 
