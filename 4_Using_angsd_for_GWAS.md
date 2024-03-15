@@ -32,8 +32,7 @@ This also takes too long to run during class, so let's look at an output file I 
 ln -s /home/ben/2024_BIO722/2022_pygmaeus/angsd/pygm_out_additive_F1.lrt0.gz .
 zmore pygm_out_additive_F1.lrt0.gz 
 ```
-[pygm_lab_manhattan_angsd.pdf](https://github.com/evansbenj/2024_BIO722/files/14614798/pygm_lab_manhattan_angsd.pdf)
-![screenshot](https://github.com/evansbenj/2024_BIO722/files/14614798/pygm_lab_manhattan_angsd.pdf))
+![plot](https://github.com/evansbenj/2024_BIO722/blob/master/pygm_lab_manhattan_angsd.pdf))
 
 ## Problem 5
 
