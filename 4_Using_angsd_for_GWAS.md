@@ -32,6 +32,8 @@ This also takes too long to run during class, so let's look at an output file I 
 ln -s /home/ben/2024_BIO722/2022_pygmaeus/angsd/pygm_out_additive_F1.lrt0.gz .
 zmore pygm_out_additive_F1.lrt0.gz 
 ```
+Using this file as input, I made the fancy manhattan plot below. Can you tell where the sex chromosome is?
+
 ![image](pygmaeus.png)
 
 ## Problem 5
