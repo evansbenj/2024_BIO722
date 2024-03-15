@@ -24,7 +24,9 @@ wget https://download.xenbase.org/xenbase/Genomics/JGI/Xenla10.1/XENLA_10.1_geno
 ```
 The whole genome comes as a fasta-formatted file. I did this earlier because it takes a while.  Instead of downloading it, please just make a symbolic link to the file I have:
 
-`ln -s /home/ben/2024_BIO722/2022_pygmaeus/2021_XL_v10_refgenome/XENLA_10.1_genome.fa.gz .`
+```
+ln -s /home/ben/2024_BIO722/2022_pygmaeus/2021_XL_v10_refgenome/XENLA_10.1_genome.fa.gz .
+```
 
 Now check out the first few lines:
 
